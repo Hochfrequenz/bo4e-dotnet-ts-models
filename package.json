@@ -1,0 +1,22 @@
+{
+  "name": "bo4e-dotnet-ts-models",
+  "version": "0.0.1",
+  "description": "TypeScript 'shadow' of the Bo4E-dotnet library",
+  "main": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hochfrequenz/bo4e-dotnet-ts-models.git"
+  },
+  "keywords": [
+    "ahbicht"
+  ],
+  "author": "Hochfrequenz Unternehmensberatung GmbH <info@hochfrequenz.de> (https://www.hochfrequenz.de/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/issues"
+  },
+  "homepage": "https://github.com/Hochfrequenz/bo4e-dotnet-ts-models#readme"
+}
