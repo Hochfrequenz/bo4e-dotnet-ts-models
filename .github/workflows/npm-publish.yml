@@ -17,3 +17,6 @@ jobs:
       - uses: JS-DevTools/npm-publish@master
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          # expires 
+          # https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/settings/secrets/actions/NPM_PUBLISH_TOKEN
+          # https://www.npmjs.com/settings/hf-kklein/tokens/
