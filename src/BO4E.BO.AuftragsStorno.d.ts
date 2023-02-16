@@ -20,8 +20,7 @@ export type ExterneReferenz1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOSperrauftragsStorno {
-  originalSperrauftragsart: "SPERREN" | "ENTSPERREN";
+export interface BO4EBOAuftragsStorno {
   auftragsId: string;
   boTyp?: string | null;
   versionStruktur?: string | null;

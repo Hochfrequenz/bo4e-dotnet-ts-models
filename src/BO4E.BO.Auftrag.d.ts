@@ -5,20 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & ExterneReferenz1;
-export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
@@ -583,235 +569,88 @@ export type Adresse1 = {
   ortsteil?: string | null;
   [k: string]: unknown;
 } | null;
-export type Ansprechpartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse1;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
-  [k: string]: unknown;
-} & Ansprechpartner1;
-export type Geschaeftspartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
-  [k: string]: unknown;
-} & Geschaeftspartner1;
-export type Geschaeftspartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
-  [k: string]: unknown;
-} | null;
-export type Rufnummer = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+export type ExterneReferenz = {
+  exRefName?: string | null;
+  exRefWert?: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Rufnummer1;
-export type Rufnummer1 = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+} & ExterneReferenz1;
+export type ExterneReferenz1 = {
+  exRefName?: string | null;
+  exRefWert?: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Zustaendigkeit = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & Zustaendigkeit1;
-export type Zustaendigkeit1 = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Ansprechpartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  anrede?:
+export type Preis = {
+  wert: number;
+  einheit?: null | "EUR" | "CT";
+  bezugswert?:
     | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner1;
-  adresse?: Adresse1;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Preis1;
+export type Preis1 = {
+  wert: number;
+  einheit?: null | "EUR" | "CT";
+  bezugswert?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOMarktteilnehmer {
+export interface BO4EBOAuftrag {
+  ausfuehrungsdatum?: string | null;
   boTyp?: string | null;
+  fertigstellungsdatum?: string | null;
   versionStruktur?: string | null;
+  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   timestamp?: string | null;
+  lieferanschrift?: Adresse;
   externeReferenzen?: ExterneReferenz[] | null;
+  marktlokationsId: string;
   guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  marktrolle?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB";
-  rollencodenummer: string;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
-  makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner;
+  bemerkungen?: (string | null)[] | null;
+  mindestpreis?: Preis;
+  hoechstpreis?: Preis1;
   [k: string]: unknown;
 }

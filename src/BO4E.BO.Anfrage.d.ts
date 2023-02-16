@@ -64,7 +64,7 @@ export type Zeitraum1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOReklamation {
+export interface BO4EBOAnfrage {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
@@ -72,9 +72,38 @@ export interface BO4EBOReklamation {
   guid?: string | null;
   lokationsId: string;
   lokationsTyp: "MALO" | "MELO";
-  obiskennzahl: string;
+  obiskennzahl?: string | null;
   ZeitraumMesswertanfrage?: Zeitraum;
-  reklamationsgrund: "WERTE_ZU_HOCH" | "WERTE_ZU_NIEDRIG" | "WERTE_FEHLEN";
-  reklamationsgrundBemerkung?: string | null;
+  anfragekategorie:
+    | "PROZESSDATENBERICHT"
+    | "GERAETEUEBERNAHME"
+    | "WEITERVERPFLICHTUNG_BETRIEB_MELO"
+    | "AENDERUNG_MELO"
+    | "STAMMDATEN_MALO_ODER_MELO"
+    | "BILANZIERTE_MENGE_MEHR_MINDER_MENGEN"
+    | "ALLOKATIONSLISTE_MEHR_MINDER_MENGEN"
+    | "ENERGIEMENGE_UND_LEISTUNGSMAXIMUM"
+    | "ABRECHNUNG_MESSSTELLENBETRIEB_MSB_AN_LF"
+    | "AENDERUNG_PROGNOSEGRUNDLAGE_GERAETEKONFIGURATION"
+    | "AENDERUNG_GERAETEKONFIGURATION"
+    | "REKLAMATION_VON_WERTEN"
+    | "LASTGANG_MALO_TRANCHE"
+    | "SPERRUNG"
+    | "ENTSPERRUNG";
+  anfragetyp?:
+    | null
+    | "START_ABO"
+    | "ENDE_ABO"
+    | "KAUF"
+    | "NUTZUNGSUEBERLASSUNG"
+    | "KANN_NICHT_ANGEBOTEN_WERDEN"
+    | "ABRECHNUNGSBRENNWERT_UND_ZUSTANDSZAHL"
+    | "LASTGANGDATEN"
+    | "ZAEHLERSTAENDE"
+    | "WERTEERMITTLUNG"
+    | "LIEFERRICHTUNG"
+    | "ANGEBOT_AUF_BASIS_PREISBLATT"
+    | "INDIVIDUELLES_ANGEBOT"
+    | "ENERGIEMENGE_EINZELWERT";
   [k: string]: unknown;
 }
