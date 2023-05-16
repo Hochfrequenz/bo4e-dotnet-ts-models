@@ -960,7 +960,8 @@ export type Betrag11 = {
   [k: string]: unknown;
 } | null;
 export type Steuerbetrag = {
-  steuerkennzeichen: "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
+  steuerkennzeichen: "UST_SONDER" | "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
+  sondersteuersatz?: number | null;
   basiswert: number;
   steuerwert: number;
   waehrung:
@@ -1152,7 +1153,8 @@ export type Steuerbetrag = {
   [k: string]: unknown;
 } & Steuerbetrag1;
 export type Steuerbetrag1 = {
-  steuerkennzeichen: "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
+  steuerkennzeichen: "UST_SONDER" | "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
+  sondersteuersatz?: number | null;
   basiswert: number;
   steuerwert: number;
   waehrung:
