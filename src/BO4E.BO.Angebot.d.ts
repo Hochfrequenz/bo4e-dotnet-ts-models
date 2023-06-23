@@ -2373,6 +2373,15 @@ export type Geraet = {
   guid?: string | null;
   geraetenummer?: string | null;
   geraeteeigenschaften?: Geraeteeigenschaften1;
+  geraeteart?:
+    | null
+    | "WANDLER"
+    | "KOMMUNIKATIONSEINRICHTUNG"
+    | "TECHNISCHE_STEUEREINRICHTUNG"
+    | "MENGENUMWERTER"
+    | "SMARTMETER_GATEWAY"
+    | "STEUERBOX"
+    | "ZAEHLEINRICHTUNG";
   [k: string]: unknown;
 } & Geraet1;
 export type Geraet1 = {
@@ -2380,6 +2389,15 @@ export type Geraet1 = {
   guid?: string | null;
   geraetenummer?: string | null;
   geraeteeigenschaften?: Geraeteeigenschaften1;
+  geraeteart?:
+    | null
+    | "WANDLER"
+    | "KOMMUNIKATIONSEINRICHTUNG"
+    | "TECHNISCHE_STEUEREINRICHTUNG"
+    | "MENGENUMWERTER"
+    | "SMARTMETER_GATEWAY"
+    | "STEUERBOX"
+    | "ZAEHLEINRICHTUNG";
   [k: string]: unknown;
 } | null;
 export type Zaehler1 = {
