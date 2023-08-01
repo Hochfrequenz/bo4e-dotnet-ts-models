@@ -1046,7 +1046,8 @@ export type StatusZusatzInformation = {
     | "RECHENWERT"
     | "ANGABEN_MESSLOKATION"
     | "BASIS_MME"
-    | "GRUND_ANGABEN_MESSLOKATION";
+    | "GRUND_ANGABEN_MESSLOKATION"
+    | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } & StatusZusatzInformation1;
 export type StatusZusatzInformation1 = {
@@ -1129,7 +1130,8 @@ export type StatusZusatzInformation1 = {
     | "RECHENWERT"
     | "ANGABEN_MESSLOKATION"
     | "BASIS_MME"
-    | "GRUND_ANGABEN_MESSLOKATION";
+    | "GRUND_ANGABEN_MESSLOKATION"
+    | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } | null;
 export type Verbrauch1 = {
@@ -1224,6 +1226,7 @@ export type Messlokation = {
   verlustfaktor?: number | null;
   zaehlwerke?: Zaehlwerk1[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
+  messprodukte?: Messprodukt[] | null;
   [k: string]: unknown;
 } & Messlokation1;
 export type Hardware = {
@@ -1668,7 +1671,9 @@ export type Zaehler = {
     | "MESSDATENREGISTRIERGERAET"
     | "ELEKTRONISCHERHAUSHALTSZAEHLER"
     | "SONDERAUSSTATTUNG"
-    | "WASSERZAEHLER";
+    | "WASSERZAEHLER"
+    | "MODERNEMESSEINRICHTUNG"
+    | "NEUEMESSEINRICHTUNGGAS";
   tarifart?: null | "EINTARIF" | "ZWEITARIF" | "MEHRTARIF" | "SMART_METER" | "LEISTUNGSGEMESSEN";
   zaehlerkonstante?: number | null;
   eichungBis?: string | null;
@@ -1800,7 +1805,9 @@ export type Zaehler1 = {
     | "MESSDATENREGISTRIERGERAET"
     | "ELEKTRONISCHERHAUSHALTSZAEHLER"
     | "SONDERAUSSTATTUNG"
-    | "WASSERZAEHLER";
+    | "WASSERZAEHLER"
+    | "MODERNEMESSEINRICHTUNG"
+    | "NEUEMESSEINRICHTUNGGAS";
   tarifart?: null | "EINTARIF" | "ZWEITARIF" | "MEHRTARIF" | "SMART_METER" | "LEISTUNGSGEMESSEN";
   zaehlerkonstante?: number | null;
   eichungBis?: string | null;
@@ -1876,6 +1883,32 @@ export type Zaehler1 = {
   geraete?: Geraet[] | null;
   [k: string]: unknown;
 } | null;
+export type Messprodukt = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId?: string | null;
+  verwendungszwecke?: Verwendungszweck1[] | null;
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbarkeit?: null | "UV" | "NUV";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  zaehlzeiten?: Zaehlzeitregister1;
+  zweiteMessung?: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  [k: string]: unknown;
+} & Messprodukt1;
+export type Messprodukt1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId?: string | null;
+  verwendungszwecke?: Verwendungszweck1[] | null;
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbarkeit?: null | "UV" | "NUV";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  zaehlzeiten?: Zaehlzeitregister1;
+  zweiteMessung?: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  [k: string]: unknown;
+} | null;
 export type Messlokation1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -1913,6 +1946,7 @@ export type Messlokation1 = {
   verlustfaktor?: number | null;
   zaehlwerke?: Zaehlwerk1[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
+  messprodukte?: Messprodukt[] | null;
   [k: string]: unknown;
 } | null;
 export type Messlokationszuordnung = {
@@ -2120,5 +2154,6 @@ export interface BO4EBOMarktlokation {
   messtechnischeEinordnung?: null | "IMS" | "KME_MME" | "KEINE_MESSUNG";
   netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
   sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
+  messprodukte?: Messprodukt1[] | null;
   [k: string]: unknown;
 }

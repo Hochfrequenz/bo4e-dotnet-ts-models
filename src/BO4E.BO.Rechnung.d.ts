@@ -1629,7 +1629,8 @@ export interface BO4EBORechnung {
     | "SPERRUNG_INBETRIEBNAHME"
     | "VERZUGSKOSTEN"
     | "BLINDARBEIT"
-    | "SONDERRECHNUNG";
+    | "SONDERRECHNUNG"
+    | "ABRECHNUNG_VON_KONFIGURATIONEN_UNIVERSALBESTELLPROZESS";
   originalRechnungsnummer?: string | null;
   rechnungsperiode: Zeitraum;
   rechnungsersteller: Geschaeftspartner;

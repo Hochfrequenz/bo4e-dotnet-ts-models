@@ -1053,7 +1053,9 @@ export type Zaehler = {
     | "MESSDATENREGISTRIERGERAET"
     | "ELEKTRONISCHERHAUSHALTSZAEHLER"
     | "SONDERAUSSTATTUNG"
-    | "WASSERZAEHLER";
+    | "WASSERZAEHLER"
+    | "MODERNEMESSEINRICHTUNG"
+    | "NEUEMESSEINRICHTUNGGAS";
   tarifart?: null | "EINTARIF" | "ZWEITARIF" | "MEHRTARIF" | "SMART_METER" | "LEISTUNGSGEMESSEN";
   zaehlerkonstante?: number | null;
   eichungBis?: string | null;
@@ -1435,7 +1437,9 @@ export type Zaehler1 = {
     | "MESSDATENREGISTRIERGERAET"
     | "ELEKTRONISCHERHAUSHALTSZAEHLER"
     | "SONDERAUSSTATTUNG"
-    | "WASSERZAEHLER";
+    | "WASSERZAEHLER"
+    | "MODERNEMESSEINRICHTUNG"
+    | "NEUEMESSEINRICHTUNGGAS";
   tarifart?: null | "EINTARIF" | "ZWEITARIF" | "MEHRTARIF" | "SMART_METER" | "LEISTUNGSGEMESSEN";
   zaehlerkonstante?: number | null;
   eichungBis?: string | null;
@@ -1561,6 +1565,32 @@ export type MarktpartnerDetails1 = {
   weiterverpflichtet?: boolean | null;
   [k: string]: unknown;
 } | null;
+export type Messprodukt = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId?: string | null;
+  verwendungszwecke?: Verwendungszweck1[] | null;
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbarkeit?: null | "UV" | "NUV";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  zaehlzeiten?: Zaehlzeitregister1;
+  zweiteMessung?: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  [k: string]: unknown;
+} & Messprodukt1;
+export type Messprodukt1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId?: string | null;
+  verwendungszwecke?: Verwendungszweck1[] | null;
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbarkeit?: null | "UV" | "NUV";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  zaehlzeiten?: Zaehlzeitregister1;
+  zweiteMessung?: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  [k: string]: unknown;
+} | null;
 
 export interface BO4EBOMesslokation {
   boTyp?: string | null;
@@ -1599,5 +1629,6 @@ export interface BO4EBOMesslokation {
   verlustfaktor?: number | null;
   zaehlwerke?: Zaehlwerk1[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
+  messprodukte?: Messprodukt[] | null;
   [k: string]: unknown;
 }

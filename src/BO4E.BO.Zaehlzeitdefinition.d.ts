@@ -83,7 +83,12 @@ export interface BO4EBOZaehlzeitdefinition {
   beginndatum?: string | null;
   endedatum?: string | null;
   version: string;
-  notwendigkeit?: null | "ZAEHLZEITDEFINITIONEN_WERDEN_VERWENDET" | "ZAEHLZEITDEFINITIONEN_WERDEN_NICHT_VERWENDET";
+  notwendigkeit?:
+    | null
+    | "ZAEHLZEITDEFINITIONEN_WERDEN_VERWENDET"
+    | "ZAEHLZEITDEFINITIONEN_WERDEN_NICHT_VERWENDET"
+    | "DEFINITIONEN_WERDEN_VERWENDET"
+    | "DEFINITIONEN_WERDEN_NICHT_VERWENDET";
   zaehlzeiten?: Zaehlzeit[] | null;
   zaehlzeitregister: Zaehlzeitregister[];
   ausgerollteZaehlzeiten: AusgerollteZaehlzeit[];

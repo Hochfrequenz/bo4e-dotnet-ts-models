@@ -1110,7 +1110,9 @@ export interface BO4EBOZaehler {
     | "MESSDATENREGISTRIERGERAET"
     | "ELEKTRONISCHERHAUSHALTSZAEHLER"
     | "SONDERAUSSTATTUNG"
-    | "WASSERZAEHLER";
+    | "WASSERZAEHLER"
+    | "MODERNEMESSEINRICHTUNG"
+    | "NEUEMESSEINRICHTUNGGAS";
   tarifart?: null | "EINTARIF" | "ZWEITARIF" | "MEHRTARIF" | "SMART_METER" | "LEISTUNGSGEMESSEN";
   zaehlerkonstante?: number | null;
   eichungBis?: string | null;

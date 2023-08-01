@@ -661,7 +661,8 @@ export interface BO4EBOSperrauftrag {
     | "PASSIVE_ZUTRITTSVERWEIGERUNG"
     | "ANDERER_VERHINDERUNGSGRUND"
     | "TATSAECHLICHER_VERHINDERUNGSGRUND"
-    | "TECHNISCHER_VERHINDERUNGSGRUND";
+    | "TECHNISCHER_VERHINDERUNGSGRUND"
+    | "ANSCHLUSSNUTZER_WURDE_NICHT_ANGETROFFEN";
   zaehlernummer?: string | null;
   istVomGerichtsvollzieherAngeordnet: boolean;
   ausfuehrungsdatum?: string | null;

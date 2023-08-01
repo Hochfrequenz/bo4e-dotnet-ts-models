@@ -154,7 +154,8 @@ export type StatusZusatzInformation = {
     | "RECHENWERT"
     | "ANGABEN_MESSLOKATION"
     | "BASIS_MME"
-    | "GRUND_ANGABEN_MESSLOKATION";
+    | "GRUND_ANGABEN_MESSLOKATION"
+    | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } & StatusZusatzInformation1;
 export type StatusZusatzInformation1 = {
@@ -237,7 +238,8 @@ export type StatusZusatzInformation1 = {
     | "RECHENWERT"
     | "ANGABEN_MESSLOKATION"
     | "BASIS_MME"
-    | "GRUND_ANGABEN_MESSLOKATION";
+    | "GRUND_ANGABEN_MESSLOKATION"
+    | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } | null;
 export type Verbrauch1 = {
