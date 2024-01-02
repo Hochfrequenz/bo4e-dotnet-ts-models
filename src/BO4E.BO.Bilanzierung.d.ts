@@ -149,5 +149,6 @@ export interface BO4EBOBilanzierung {
     | "NICHT_WEGEN_EIGENVERBRAUCH"
     | "NICHT_WEGEN_TAGES_VERBRAUCH"
     | "NICHT_WEGEN_ENWG";
+  abwicklungsmodell?: null | "MODELL_1" | "MODELL_2";
   [k: string]: unknown;
 }

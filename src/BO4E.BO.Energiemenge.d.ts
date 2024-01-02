@@ -305,7 +305,7 @@ export interface BO4EBOEnergiemenge {
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   lokationsId: string;
-  lokationsTyp: "MALO" | "MELO";
+  lokationsTyp: null | "MALO" | "MELO";
   /**
    * @minItems 1
    */

@@ -645,6 +645,11 @@ export type Geschaeftspartner1 = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } & Geschaeftspartner11;
 export type Geschaeftspartner11 = {
@@ -679,6 +684,11 @@ export type Geschaeftspartner11 = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
@@ -1274,6 +1284,7 @@ export type Marktlokation = {
   netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
   sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
   messprodukte?: Messprodukt1[] | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
   [k: string]: unknown;
 } & Marktlokation1;
 export type Geokoordinaten = {
@@ -1421,6 +1432,7 @@ export type Verwendungszweck = {
         | "MEHRMINDERMENGENABRECHNUNG"
         | "MEHRMINDERMBENGENABRECHNUNG"
         | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
       )[]
@@ -1453,6 +1465,7 @@ export type Verwendungszweck1 = {
         | "MEHRMINDERMENGENABRECHNUNG"
         | "MEHRMINDERMBENGENABRECHNUNG"
         | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
       )[]
@@ -2011,7 +2024,13 @@ export type Geraeteeigenschaften = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;
@@ -2121,7 +2140,13 @@ export type Geraeteeigenschaften1 = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;
@@ -2370,7 +2395,13 @@ export type Zaehler = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   geraete?: Geraet[] | null;
   [k: string]: unknown;
 } & Zaehler1;
@@ -2504,7 +2535,13 @@ export type Zaehler1 = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   geraete?: Geraet[] | null;
   [k: string]: unknown;
 } | null;
@@ -2672,6 +2709,144 @@ export type Netznutzungsabrechnungsdaten1 = {
   preisSingulaereBetriebsmittel?: Preis1;
   [k: string]: unknown;
 } | null;
+export type Konfigurationsprodukt = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer;
+  [k: string]: unknown;
+} & Konfigurationsprodukt1;
+export type Marktteilnehmer = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  marktrolle?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  rollencodenummer: string;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse?: string | null;
+  ansprechpartner?: Ansprechpartner1;
+  [k: string]: unknown;
+} & Marktteilnehmer1;
+export type Marktteilnehmer1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  marktrolle?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  rollencodenummer: string;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse?: string | null;
+  ansprechpartner?: Ansprechpartner1;
+  [k: string]: unknown;
+} | null;
+export type Konfigurationsprodukt1 = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer1;
+  [k: string]: unknown;
+} | null;
 export type Marktlokation1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -2729,6 +2904,7 @@ export type Marktlokation1 = {
   netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
   sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
   messprodukte?: Messprodukt1[] | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
   [k: string]: unknown;
 } | null;
 export type Angebotsposition = {
@@ -2991,5 +3167,10 @@ export interface Geschaeftspartner {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 }
