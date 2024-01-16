@@ -645,6 +645,11 @@ export type Geschaeftspartner = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
@@ -679,6 +684,11 @@ export type Geschaeftspartner1 = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
@@ -792,6 +802,11 @@ export interface BO4EBOMarktteilnehmer {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   marktrolle?:
     | null
     | "NB"

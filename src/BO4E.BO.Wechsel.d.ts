@@ -139,7 +139,13 @@ export type Geraeteeigenschaften = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;
@@ -249,7 +255,13 @@ export type Geraeteeigenschaften1 = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;

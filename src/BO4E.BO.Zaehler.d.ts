@@ -86,6 +86,7 @@ export type Verwendungszweck = {
         | "MEHRMINDERMENGENABRECHNUNG"
         | "MEHRMINDERMBENGENABRECHNUNG"
         | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
       )[]
@@ -118,6 +119,7 @@ export type Verwendungszweck1 = {
         | "MEHRMINDERMENGENABRECHNUNG"
         | "MEHRMINDERMBENGENABRECHNUNG"
         | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
       )[]
@@ -233,6 +235,11 @@ export type Geschaeftspartner = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Adresse = {
@@ -831,6 +838,11 @@ export type Geschaeftspartner1 = {
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
   [k: string]: unknown;
 } | null;
 export type Geraet = {
@@ -953,7 +965,13 @@ export type Geraeteeigenschaften = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;
@@ -1063,7 +1081,13 @@ export type Geraeteeigenschaften1 = {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   Parameter?: {
     [k: string]: string | null;
   } | null;
@@ -1184,7 +1208,13 @@ export interface BO4EBOZaehler {
     | "WASSER_VWZ05"
     | "WASSER_VWZ06"
     | "WASSER_VWZ07"
-    | "WASSER_VWZ10";
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
   geraete?: Geraet[] | null;
   [k: string]: unknown;
 }

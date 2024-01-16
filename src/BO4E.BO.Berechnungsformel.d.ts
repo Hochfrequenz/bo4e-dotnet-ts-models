@@ -28,6 +28,7 @@ export type Rechenschritt = {
   verlustfaktorTrafo?: number | null;
   verlustfaktorLeitung?: number | null;
   messlokationId?: string | null;
+  energieflussrichtung?: null | "VERBRAUCH" | "ERZEUGUNG";
   weitererRechenschritt?: Rechenschritt1;
   [k: string]: unknown;
 } & Rechenschritt1;
@@ -40,6 +41,7 @@ export type Rechenschritt1 = {
   verlustfaktorTrafo?: number | null;
   verlustfaktorLeitung?: number | null;
   messlokationId?: string | null;
+  energieflussrichtung?: null | "VERBRAUCH" | "ERZEUGUNG";
   weitererRechenschritt?: Rechenschritt1;
   [k: string]: unknown;
 } | null;

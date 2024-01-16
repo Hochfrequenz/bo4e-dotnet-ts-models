@@ -19,7 +19,132 @@ export type ExterneReferenz1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Geschaeftspartner = {
+export type Menge = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} & Menge1;
+export type Menge1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} | null;
+export type Verwendungszweck = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  zweck?:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "MEHRMINDERMBENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Verwendungszweck1;
+export type Verwendungszweck1 = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  zweck?:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "MEHRMINDERMBENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Konfigurationsprodukt = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer;
+  [k: string]: unknown;
+} & Konfigurationsprodukt1;
+export type Marktteilnehmer = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
@@ -56,8 +181,29 @@ export type Geschaeftspartner = {
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
+  marktrolle?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  rollencodenummer: string;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse?: string | null;
+  ansprechpartner?: Ansprechpartner;
   [k: string]: unknown;
-} & Geschaeftspartner1;
+} & Marktteilnehmer1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
@@ -622,6 +768,75 @@ export type Adresse1 = {
   ortsteil?: string | null;
   [k: string]: unknown;
 } | null;
+export type Ansprechpartner = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  inviduelleAnrede?: string | null;
+  titel?: null | "DR" | "PROF" | "PROF_DR";
+  vorname?: string | null;
+  nachname?: string | null;
+  eMailAdresse?: string | null;
+  kommentar?: string | null;
+  geschaeftspartner?: Geschaeftspartner;
+  adresse?: Adresse1;
+  rufnummern?: Rufnummer[] | null;
+  zustaendigkeit?: Zustaendigkeit[] | null;
+  [k: string]: unknown;
+} & Ansprechpartner1;
+export type Geschaeftspartner = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  [k: string]: unknown;
+} & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -661,225 +876,167 @@ export type Geschaeftspartner1 = {
     | "KEINE_ANGABE";
   [k: string]: unknown;
 } | null;
-export type Unterschrift = {
-  ort?: string | null;
-  datum?: string | null;
-  name: string;
+export type Rufnummer = {
+  nummerntyp:
+    | "RUF_ZENTRALE"
+    | "FAX_ZENTRALE"
+    | "SAMMELRUF"
+    | "SAMMELFAX"
+    | "ABTEILUNGRUF"
+    | "ABTEILUNGFAX"
+    | "RUF_DURCHWAHL"
+    | "FAX_DURCHWAHL"
+    | "MOBIL_NUMMER";
+  rufnummer: string;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Unterschrift1;
-export type Unterschrift1 = {
-  ort?: string | null;
-  datum?: string | null;
-  name: string;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Vertragskonditionen = {
-  timestamp?: string | null;
-  guid?: string | null;
-  beschreibung?: string | null;
-  anzahlAbschlaege?: number | null;
-  vertragslaufzeit?: Zeitraum;
-  kuendigungsfrist?: Zeitraum1;
-  vertragsverlaengerung?: Zeitraum1;
-  abschlagszyklus?: Zeitraum1;
-  startAbrechnungsjahr?: string | null;
-  geplanteTurnusablesung?: Zeitraum1;
-  turnusablesungIntervall?: number | null;
-  netznutzungsabrechnung?: Zeitraum1;
-  netznutzungsabrechnungIntervall?: number | null;
-  haushaltskunde?: boolean | null;
-  netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
-  netznutzungszahler?: null | "KUNDE" | "LIEFERANT";
-  netznutzungsabrechnungsvariante?: null | "ARBEITSPREIS_GRUNDPREIS" | "ARBEITSPREIS_LEISTUNGSPREIS";
-  netznutzungsabrechnungsgrundlage?: null | "LIEFERSCHEIN" | "ABWEICHENDE_GRUNDLAGE";
-  beinhaltetSingulaerGenutzteBetriebsmittel?: boolean | null;
-  [k: string]: unknown;
-} & Vertragskonditionen1;
-export type Zeitraum = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & Zeitraum1;
-export type Zeitraum1 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
+} & Rufnummer1;
+export type Rufnummer1 = {
+  nummerntyp:
+    | "RUF_ZENTRALE"
+    | "FAX_ZENTRALE"
+    | "SAMMELRUF"
+    | "SAMMELFAX"
+    | "ABTEILUNGRUF"
+    | "ABTEILUNGFAX"
+    | "RUF_DURCHWAHL"
+    | "FAX_DURCHWAHL"
+    | "MOBIL_NUMMER";
+  rufnummer: string;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Vertragskonditionen1 = {
-  timestamp?: string | null;
-  guid?: string | null;
-  beschreibung?: string | null;
-  anzahlAbschlaege?: number | null;
-  vertragslaufzeit?: Zeitraum1;
-  kuendigungsfrist?: Zeitraum1;
-  vertragsverlaengerung?: Zeitraum1;
-  abschlagszyklus?: Zeitraum1;
-  startAbrechnungsjahr?: string | null;
-  geplanteTurnusablesung?: Zeitraum1;
-  turnusablesungIntervall?: number | null;
-  netznutzungsabrechnung?: Zeitraum1;
-  netznutzungsabrechnungIntervall?: number | null;
-  haushaltskunde?: boolean | null;
-  netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
-  netznutzungszahler?: null | "KUNDE" | "LIEFERANT";
-  netznutzungsabrechnungsvariante?: null | "ARBEITSPREIS_GRUNDPREIS" | "ARBEITSPREIS_LEISTUNGSPREIS";
-  netznutzungsabrechnungsgrundlage?: null | "LIEFERSCHEIN" | "ABWEICHENDE_GRUNDLAGE";
-  beinhaltetSingulaerGenutzteBetriebsmittel?: boolean | null;
-  [k: string]: unknown;
-} | null;
-export type Vertragsteil = {
-  vertragsteilbeginn?: string | null;
-  vertragsteilende?: string | null;
-  lokation?: string | null;
-  vertraglichFixierteMenge?: Menge;
-  minimaleAbnahmemenge?: Menge1;
-  maximaleAbnahmemenge?: Menge1;
-  jahresverbrauchsprognose?: Menge1;
-  kundenwert?: Menge1;
-  verbrauchsaufteilung?: string | null;
+export type Zustaendigkeit = {
+  jobtitel?: string | null;
+  abteilung?: string | null;
+  themengebiet?: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Vertragsteil1;
-export type Menge = {
+} & Zustaendigkeit1;
+export type Zustaendigkeit1 = {
+  jobtitel?: string | null;
+  abteilung?: string | null;
+  themengebiet?: string | null;
   timestamp?: string | null;
   guid?: string | null;
-  wert: number;
-  einheit?:
-    | null
-    | "ZERO"
-    | "WH"
-    | "KW"
-    | "ANZAHL"
-    | "KUBIKMETER"
-    | "STUNDE"
-    | "TAG"
-    | "MONAT"
-    | "VAR"
-    | "VARH"
-    | "KWHK"
-    | "JAHR"
-    | "KWH"
-    | "MW"
-    | "KVAR"
-    | "KVARH"
-    | "MWH";
-  [k: string]: unknown;
-} & Menge1;
-export type Menge1 = {
-  timestamp?: string | null;
-  guid?: string | null;
-  wert: number;
-  einheit?:
-    | null
-    | "ZERO"
-    | "WH"
-    | "KW"
-    | "ANZAHL"
-    | "KUBIKMETER"
-    | "STUNDE"
-    | "TAG"
-    | "MONAT"
-    | "VAR"
-    | "VARH"
-    | "KWHK"
-    | "JAHR"
-    | "KWH"
-    | "MW"
-    | "KVAR"
-    | "KVARH"
-    | "MWH";
   [k: string]: unknown;
 } | null;
-export type Vertragsteil1 = {
-  vertragsteilbeginn?: string | null;
-  vertragsteilende?: string | null;
-  lokation?: string | null;
-  vertraglichFixierteMenge?: Menge1;
-  minimaleAbnahmemenge?: Menge1;
-  maximaleAbnahmemenge?: Menge1;
-  jahresverbrauchsprognose?: Menge1;
-  kundenwert?: Menge1;
-  verbrauchsaufteilung?: string | null;
+export type Ansprechpartner1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
   timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
   guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  inviduelleAnrede?: string | null;
+  titel?: null | "DR" | "PROF" | "PROF_DR";
+  vorname?: string | null;
+  nachname?: string | null;
+  eMailAdresse?: string | null;
+  kommentar?: string | null;
+  geschaeftspartner?: Geschaeftspartner1;
+  adresse?: Adresse1;
+  rufnummern?: Rufnummer[] | null;
+  zustaendigkeit?: Zustaendigkeit[] | null;
+  [k: string]: unknown;
+} | null;
+export type Marktteilnehmer1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz1[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse1;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  marktrolle?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB";
+  rollencodenummer: string;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse?: string | null;
+  ansprechpartner?: Ansprechpartner1;
+  [k: string]: unknown;
+} | null;
+export type Konfigurationsprodukt1 = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer1;
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOVertrag {
+export interface BO4EBONetzlokation {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  vertragsnummer?: string | null;
-  beschreibung?: string | null;
-  vertragsart?:
-    | null
-    | "ENERGIELIEFERVERTRAG"
-    | "NETZNUTZUNGSVERTRAG"
-    | "BILANZIERUNGSVERTRAG"
-    | "MESSSTELLENBETRIEBSVERTRAG"
-    | "BUENDELVERTRAG";
-  vertragstatus?:
-    | null
-    | "IN_ARBEIT"
-    | "UEBERMITTELT"
-    | "ANGENOMMEN"
-    | "AKTIV"
-    | "ABGELEHNT"
-    | "WIDERRUFEN"
-    | "STORNIERT"
-    | "GEKUENDIGT"
-    | "BEENDET";
+  netzlokationsId: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  vertragsbeginn: string;
-  vertragsende?: string | null;
-  vertragspartner1?: Geschaeftspartner;
-  vertragspartner2?: Geschaeftspartner1;
-  unterzeichnervp1?: Unterschrift[] | null;
-  unterzeichnervp2?: Unterschrift1[] | null;
-  vertragskonditionen?: Vertragskonditionen;
-  vertragsteile?: Vertragsteil[] | null;
-  gemeinderabatt?: number | null;
-  korrespondenzpartner?: Geschaeftspartner1;
+  netzanschlussleistung?: Menge;
+  grundzustaendigerMSBCodeNr?: string | null;
+  steuerkanal?: boolean | null;
+  obisKennzahl?: string | null;
+  verwendungszweck?: Verwendungszweck;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
   [k: string]: unknown;
 }
