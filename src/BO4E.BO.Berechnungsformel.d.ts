@@ -30,6 +30,7 @@ export type Rechenschritt = {
   messlokationId?: string | null;
   energieflussrichtung?: null | "VERBRAUCH" | "ERZEUGUNG";
   weitererRechenschritt?: Rechenschritt1;
+  aufteilungsfaktorEnergiemenge?: number | null;
   [k: string]: unknown;
 } & Rechenschritt1;
 export type Rechenschritt1 = {
@@ -43,6 +44,7 @@ export type Rechenschritt1 = {
   messlokationId?: string | null;
   energieflussrichtung?: null | "VERBRAUCH" | "ERZEUGUNG";
   weitererRechenschritt?: Rechenschritt1;
+  aufteilungsfaktorEnergiemenge?: number | null;
   [k: string]: unknown;
 } | null;
 

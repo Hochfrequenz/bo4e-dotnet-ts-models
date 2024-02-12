@@ -2640,6 +2640,7 @@ export type Netznutzungsabrechnungsdaten = {
   abschlag?: number | null;
   singulaereBetriebsmittel?: Menge1;
   preisSingulaereBetriebsmittel?: Preis;
+  zaehlzeit?: Zaehlzeitregister1;
   [k: string]: unknown;
 } & Netznutzungsabrechnungsdaten1;
 export type Preis = {
@@ -2707,6 +2708,7 @@ export type Netznutzungsabrechnungsdaten1 = {
   abschlag?: number | null;
   singulaereBetriebsmittel?: Menge1;
   preisSingulaereBetriebsmittel?: Preis1;
+  zaehlzeit?: Zaehlzeitregister1;
   [k: string]: unknown;
 } | null;
 export type Konfigurationsprodukt = {
