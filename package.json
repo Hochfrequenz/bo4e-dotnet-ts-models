@@ -1,6 +1,6 @@
 {
   "name": "bo4e-dotnet-ts-models",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "TypeScript 'shadow' of the Bo4E-dotnet library",
   "main": "index.d.ts",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Hochfrequenz/bo4e-dotnet-ts-models.git"
   },
   "keywords": [
-    "ahbicht"
+    "bo4e"
   ],
   "author": "Hochfrequenz Unternehmensberatung GmbH <info@hochfrequenz.de> (https://www.hochfrequenz.de/)",
   "license": "MIT",
