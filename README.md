@@ -1,6 +1,7 @@
 # bo4e-dotnet-ts-models
 
-This repository contains the NPM package [`bo4e-dotnet-ts-models`](https://www.npmjs.com/package/bo4e-dotnet-ts-models). The package contains typescript interfaces that are inherently consistent with the [BO4E-dotnet](https://github.com/Hochfrequenz/bo4E-dotnet/) data model which is used by many Hochfrequenz services.
+This repository contains the NPM package [`bo4e-dotnet-ts-models`](https://www.npmjs.com/package/bo4e-dotnet-ts-models).
+The package contains typescript interfaces that are inherently consistent with the [BO4E-dotnet](https://github.com/Hochfrequenz/bo4E-dotnet/) data model which is used by many Hochfrequenz services (namely transformer.bee/edifact-bo4e-converter).
 
 This repository contains no logic, just types for ease of use in any frontend project.
 
