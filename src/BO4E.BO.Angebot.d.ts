@@ -1334,7 +1334,8 @@ export type MarktpartnerDetails = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   timestamp?: string | null;
   guid?: string | null;
   weiterverpflichtet?: boolean | null;
@@ -1359,7 +1360,8 @@ export type MarktpartnerDetails1 = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   timestamp?: string | null;
   guid?: string | null;
   weiterverpflichtet?: boolean | null;
@@ -1424,7 +1426,8 @@ export type Verwendungszweck = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   zweck?:
     | (
         | "NETZNUTZUNGSABRECHNUNG"
@@ -1457,7 +1460,8 @@ export type Verwendungszweck1 = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   zweck?:
     | (
         | "NETZNUTZUNGSABRECHNUNG"
@@ -2773,7 +2777,8 @@ export type Marktteilnehmer = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
@@ -2833,7 +2838,8 @@ export type Marktteilnehmer1 = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;

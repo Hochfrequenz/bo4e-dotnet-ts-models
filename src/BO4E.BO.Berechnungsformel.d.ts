@@ -81,7 +81,8 @@ export interface Verwendungszweck {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   zweck?:
     | (
         | "NETZNUTZUNGSABRECHNUNG"
