@@ -76,5 +76,6 @@ export interface BO4EBOReklamation {
   ZeitraumMesswertanfrage?: Zeitraum;
   reklamationsgrund: "WERTE_ZU_HOCH" | "WERTE_ZU_NIEDRIG" | "WERTE_FEHLEN";
   reklamationsgrundBemerkung?: string | null;
+  zeitpunktFuerWertanfrage?: string | null;
   [k: string]: unknown;
 }

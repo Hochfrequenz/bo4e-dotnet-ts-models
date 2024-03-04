@@ -65,6 +65,17 @@ export type Marktteilnehmer = {
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
   marktrolle?:
     | null
     | "NB"
@@ -81,7 +92,8 @@ export type Marktteilnehmer = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
@@ -719,6 +731,17 @@ export type Geschaeftspartner = {
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
@@ -758,6 +781,17 @@ export type Geschaeftspartner1 = {
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
@@ -875,6 +909,17 @@ export type Marktteilnehmer1 = {
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
   marktrolle?:
     | null
     | "NB"
@@ -891,7 +936,8 @@ export type Marktteilnehmer1 = {
     | "RB"
     | "KUNDE"
     | "INTERESSENT"
-    | "GMSB";
+    | "GMSB"
+    | "AMSB";
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
@@ -918,5 +964,23 @@ export interface BO4EBOSteuerbareRessource {
   steuerkanalsLeistungsbeschreibung?: null | "AN_AUS" | "GESTUFT";
   zugeordnetMSBCodeNr?: string | null;
   konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
   [k: string]: unknown;
 }
