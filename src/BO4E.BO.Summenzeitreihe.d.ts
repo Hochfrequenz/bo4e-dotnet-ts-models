@@ -56,7 +56,8 @@ export type Verbrauch = {
     | "NICHT_VERWENDBAR"
     | "PROGNOSEWERT"
     | "ENERGIEMENGESUMMIERT"
-    | "FEHLT";
+    | "FEHLT"
+    | "GRUNDLAGE_POG_ERMITTLUNG";
   statuszusatzinformationen?: StatusZusatzInformation[] | null;
   obiskennzahl: string;
   wert: number;
@@ -279,7 +280,8 @@ export type Verbrauch1 = {
     | "NICHT_VERWENDBAR"
     | "PROGNOSEWERT"
     | "ENERGIEMENGESUMMIERT"
-    | "FEHLT";
+    | "FEHLT"
+    | "GRUNDLAGE_POG_ERMITTLUNG";
   statuszusatzinformationen?: StatusZusatzInformation[] | null;
   obiskennzahl: string;
   wert: number;
