@@ -1458,7 +1458,7 @@ export type Preisposition1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOPreisblattMessung {
+export interface PreisblattMessung {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

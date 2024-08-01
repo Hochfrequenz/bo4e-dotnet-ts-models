@@ -587,7 +587,7 @@ export type Ansprechpartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -608,7 +608,7 @@ export type Ansprechpartner = {
   eMailAdresse?: string | null;
   kommentar?: string | null;
   geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse1;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -617,7 +617,7 @@ export type Geschaeftspartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -644,7 +644,7 @@ export type Geschaeftspartner = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -667,7 +667,7 @@ export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -694,7 +694,7 @@ export type Geschaeftspartner1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -765,7 +765,7 @@ export type Ansprechpartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -785,8 +785,8 @@ export type Ansprechpartner1 = {
   nachname?: string | null;
   eMailAdresse?: string | null;
   kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner1;
-  adresse?: Adresse1;
+  geschaeftspartner?: Geschaeftspartner;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -1009,7 +1009,7 @@ export type Preisstaffel1 = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter1;
+  sigmoidparameter?: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1204,7 +1204,7 @@ export type Preisposition1 = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag1;
+  zu_abschlaege?: PositionsAufAbschlag;
   preisstaffeln: Preisstaffel[];
   preisschluesselstamm?: string | null;
   positionsnummer?: number | null;
@@ -1221,7 +1221,7 @@ export type Preisposition1 = {
     | "MD"
     | "ND";
   beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum11;
+  verarbeitungszeitraum?: Zeitraum1;
   artikelId?: string | null;
   [k: string]: unknown;
 } | null;
@@ -1285,7 +1285,7 @@ export interface Marktteilnehmer {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null

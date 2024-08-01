@@ -612,7 +612,8 @@ export type Katasteradresse1 = {
   [k: string]: unknown;
 } | null;
 export type Hardware = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -897,7 +898,8 @@ export type Geraeteeigenschaften1 = {
   [k: string]: unknown;
 } | null;
 export type Hardware1 = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -1190,6 +1192,7 @@ export type Zaehlwerk = {
   anzahlAblesungen?: number | null;
   zaehlzeiten?: Zaehlzeitregister;
   konfiguration?: string | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } & Zaehlwerk1;
 export type Verwendungszweck = {
@@ -1333,6 +1336,7 @@ export type Zaehlwerk1 = {
   anzahlAblesungen?: number | null;
   zaehlzeiten?: Zaehlzeitregister;
   konfiguration?: string | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } | null;
 export type Geschaeftspartner = {
@@ -1638,6 +1642,7 @@ export type Messprodukt = {
   zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } & Messprodukt1;
 export type Messprodukt1 = {
@@ -1651,10 +1656,11 @@ export type Messprodukt1 = {
   zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOMesslokation {
+export interface Messlokation {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
@@ -1692,5 +1698,6 @@ export interface BO4EBOMesslokation {
   zaehlwerke?: Zaehlwerk[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
   messprodukte?: Messprodukt[] | null;
+  lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 }

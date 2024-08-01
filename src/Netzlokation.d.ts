@@ -19,6 +19,205 @@ export type ExterneReferenz1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Menge = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} & Menge1;
+export type Menge1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} | null;
+export type Verwendungszweck = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  zweck?:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "MEHRMINDERMBENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Verwendungszweck1;
+export type Verwendungszweck1 = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  zweck?:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "MEHRMINDERMBENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Konfigurationsprodukt = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer;
+  [k: string]: unknown;
+} & Konfigurationsprodukt1;
+export type Marktteilnehmer = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
+  marktrolle?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  rollencodenummer: string;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse?: string | null;
+  ansprechpartner?: Ansprechpartner;
+  [k: string]: unknown;
+} & Marktteilnehmer1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
@@ -791,8 +990,7 @@ export type Ansprechpartner1 = {
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
 } | null;
-
-export interface BO4EBOMarktteilnehmer {
+export type Marktteilnehmer1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
@@ -862,5 +1060,50 @@ export interface BO4EBOMarktteilnehmer {
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
   ansprechpartner?: Ansprechpartner;
+  [k: string]: unknown;
+} | null;
+export type Konfigurationsprodukt1 = {
+  timestamp?: string | null;
+  produktcode?: string | null;
+  guid?: string | null;
+  leistungskurvendefinition?: string | null;
+  schaltzeitdefinition?: string | null;
+  marktpartner?: Marktteilnehmer;
+  [k: string]: unknown;
+} | null;
+
+export interface Netzlokation {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  netzlokationsId: string;
+  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  netzanschlussleistung?: Menge;
+  grundzustaendigerMSBCodeNr?: string | null;
+  steuerkanal?: boolean | null;
+  obisKennzahl?: string | null;
+  verwendungszweck?: Verwendungszweck;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 }

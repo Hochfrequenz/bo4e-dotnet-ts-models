@@ -284,7 +284,7 @@ export type Geraet1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOWechsel {
+export interface Wechsel {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

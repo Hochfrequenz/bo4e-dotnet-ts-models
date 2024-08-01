@@ -74,7 +74,62 @@ export type Verbrauch = {
   nutzungszeitpunkt?: string | null;
   ausfuehrungszeitpunkt?: string | null;
   [k: string]: unknown;
-} & Verbrauch1;
+} & Verbrauch1 & {
+    startdatum?: string | null;
+    enddatum?: string | null;
+    type?: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
+    tarifstufe?:
+      | null
+      | "TARIFSTUFE_0"
+      | "TARIFSTUFE_1"
+      | "TARIFSTUFE_2"
+      | "TARIFSTUFE_3"
+      | "TARIFSTUFE_4"
+      | "TARIFSTUFE_5"
+      | "TARIFSTUFE_6"
+      | "TARIFSTUFE_7"
+      | "TARIFSTUFE_8"
+      | "TARIFSTUFE_9";
+    timestamp?: string | null;
+    guid?: string | null;
+    wertermittlungsverfahren?: null | "PROGNOSE" | "MESSUNG";
+    messwertstatus?:
+      | null
+      | "ABGELESEN"
+      | "ERSATZWERT"
+      | "VOLAEUFIGERWERT"
+      | "ANGABE_FUER_LIEFERSCHEIN"
+      | "VORSCHLAGSWERT"
+      | "NICHT_VERWENDBAR"
+      | "PROGNOSEWERT"
+      | "ENERGIEMENGESUMMIERT"
+      | "FEHLT"
+      | "GRUNDLAGE_POG_ERMITTLUNG";
+    statuszusatzinformationen?: StatusZusatzInformation[] | null;
+    obiskennzahl: string;
+    wert: number;
+    einheit:
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    nutzungszeitpunkt?: string | null;
+    ausfuehrungszeitpunkt?: string | null;
+    [k: string]: unknown;
+  } & Verbrauch1;
 export type StatusZusatzInformation = {
   timestamp?: string | null;
   art?:
@@ -311,6 +366,6 @@ export interface BO4EBOEnergiemenge {
   /**
    * @minItems 1
    */
-  energieverbrauch: [Verbrauch, ...Verbrauch1[]] | null;
+  energieverbrauch: [Verbrauch, ...Verbrauch[]] | null;
   [k: string]: unknown;
 }

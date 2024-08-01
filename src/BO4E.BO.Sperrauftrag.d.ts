@@ -677,6 +677,6 @@ export interface BO4EBOSperrauftrag {
   guid?: string | null;
   bemerkungen?: (string | null)[] | null;
   mindestpreis?: Preis;
-  hoechstpreis?: Preis1;
+  hoechstpreis?: Preis;
   [k: string]: unknown;
 }

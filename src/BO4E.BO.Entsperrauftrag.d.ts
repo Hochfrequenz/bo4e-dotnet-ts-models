@@ -655,6 +655,6 @@ export interface BO4EBOEntsperrauftrag {
   guid?: string | null;
   bemerkungen?: (string | null)[] | null;
   mindestpreis?: Preis;
-  hoechstpreis?: Preis1;
+  hoechstpreis?: Preis;
   [k: string]: unknown;
 }

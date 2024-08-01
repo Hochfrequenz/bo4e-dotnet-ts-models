@@ -587,7 +587,7 @@ export type Ansprechpartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -608,7 +608,7 @@ export type Ansprechpartner = {
   eMailAdresse?: string | null;
   kommentar?: string | null;
   geschaeftspartner?: Geschaeftspartner1;
-  adresse?: Adresse1;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -617,7 +617,7 @@ export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -644,7 +644,7 @@ export type Geschaeftspartner1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -667,7 +667,7 @@ export type Geschaeftspartner11 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -694,7 +694,7 @@ export type Geschaeftspartner11 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -765,7 +765,7 @@ export type Ansprechpartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -785,8 +785,8 @@ export type Ansprechpartner1 = {
   nachname?: string | null;
   eMailAdresse?: string | null;
   kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner11;
-  adresse?: Adresse1;
+  geschaeftspartner?: Geschaeftspartner1;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -811,7 +811,27 @@ export type Angebotsvariante = {
   gesamtkosten?: Betrag;
   teile: Angebotsteil[];
   [k: string]: unknown;
-} & Angebotsvariante1;
+} & Angebotsvariante1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    angebotsstatus:
+      | "KONZEPTION"
+      | "UNVERBINDLICH"
+      | "VERBINDLICH"
+      | "BEAUFTRAGT"
+      | "UNGUELTIG"
+      | "ABGELEHNT"
+      | "NACHGEFASST"
+      | "AUSSTEHEND"
+      | "ERLEDIGT";
+    beschreibung?: string | null;
+    erstelldatum?: string | null;
+    bindefrist?: string | null;
+    gesamtmenge?: Menge;
+    gesamtkosten?: Betrag;
+    teile: Angebotsteil[];
+    [k: string]: unknown;
+  } & Angebotsvariante1;
 export type Menge = {
   timestamp?: string | null;
   guid?: string | null;
@@ -836,7 +856,175 @@ export type Menge = {
     | "KVARH"
     | "MWH";
   [k: string]: unknown;
-} & Menge1;
+} & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    wert: number;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    [k: string]: unknown;
+  } & Menge1;
 export type Menge1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -1049,7 +1237,942 @@ export type Betrag = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Betrag1;
+} & Betrag1 & {
+    wert: number;
+    waehrung:
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BOV"
+      | "BRL"
+      | "BSD"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BYR"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHE"
+      | "CHF"
+      | "CHW"
+      | "CLF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "COU"
+      | "CRC"
+      | "CUC"
+      | "CUP"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "FKP"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KPW"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LSL"
+      | "LTL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRO"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MXV"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RUR"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SHP"
+      | "SLL"
+      | "SOS"
+      | "SRD"
+      | "SSP"
+      | "STD"
+      | "SVC"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "USN"
+      | "USS"
+      | "UYI"
+      | "UYU"
+      | "UZS"
+      | "VEF"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XAG"
+      | "XAU"
+      | "XBA"
+      | "XBB"
+      | "XBC"
+      | "XBD"
+      | "XCD"
+      | "XDR"
+      | "XOF"
+      | "XPD"
+      | "XPF"
+      | "XPT"
+      | "XSU"
+      | "XTS"
+      | "XUA"
+      | "XXX"
+      | "YER"
+      | "ZAR"
+      | "ZMW"
+      | "ZWL";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Betrag1 & {
+    wert: number;
+    waehrung:
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BOV"
+      | "BRL"
+      | "BSD"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BYR"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHE"
+      | "CHF"
+      | "CHW"
+      | "CLF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "COU"
+      | "CRC"
+      | "CUC"
+      | "CUP"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "FKP"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KPW"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LSL"
+      | "LTL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRO"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MXV"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RUR"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SHP"
+      | "SLL"
+      | "SOS"
+      | "SRD"
+      | "SSP"
+      | "STD"
+      | "SVC"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "USN"
+      | "USS"
+      | "UYI"
+      | "UYU"
+      | "UZS"
+      | "VEF"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XAG"
+      | "XAU"
+      | "XBA"
+      | "XBB"
+      | "XBC"
+      | "XBD"
+      | "XCD"
+      | "XDR"
+      | "XOF"
+      | "XPD"
+      | "XPF"
+      | "XPT"
+      | "XSU"
+      | "XTS"
+      | "XUA"
+      | "XXX"
+      | "YER"
+      | "ZAR"
+      | "ZMW"
+      | "ZWL";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Betrag1 & {
+    wert: number;
+    waehrung:
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BOV"
+      | "BRL"
+      | "BSD"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BYR"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHE"
+      | "CHF"
+      | "CHW"
+      | "CLF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "COU"
+      | "CRC"
+      | "CUC"
+      | "CUP"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "FKP"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KPW"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LSL"
+      | "LTL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRO"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MXV"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RUR"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SHP"
+      | "SLL"
+      | "SOS"
+      | "SRD"
+      | "SSP"
+      | "STD"
+      | "SVC"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "USN"
+      | "USS"
+      | "UYI"
+      | "UYU"
+      | "UZS"
+      | "VEF"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XAG"
+      | "XAU"
+      | "XBA"
+      | "XBB"
+      | "XBC"
+      | "XBD"
+      | "XCD"
+      | "XDR"
+      | "XOF"
+      | "XPD"
+      | "XPF"
+      | "XPT"
+      | "XSU"
+      | "XTS"
+      | "XUA"
+      | "XXX"
+      | "YER"
+      | "ZAR"
+      | "ZMW"
+      | "ZWL";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Betrag1 & {
+    wert: number;
+    waehrung:
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BOV"
+      | "BRL"
+      | "BSD"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BYR"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHE"
+      | "CHF"
+      | "CHW"
+      | "CLF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "COU"
+      | "CRC"
+      | "CUC"
+      | "CUP"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "FKP"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KPW"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LSL"
+      | "LTL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRO"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MXV"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RUR"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SHP"
+      | "SLL"
+      | "SOS"
+      | "SRD"
+      | "SSP"
+      | "STD"
+      | "SVC"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "USN"
+      | "USS"
+      | "UYI"
+      | "UYU"
+      | "UZS"
+      | "VEF"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XAG"
+      | "XAU"
+      | "XBA"
+      | "XBB"
+      | "XBC"
+      | "XBD"
+      | "XCD"
+      | "XDR"
+      | "XOF"
+      | "XPD"
+      | "XPF"
+      | "XPT"
+      | "XSU"
+      | "XTS"
+      | "XUA"
+      | "XXX"
+      | "YER"
+      | "ZAR"
+      | "ZMW"
+      | "ZWL";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Betrag1 & {
+    wert: number;
+    waehrung:
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BOV"
+      | "BRL"
+      | "BSD"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BYR"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHE"
+      | "CHF"
+      | "CHW"
+      | "CLF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "COU"
+      | "CRC"
+      | "CUC"
+      | "CUP"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "FKP"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KPW"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LSL"
+      | "LTL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRO"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MXV"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RUR"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SHP"
+      | "SLL"
+      | "SOS"
+      | "SRD"
+      | "SSP"
+      | "STD"
+      | "SVC"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "USN"
+      | "USS"
+      | "UYI"
+      | "UYU"
+      | "UZS"
+      | "VEF"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XAG"
+      | "XAU"
+      | "XBA"
+      | "XBB"
+      | "XBC"
+      | "XBD"
+      | "XCD"
+      | "XDR"
+      | "XOF"
+      | "XPD"
+      | "XPF"
+      | "XPT"
+      | "XSU"
+      | "XTS"
+      | "XUA"
+      | "XXX"
+      | "YER"
+      | "ZAR"
+      | "ZMW"
+      | "ZWL";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Betrag1;
 export type Betrag1 = {
   wert: number;
   waehrung:
@@ -1243,17 +2366,17 @@ export type Angebotsteil = {
   guid?: string | null;
   anfrageSubreferenz?: string | null;
   lieferstellenangebotsteil?: Marktlokation[] | null;
-  gesamtmengeangebotsteil?: Menge1;
-  gesamtkostenangebotsteil?: Betrag1;
+  gesamtmengeangebotsteil?: Menge;
+  gesamtkostenangebotsteil?: Betrag;
   positionen: Angebotsposition[];
-  lieferzeitraum?: Zeitraum1;
+  lieferzeitraum?: Zeitraum;
   [k: string]: unknown;
 } & Angebotsteil1;
 export type Marktlokation = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   marktlokationsId?: string | null;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
@@ -1289,8 +2412,8 @@ export type Marktlokation = {
   bilanzierungsgebiet?: string | null;
   grundversorgerCodeNr?: string | null;
   gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
-  endkunde?: Geschaeftspartner11;
-  lokationsadresse?: Adresse1;
+  endkunde?: Geschaeftspartner1;
+  lokationsadresse?: Adresse;
   geoadresse?: Geokoordinaten;
   katasterinformation?: Katasteradresse;
   marktrollen?: MarktpartnerDetails[] | null;
@@ -1298,16 +2421,15 @@ export type Marktlokation = {
   marktgebiet?: string | null;
   zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
   zaehlwerke?: Zaehlwerk[] | null;
-  zaehlwerkeBeteiligteMarktrolle?: Zaehlwerk1[] | null;
+  zaehlwerkeBeteiligteMarktrolle?: Zaehlwerk[] | null;
   verbrauchsmenge?: Verbrauch[] | null;
   messlokationen?: Messlokation[] | null;
   zugehoerigeMesslokationen?: Messlokationszuordnung[] | null;
   messtechnischeEinordnung?: null | "IMS" | "KME_MME" | "KEINE_MESSUNG";
   netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
   sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
-  messprodukte?: Messprodukt1[] | null;
+  messprodukte?: Messprodukt[] | null;
   konfigurationsprodukte?: Konfigurationsprodukt[] | null;
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
   lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 } & Marktlokation1;
@@ -1317,7 +2439,25 @@ export type Geokoordinaten = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Geokoordinaten1;
+} & Geokoordinaten1 & {
+    breitengrad: number;
+    laengengrad: number;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Geokoordinaten1 & {
+    breitengrad: number;
+    laengengrad: number;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Geokoordinaten1 & {
+    breitengrad: number;
+    laengengrad: number;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Geokoordinaten1;
 export type Geokoordinaten1 = {
   breitengrad: number;
   laengengrad: number;
@@ -1331,7 +2471,25 @@ export type Katasteradresse = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Katasteradresse1;
+} & Katasteradresse1 & {
+    gemarkung_flur: string;
+    flurstueck: string;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Katasteradresse1 & {
+    gemarkung_flur: string;
+    flurstueck: string;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Katasteradresse1 & {
+    gemarkung_flur: string;
+    flurstueck: string;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Katasteradresse1;
 export type Katasteradresse1 = {
   gemarkung_flur: string;
   flurstueck: string;
@@ -1364,7 +2522,32 @@ export type MarktpartnerDetails = {
   guid?: string | null;
   weiterverpflichtet?: boolean | null;
   [k: string]: unknown;
-} & MarktpartnerDetails1;
+} & MarktpartnerDetails1 & {
+    rollencodenummer?: string | null;
+    code?: string | null;
+    marktrolle?:
+      | null
+      | "NB"
+      | "LF"
+      | "MSB"
+      | "MDL"
+      | "DL"
+      | "BKV"
+      | "BIKO"
+      | "UENB"
+      | "KUNDE_SELBST_NN"
+      | "MGV"
+      | "EIV"
+      | "RB"
+      | "KUNDE"
+      | "INTERESSENT"
+      | "GMSB"
+      | "AMSB";
+    timestamp?: string | null;
+    guid?: string | null;
+    weiterverpflichtet?: boolean | null;
+    [k: string]: unknown;
+  } & MarktpartnerDetails1;
 export type MarktpartnerDetails1 = {
   rollencodenummer?: string | null;
   code?: string | null;
@@ -1434,7 +2617,179 @@ export type Zaehlwerk = {
   konfiguration?: string | null;
   emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
-} & Zaehlwerk1;
+} & Zaehlwerk1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlwerkId?: string | null;
+    bezeichnung?: string | null;
+    richtung?: null | "AUSSP" | "EINSP";
+    obisKennzahl?: string | null;
+    wandlerfaktor?: number | null;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    kennzahl?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    verwendungszwecke?: Verwendungszweck[] | null;
+    verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+    unterbrechbarkeit?: null | "UV" | "NUV";
+    waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+    konzessionsabgabe?: Konzessionsabgabe;
+    steuerbefreit?: boolean | null;
+    vorkommastelle?: number | null;
+    nachkommastelle?: number | null;
+    abrechnungsrelevant?: boolean | null;
+    anzahlAblesungen?: number | null;
+    zaehlzeiten?: Zaehlzeitregister;
+    konfiguration?: string | null;
+    emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+    [k: string]: unknown;
+  } & Zaehlwerk1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlwerkId?: string | null;
+    bezeichnung?: string | null;
+    richtung?: null | "AUSSP" | "EINSP";
+    obisKennzahl?: string | null;
+    wandlerfaktor?: number | null;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    kennzahl?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    verwendungszwecke?: Verwendungszweck[] | null;
+    verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+    unterbrechbarkeit?: null | "UV" | "NUV";
+    waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+    konzessionsabgabe?: Konzessionsabgabe;
+    steuerbefreit?: boolean | null;
+    vorkommastelle?: number | null;
+    nachkommastelle?: number | null;
+    abrechnungsrelevant?: boolean | null;
+    anzahlAblesungen?: number | null;
+    zaehlzeiten?: Zaehlzeitregister;
+    konfiguration?: string | null;
+    emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+    [k: string]: unknown;
+  } & Zaehlwerk1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlwerkId?: string | null;
+    bezeichnung?: string | null;
+    richtung?: null | "AUSSP" | "EINSP";
+    obisKennzahl?: string | null;
+    wandlerfaktor?: number | null;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    kennzahl?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    verwendungszwecke?: Verwendungszweck[] | null;
+    verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+    unterbrechbarkeit?: null | "UV" | "NUV";
+    waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+    konzessionsabgabe?: Konzessionsabgabe;
+    steuerbefreit?: boolean | null;
+    vorkommastelle?: number | null;
+    nachkommastelle?: number | null;
+    abrechnungsrelevant?: boolean | null;
+    anzahlAblesungen?: number | null;
+    zaehlzeiten?: Zaehlzeitregister;
+    konfiguration?: string | null;
+    emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+    [k: string]: unknown;
+  } & Zaehlwerk1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlwerkId?: string | null;
+    bezeichnung?: string | null;
+    richtung?: null | "AUSSP" | "EINSP";
+    obisKennzahl?: string | null;
+    wandlerfaktor?: number | null;
+    einheit?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    kennzahl?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    verwendungszwecke?: Verwendungszweck[] | null;
+    verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+    unterbrechbarkeit?: null | "UV" | "NUV";
+    waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+    konzessionsabgabe?: Konzessionsabgabe;
+    steuerbefreit?: boolean | null;
+    vorkommastelle?: number | null;
+    nachkommastelle?: number | null;
+    abrechnungsrelevant?: boolean | null;
+    anzahlAblesungen?: number | null;
+    zaehlzeiten?: Zaehlzeitregister;
+    konfiguration?: string | null;
+    emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+    [k: string]: unknown;
+  } & Zaehlwerk1;
 export type Verwendungszweck = {
   marktrolle:
     | "NB"
@@ -1468,7 +2823,40 @@ export type Verwendungszweck = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Verwendungszweck1;
+} & Verwendungszweck1 & {
+    marktrolle:
+      | "NB"
+      | "LF"
+      | "MSB"
+      | "MDL"
+      | "DL"
+      | "BKV"
+      | "BIKO"
+      | "UENB"
+      | "KUNDE_SELBST_NN"
+      | "MGV"
+      | "EIV"
+      | "RB"
+      | "KUNDE"
+      | "INTERESSENT"
+      | "GMSB"
+      | "AMSB";
+    zweck?:
+      | (
+          | "NETZNUTZUNGSABRECHNUNG"
+          | "BILANZKREISABRECHNUNG"
+          | "MEHRMINDERMENGENABRECHNUNG"
+          | "MEHRMINDERMBENGENABRECHNUNG"
+          | "ENDKUNDENABRECHNUNG"
+          | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+          | "UEBERMITTLUNG_AN_DAS_HKNR"
+          | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+        )[]
+      | null;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Verwendungszweck1;
 export type Verwendungszweck1 = {
   marktrolle:
     | "NB"
@@ -1510,7 +2898,14 @@ export type Konzessionsabgabe = {
   kategorie?: string | null;
   satz: "KAS" | "SA" | "SAS" | "TA" | "TAS" | "TK" | "TKS" | "TS" | "TSS";
   [k: string]: unknown;
-} & Konzessionsabgabe1;
+} & Konzessionsabgabe1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    kosten?: number | null;
+    kategorie?: string | null;
+    satz: "KAS" | "SA" | "SAS" | "TA" | "TAS" | "TK" | "TKS" | "TS" | "TSS";
+    [k: string]: unknown;
+  } & Konzessionsabgabe1;
 export type Konzessionsabgabe1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -1526,7 +2921,42 @@ export type Zaehlzeitregister = {
   register?: string | null;
   schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   [k: string]: unknown;
-} & Zaehlzeitregister1;
+} & Zaehlzeitregister1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlzeitDefinition?: string | null;
+    register?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    [k: string]: unknown;
+  } & Zaehlzeitregister1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlzeitDefinition?: string | null;
+    register?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    [k: string]: unknown;
+  } & Zaehlzeitregister1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlzeitDefinition?: string | null;
+    register?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    [k: string]: unknown;
+  } & Zaehlzeitregister1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlzeitDefinition?: string | null;
+    register?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    [k: string]: unknown;
+  } & Zaehlzeitregister1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    zaehlzeitDefinition?: string | null;
+    register?: string | null;
+    schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+    [k: string]: unknown;
+  } & Zaehlzeitregister1;
 export type Zaehlzeitregister1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -1568,13 +2998,13 @@ export type Zaehlwerk1 = {
   verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
   unterbrechbarkeit?: null | "UV" | "NUV";
   waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  konzessionsabgabe?: Konzessionsabgabe1;
+  konzessionsabgabe?: Konzessionsabgabe;
   steuerbefreit?: boolean | null;
   vorkommastelle?: number | null;
   nachkommastelle?: number | null;
   abrechnungsrelevant?: boolean | null;
   anzahlAblesungen?: number | null;
-  zaehlzeiten?: Zaehlzeitregister1;
+  zaehlzeiten?: Zaehlzeitregister;
   konfiguration?: string | null;
   emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
@@ -1863,7 +3293,7 @@ export type Messlokation = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   messlokationsId: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
@@ -1883,26 +3313,26 @@ export type Messlokation = {
   grundzustaendigerMSBCodeNr?: string | null;
   grundzustaendigerMSBIMCodeNr?: string | null;
   grundzustaendigerMDLCodeNr?: string | null;
-  messadresse?: Adresse1;
-  geoadresse?: Geokoordinaten1;
-  katasterinformation?: Katasteradresse1;
+  messadresse?: Adresse;
+  geoadresse?: Geokoordinaten;
+  katasterinformation?: Katasteradresse;
   geraete?: Hardware[] | null;
   messdienstleistung?: Dienstleistung[] | null;
   messlokationszaehler?: Zaehler[] | null;
   bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
   abrechnungmessstellenbetriebnna?: boolean | null;
-  marktrollen?: MarktpartnerDetails1[] | null;
+  marktrollen?: MarktpartnerDetails[] | null;
   gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
   verlustfaktor?: number | null;
-  zaehlwerke?: Zaehlwerk1[] | null;
+  zaehlwerke?: Zaehlwerk[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
   messprodukte?: Messprodukt[] | null;
-  lokationszuordnungen?: Lokationszuordnung[] | null;
   lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 } & Messlokation1;
 export type Hardware = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -2069,7 +3499,352 @@ export type Geraeteeigenschaften = {
     [k: string]: string | null;
   } | null;
   [k: string]: unknown;
-} & Geraeteeigenschaften1;
+} & Geraeteeigenschaften1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    geraetetyp:
+      | "WECHSELSTROMZAEHLER"
+      | "DREHSTROMZAEHLER"
+      | "ZWEIRICHTUNGSZAEHLER"
+      | "RLM_ZAEHLER"
+      | "IMS_ZAEHLER"
+      | "BALGENGASZAEHLER"
+      | "MAXIMUMZAEHLER"
+      | "MULTIPLEXANLAGE"
+      | "PAUSCHALANLAGE"
+      | "VERSTAERKERANLAGE"
+      | "SUMMATIONSGERAET"
+      | "IMPULSGEBER"
+      | "EDL_21_ZAEHLERAUFSATZ"
+      | "VIER_QUADRANTEN_LASTGANGZAEHLER"
+      | "MENGENUMWERTER"
+      | "STROMWANDLER"
+      | "SPANNUNGSWANDLER"
+      | "DATENLOGGER"
+      | "KOMMUNIKATIONSANSCHLUSS"
+      | "MODEM"
+      | "TELEKOMMUNIKATIONSEINRICHTUNG"
+      | "DREHKOLBENGASZAEHLER"
+      | "TURBINENRADGASZAEHLER"
+      | "ULTRASCHALLZAEHLER"
+      | "WIRBELGASZAEHLER"
+      | "MODERNE_MESSEINRICHTUNG"
+      | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
+      | "STEUEREINRICHTUNG"
+      | "TECHNISCHESTEUEREINRICHTUNG"
+      | "TARIFSCHALTGERAET"
+      | "RUNDSTEUEREMPFAENGER"
+      | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
+      | "MESSWANDLERSATZ_IMS_MME"
+      | "KOMBIMESSWANDLER_IMS_MME"
+      | "TARIFSCHALTGERAET_IMS_MME"
+      | "RUNDSTEUEREMPFAENGER_IMS_MME"
+      | "TEMPERATUR_KOMPENSATION"
+      | "HOECHSTBELASTUNGS_ANZEIGER"
+      | "SONSTIGES_GERAET"
+      | "SMARTMETERGATEWAY"
+      | "STEUERBOX"
+      | "BLOCKSTROMWANDLER"
+      | "KOMBIMESSWANDLER";
+    geraetemerkmal?:
+      | null
+      | "EINTARIF"
+      | "ZWEITARIF"
+      | "MEHRTARIF"
+      | "GAS_G2P5"
+      | "GAS_G4"
+      | "GAS_G6"
+      | "GAS_G10"
+      | "GAS_G16"
+      | "GAS_G25"
+      | "GAS_G40"
+      | "GAS_G65"
+      | "GAS_G100"
+      | "GAS_G160"
+      | "GAS_G250"
+      | "GAS_G400"
+      | "GAS_G650"
+      | "GAS_G1000"
+      | "GAS_G1600"
+      | "GAS_G2500"
+      | "IMPULSGEBER_G4_G100"
+      | "IMPULSGEBER_G100"
+      | "MODEM_GSM"
+      | "MODEM_GPRS"
+      | "MODEM_FUNK"
+      | "MODEM_GSM_O_LG"
+      | "MODEM_GSM_M_LG"
+      | "MODEM_FESTNETZ"
+      | "MODEM_GPRS_M_LG"
+      | "PLC_COM"
+      | "ETHERNET_KOM"
+      | "DSL_KOM"
+      | "LTE_KOM"
+      | "RUNDSTEUEREMPFAENGER"
+      | "TARIFSCHALTGERAET"
+      | "ZUSTANDS_MU"
+      | "TEMPERATUR_MU"
+      | "KOMPAKT_MU"
+      | "SYSTEM_MU"
+      | "UNBESTIMMT"
+      | "WASSER_MWZW"
+      | "WASSER_WZWW"
+      | "WASSER_WZ01"
+      | "WASSER_WZ02"
+      | "WASSER_WZ03"
+      | "WASSER_WZ04"
+      | "WASSER_WZ05"
+      | "WASSER_WZ06"
+      | "WASSER_WZ07"
+      | "WASSER_WZ08"
+      | "WASSER_WZ09"
+      | "WASSER_WZ10"
+      | "WASSER_VWZ04"
+      | "WASSER_VWZ05"
+      | "WASSER_VWZ06"
+      | "WASSER_VWZ07"
+      | "WASSER_VWZ10"
+      | "GAS_G350"
+      | "GAS_G4000"
+      | "GAS_G6500"
+      | "GAS_G10000"
+      | "GAS_G12500"
+      | "GAS_G16000";
+    Parameter?: {
+      [k: string]: string | null;
+    } | null;
+    [k: string]: unknown;
+  } & Geraeteeigenschaften1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    geraetetyp:
+      | "WECHSELSTROMZAEHLER"
+      | "DREHSTROMZAEHLER"
+      | "ZWEIRICHTUNGSZAEHLER"
+      | "RLM_ZAEHLER"
+      | "IMS_ZAEHLER"
+      | "BALGENGASZAEHLER"
+      | "MAXIMUMZAEHLER"
+      | "MULTIPLEXANLAGE"
+      | "PAUSCHALANLAGE"
+      | "VERSTAERKERANLAGE"
+      | "SUMMATIONSGERAET"
+      | "IMPULSGEBER"
+      | "EDL_21_ZAEHLERAUFSATZ"
+      | "VIER_QUADRANTEN_LASTGANGZAEHLER"
+      | "MENGENUMWERTER"
+      | "STROMWANDLER"
+      | "SPANNUNGSWANDLER"
+      | "DATENLOGGER"
+      | "KOMMUNIKATIONSANSCHLUSS"
+      | "MODEM"
+      | "TELEKOMMUNIKATIONSEINRICHTUNG"
+      | "DREHKOLBENGASZAEHLER"
+      | "TURBINENRADGASZAEHLER"
+      | "ULTRASCHALLZAEHLER"
+      | "WIRBELGASZAEHLER"
+      | "MODERNE_MESSEINRICHTUNG"
+      | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
+      | "STEUEREINRICHTUNG"
+      | "TECHNISCHESTEUEREINRICHTUNG"
+      | "TARIFSCHALTGERAET"
+      | "RUNDSTEUEREMPFAENGER"
+      | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
+      | "MESSWANDLERSATZ_IMS_MME"
+      | "KOMBIMESSWANDLER_IMS_MME"
+      | "TARIFSCHALTGERAET_IMS_MME"
+      | "RUNDSTEUEREMPFAENGER_IMS_MME"
+      | "TEMPERATUR_KOMPENSATION"
+      | "HOECHSTBELASTUNGS_ANZEIGER"
+      | "SONSTIGES_GERAET"
+      | "SMARTMETERGATEWAY"
+      | "STEUERBOX"
+      | "BLOCKSTROMWANDLER"
+      | "KOMBIMESSWANDLER";
+    geraetemerkmal?:
+      | null
+      | "EINTARIF"
+      | "ZWEITARIF"
+      | "MEHRTARIF"
+      | "GAS_G2P5"
+      | "GAS_G4"
+      | "GAS_G6"
+      | "GAS_G10"
+      | "GAS_G16"
+      | "GAS_G25"
+      | "GAS_G40"
+      | "GAS_G65"
+      | "GAS_G100"
+      | "GAS_G160"
+      | "GAS_G250"
+      | "GAS_G400"
+      | "GAS_G650"
+      | "GAS_G1000"
+      | "GAS_G1600"
+      | "GAS_G2500"
+      | "IMPULSGEBER_G4_G100"
+      | "IMPULSGEBER_G100"
+      | "MODEM_GSM"
+      | "MODEM_GPRS"
+      | "MODEM_FUNK"
+      | "MODEM_GSM_O_LG"
+      | "MODEM_GSM_M_LG"
+      | "MODEM_FESTNETZ"
+      | "MODEM_GPRS_M_LG"
+      | "PLC_COM"
+      | "ETHERNET_KOM"
+      | "DSL_KOM"
+      | "LTE_KOM"
+      | "RUNDSTEUEREMPFAENGER"
+      | "TARIFSCHALTGERAET"
+      | "ZUSTANDS_MU"
+      | "TEMPERATUR_MU"
+      | "KOMPAKT_MU"
+      | "SYSTEM_MU"
+      | "UNBESTIMMT"
+      | "WASSER_MWZW"
+      | "WASSER_WZWW"
+      | "WASSER_WZ01"
+      | "WASSER_WZ02"
+      | "WASSER_WZ03"
+      | "WASSER_WZ04"
+      | "WASSER_WZ05"
+      | "WASSER_WZ06"
+      | "WASSER_WZ07"
+      | "WASSER_WZ08"
+      | "WASSER_WZ09"
+      | "WASSER_WZ10"
+      | "WASSER_VWZ04"
+      | "WASSER_VWZ05"
+      | "WASSER_VWZ06"
+      | "WASSER_VWZ07"
+      | "WASSER_VWZ10"
+      | "GAS_G350"
+      | "GAS_G4000"
+      | "GAS_G6500"
+      | "GAS_G10000"
+      | "GAS_G12500"
+      | "GAS_G16000";
+    Parameter?: {
+      [k: string]: string | null;
+    } | null;
+    [k: string]: unknown;
+  } & Geraeteeigenschaften1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    geraetetyp:
+      | "WECHSELSTROMZAEHLER"
+      | "DREHSTROMZAEHLER"
+      | "ZWEIRICHTUNGSZAEHLER"
+      | "RLM_ZAEHLER"
+      | "IMS_ZAEHLER"
+      | "BALGENGASZAEHLER"
+      | "MAXIMUMZAEHLER"
+      | "MULTIPLEXANLAGE"
+      | "PAUSCHALANLAGE"
+      | "VERSTAERKERANLAGE"
+      | "SUMMATIONSGERAET"
+      | "IMPULSGEBER"
+      | "EDL_21_ZAEHLERAUFSATZ"
+      | "VIER_QUADRANTEN_LASTGANGZAEHLER"
+      | "MENGENUMWERTER"
+      | "STROMWANDLER"
+      | "SPANNUNGSWANDLER"
+      | "DATENLOGGER"
+      | "KOMMUNIKATIONSANSCHLUSS"
+      | "MODEM"
+      | "TELEKOMMUNIKATIONSEINRICHTUNG"
+      | "DREHKOLBENGASZAEHLER"
+      | "TURBINENRADGASZAEHLER"
+      | "ULTRASCHALLZAEHLER"
+      | "WIRBELGASZAEHLER"
+      | "MODERNE_MESSEINRICHTUNG"
+      | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
+      | "STEUEREINRICHTUNG"
+      | "TECHNISCHESTEUEREINRICHTUNG"
+      | "TARIFSCHALTGERAET"
+      | "RUNDSTEUEREMPFAENGER"
+      | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
+      | "MESSWANDLERSATZ_IMS_MME"
+      | "KOMBIMESSWANDLER_IMS_MME"
+      | "TARIFSCHALTGERAET_IMS_MME"
+      | "RUNDSTEUEREMPFAENGER_IMS_MME"
+      | "TEMPERATUR_KOMPENSATION"
+      | "HOECHSTBELASTUNGS_ANZEIGER"
+      | "SONSTIGES_GERAET"
+      | "SMARTMETERGATEWAY"
+      | "STEUERBOX"
+      | "BLOCKSTROMWANDLER"
+      | "KOMBIMESSWANDLER";
+    geraetemerkmal?:
+      | null
+      | "EINTARIF"
+      | "ZWEITARIF"
+      | "MEHRTARIF"
+      | "GAS_G2P5"
+      | "GAS_G4"
+      | "GAS_G6"
+      | "GAS_G10"
+      | "GAS_G16"
+      | "GAS_G25"
+      | "GAS_G40"
+      | "GAS_G65"
+      | "GAS_G100"
+      | "GAS_G160"
+      | "GAS_G250"
+      | "GAS_G400"
+      | "GAS_G650"
+      | "GAS_G1000"
+      | "GAS_G1600"
+      | "GAS_G2500"
+      | "IMPULSGEBER_G4_G100"
+      | "IMPULSGEBER_G100"
+      | "MODEM_GSM"
+      | "MODEM_GPRS"
+      | "MODEM_FUNK"
+      | "MODEM_GSM_O_LG"
+      | "MODEM_GSM_M_LG"
+      | "MODEM_FESTNETZ"
+      | "MODEM_GPRS_M_LG"
+      | "PLC_COM"
+      | "ETHERNET_KOM"
+      | "DSL_KOM"
+      | "LTE_KOM"
+      | "RUNDSTEUEREMPFAENGER"
+      | "TARIFSCHALTGERAET"
+      | "ZUSTANDS_MU"
+      | "TEMPERATUR_MU"
+      | "KOMPAKT_MU"
+      | "SYSTEM_MU"
+      | "UNBESTIMMT"
+      | "WASSER_MWZW"
+      | "WASSER_WZWW"
+      | "WASSER_WZ01"
+      | "WASSER_WZ02"
+      | "WASSER_WZ03"
+      | "WASSER_WZ04"
+      | "WASSER_WZ05"
+      | "WASSER_WZ06"
+      | "WASSER_WZ07"
+      | "WASSER_WZ08"
+      | "WASSER_WZ09"
+      | "WASSER_WZ10"
+      | "WASSER_VWZ04"
+      | "WASSER_VWZ05"
+      | "WASSER_VWZ06"
+      | "WASSER_VWZ07"
+      | "WASSER_VWZ10"
+      | "GAS_G350"
+      | "GAS_G4000"
+      | "GAS_G6500"
+      | "GAS_G10000"
+      | "GAS_G12500"
+      | "GAS_G16000";
+    Parameter?: {
+      [k: string]: string | null;
+    } | null;
+    [k: string]: unknown;
+  } & Geraeteeigenschaften1;
 export type Geraeteeigenschaften1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -2187,7 +3962,8 @@ export type Geraeteeigenschaften1 = {
   [k: string]: unknown;
 } | null;
 export type Hardware1 = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -2232,7 +4008,7 @@ export type Hardware1 = {
     | "BLOCKSTROMWANDLER"
     | "KOMBIMESSWANDLER";
   bezeichnung: string;
-  geraeteeigenschaften?: Geraeteeigenschaften1;
+  geraeteeigenschaften?: Geraeteeigenschaften;
   geraetenummer?: string | null;
   geraetereferenz?: string | null;
   timestamp?: string | null;
@@ -2335,7 +4111,7 @@ export type Zaehler = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   zaehlernummer: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
@@ -2365,8 +4141,8 @@ export type Zaehler = {
   /**
    * @minItems 1
    */
-  zaehlwerke?: [Zaehlwerk1, ...Zaehlwerk1[]] | null;
-  zaehlerhersteller?: Geschaeftspartner11;
+  zaehlwerke?: [Zaehlwerk, ...Zaehlwerk[]] | null;
+  zaehlerhersteller?: Geschaeftspartner1;
   gateway?: string | null;
   fernschaltung?: null | "VORHANDEN" | "NICHT_VORHANDEN";
   messwerterfassung?: null | "FERNAUSLESBAR" | "MANUELL_AUSGELESENE";
@@ -2443,7 +4219,7 @@ export type Geraet = {
   timestamp?: string | null;
   guid?: string | null;
   geraetenummer?: string | null;
-  geraeteeigenschaften?: Geraeteeigenschaften1;
+  geraeteeigenschaften?: Geraeteeigenschaften;
   geraeteart?:
     | null
     | "WANDLER"
@@ -2459,7 +4235,7 @@ export type Geraet1 = {
   timestamp?: string | null;
   guid?: string | null;
   geraetenummer?: string | null;
-  geraeteeigenschaften?: Geraeteeigenschaften1;
+  geraeteeigenschaften?: Geraeteeigenschaften;
   geraeteart?:
     | null
     | "WANDLER"
@@ -2475,7 +4251,7 @@ export type Zaehler1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   zaehlernummer: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
@@ -2505,8 +4281,8 @@ export type Zaehler1 = {
   /**
    * @minItems 1
    */
-  zaehlwerke?: [Zaehlwerk1, ...Zaehlwerk1[]] | null;
-  zaehlerhersteller?: Geschaeftspartner11;
+  zaehlwerke?: [Zaehlwerk, ...Zaehlwerk[]] | null;
+  zaehlerhersteller?: Geschaeftspartner1;
   gateway?: string | null;
   fernschaltung?: null | "VORHANDEN" | "NICHT_VORHANDEN";
   messwerterfassung?: null | "FERNAUSLESBAR" | "MANUELL_AUSGELESENE";
@@ -2583,59 +4359,52 @@ export type Messprodukt = {
   timestamp?: string | null;
   guid?: string | null;
   messproduktId?: string | null;
-  verwendungszwecke?: Verwendungszweck1[] | null;
+  verwendungszwecke?: Verwendungszweck[] | null;
   verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
   unterbrechbarkeit?: null | "UV" | "NUV";
   waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  zaehlzeiten?: Zaehlzeitregister1;
+  zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
   emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
-} & Messprodukt1;
+} & Messprodukt1 & {
+    timestamp?: string | null;
+    guid?: string | null;
+    messproduktId?: string | null;
+    verwendungszwecke?: Verwendungszweck[] | null;
+    verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+    unterbrechbarkeit?: null | "UV" | "NUV";
+    waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+    zaehlzeiten?: Zaehlzeitregister;
+    zweiteMessung?: boolean | null;
+    werteuebermittlungAnNB?: boolean | null;
+    emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+    [k: string]: unknown;
+  } & Messprodukt1;
 export type Messprodukt1 = {
   timestamp?: string | null;
   guid?: string | null;
   messproduktId?: string | null;
-  verwendungszwecke?: Verwendungszweck1[] | null;
+  verwendungszwecke?: Verwendungszweck[] | null;
   verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
   unterbrechbarkeit?: null | "UV" | "NUV";
   waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  zaehlzeiten?: Zaehlzeitregister1;
+  zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
   emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } | null;
-export type Lokationszuordnung = {
+export type Messlokation1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  marktlokationen?: Marktlokation1[] | null;
-  messlokationen?: Messlokation1[] | null;
-  netzlokationen?: Netzlokation[] | null;
-  technischeRessourcen?: TechnischeRessource[] | null;
-  steuerbareRessourcen?: SteuerbareRessource[] | null;
-  gueltigkeit?: Zeitraum[] | null;
-  zuordnungstyp?: string | null;
-  lokationsbuendelcode?: string | null;
-  [k: string]: unknown;
-} & Lokationszuordnung1;
-export type Marktlokation1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  marktlokationsId?: string | null;
+  messlokationsId: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  energierichtung?: null | "AUSSP" | "EINSP";
-  bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
-  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
-  unterbrechbar?: boolean | null;
-  netzebene?:
+  netzebeneMessung?:
     | null
     | "NSP"
     | "MSP"
@@ -2647,41 +4416,24 @@ export type Marktlokation1 = {
     | "HD"
     | "MD"
     | "ND";
-  netzbetreiberCodeNr?: string | null;
-  gebietTyp?:
-    | null
-    | "REGELZONE"
-    | "MARKTGEBIET"
-    | "BILANZIERUNGSGEBIET"
-    | "VERTEILNETZ"
-    | "TRANSPORTNETZ"
-    | "REGIONALNETZ"
-    | "AREALNETZ"
-    | "GRUNDVERSORGUNGSGEBIET"
-    | "VERSORGUNGSGEBIET";
-  netzgebietNr?: string | null;
-  bilanzierungsgebiet?: string | null;
-  grundversorgerCodeNr?: string | null;
-  gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
-  endkunde?: Geschaeftspartner11;
-  lokationsadresse?: Adresse1;
-  geoadresse?: Geokoordinaten1;
-  katasterinformation?: Katasteradresse1;
+  messgebietNr?: string | null;
+  grundzustaendigerMSBCodeNr?: string | null;
+  grundzustaendigerMSBIMCodeNr?: string | null;
+  grundzustaendigerMDLCodeNr?: string | null;
+  messadresse?: Adresse;
+  geoadresse?: Geokoordinaten;
+  katasterinformation?: Katasteradresse;
+  geraete?: Hardware[] | null;
+  messdienstleistung?: Dienstleistung[] | null;
+  messlokationszaehler?: Zaehler[] | null;
+  bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
+  abrechnungmessstellenbetriebnna?: boolean | null;
   marktrollen?: MarktpartnerDetails[] | null;
-  regelzone?: string | null;
-  marktgebiet?: string | null;
-  zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
+  gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
+  verlustfaktor?: number | null;
   zaehlwerke?: Zaehlwerk[] | null;
-  zaehlwerkeBeteiligteMarktrolle?: Zaehlwerk1[] | null;
-  verbrauchsmenge?: Verbrauch[] | null;
-  messlokationen?: Messlokation[] | null;
-  zugehoerigeMesslokationen?: Messlokationszuordnung[] | null;
-  messtechnischeEinordnung?: null | "IMS" | "KME_MME" | "KEINE_MESSUNG";
-  netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
-  sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
-  messprodukte?: Messprodukt1[] | null;
-  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
+  betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
+  messprodukte?: Messprodukt[] | null;
   lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 } | null;
@@ -2712,9 +4464,9 @@ export type Netznutzungsabrechnungsdaten = {
   gemeinderabatt?: number | null;
   zuschlag?: number | null;
   abschlag?: number | null;
-  singulaereBetriebsmittel?: Menge1;
+  singulaereBetriebsmittel?: Menge;
   preisSingulaereBetriebsmittel?: Preis;
-  zaehlzeit?: Zaehlzeitregister1;
+  zaehlzeit?: Zaehlzeitregister;
   [k: string]: unknown;
 } & Netznutzungsabrechnungsdaten1;
 export type Preis = {
@@ -2743,7 +4495,85 @@ export type Preis = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Preis1;
+} & Preis1 & {
+    wert: number;
+    einheit?: null | "EUR" | "CT";
+    bezugswert?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Preis1 & {
+    wert: number;
+    einheit?: null | "EUR" | "CT";
+    bezugswert?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Preis1 & {
+    wert: number;
+    einheit?: null | "EUR" | "CT";
+    bezugswert?:
+      | null
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Preis1;
 export type Preis1 = {
   wert: number;
   einheit?: null | "EUR" | "CT";
@@ -2780,9 +4610,9 @@ export type Netznutzungsabrechnungsdaten1 = {
   gemeinderabatt?: number | null;
   zuschlag?: number | null;
   abschlag?: number | null;
-  singulaereBetriebsmittel?: Menge1;
-  preisSingulaereBetriebsmittel?: Preis1;
-  zaehlzeit?: Zaehlzeitregister1;
+  singulaereBetriebsmittel?: Menge;
+  preisSingulaereBetriebsmittel?: Preis;
+  zaehlzeit?: Zaehlzeitregister;
   [k: string]: unknown;
 } | null;
 export type Konfigurationsprodukt = {
@@ -2798,7 +4628,7 @@ export type Marktteilnehmer = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -2825,7 +4655,7 @@ export type Marktteilnehmer = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -2863,14 +4693,85 @@ export type Marktteilnehmer = {
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner1;
+  ansprechpartner?: Ansprechpartner;
   [k: string]: unknown;
-} & Marktteilnehmer1;
+} & Marktteilnehmer1 & {
+    boTyp?: string | null;
+    versionStruktur?: string | null;
+    timestamp?: string | null;
+    externeReferenzen?: ExterneReferenz[] | null;
+    guid?: string | null;
+    anrede?:
+      | null
+      | "HERR"
+      | "FRAU"
+      | "EHELEUTE"
+      | "FIRMA"
+      | "INDIVIDUELL"
+      | "FAMILIE"
+      | "ERBENGEMEINSCHAFT"
+      | "WOHNGEMEINSCHAFT"
+      | "GRUNDSTUECKGEMEINSCHAFT"
+      | "DR";
+    title?: string | null;
+    name1?: string | null;
+    name2?: string | null;
+    name3?: string | null;
+    gewerbekennzeichnung: boolean;
+    hrnummer?: string | null;
+    amtsgericht?: string | null;
+    kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+    umsatzsteuerId?: string | null;
+    glaeubigerId?: string | null;
+    eMailAdresse?: string | null;
+    website?: string | null;
+    geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+    partneradresse?: Adresse;
+    grundlageZurVerringerungDerUmlagenNachEnfg?:
+      | null
+      | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+      | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+      | "KEINE_ANGABE";
+    grundDerPrivilegierungNachEnFG?:
+      | null
+      | "STROMSPEICHER_UND_VERLUSTENERGIE"
+      | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+      | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+      | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+      | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+      | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+      | "SCHIENENBAHNEN"
+      | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+      | "LANDSTROMANLAGEN";
+    marktrolle?:
+      | null
+      | "NB"
+      | "LF"
+      | "MSB"
+      | "MDL"
+      | "DL"
+      | "BKV"
+      | "BIKO"
+      | "UENB"
+      | "KUNDE_SELBST_NN"
+      | "MGV"
+      | "EIV"
+      | "RB"
+      | "KUNDE"
+      | "INTERESSENT"
+      | "GMSB"
+      | "AMSB";
+    rollencodenummer: string;
+    rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+    makoadresse?: string | null;
+    ansprechpartner?: Ansprechpartner;
+    [k: string]: unknown;
+  } & Marktteilnehmer1;
 export type Marktteilnehmer1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -2897,7 +4798,7 @@ export type Marktteilnehmer1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -2935,7 +4836,7 @@ export type Marktteilnehmer1 = {
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner1;
+  ansprechpartner?: Ansprechpartner;
   [k: string]: unknown;
 } | null;
 export type Konfigurationsprodukt1 = {
@@ -2944,34 +4845,22 @@ export type Konfigurationsprodukt1 = {
   guid?: string | null;
   leistungskurvendefinition?: string | null;
   schaltzeitdefinition?: string | null;
-  marktpartner?: Marktteilnehmer1;
+  marktpartner?: Marktteilnehmer;
   [k: string]: unknown;
 } | null;
-export type Lokationszuordnung1 = {
+export type Marktlokation1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  marktlokationen?: Marktlokation1[] | null;
-  messlokationen?: Messlokation1[] | null;
-  netzlokationen?: Netzlokation[] | null;
-  technischeRessourcen?: TechnischeRessource[] | null;
-  steuerbareRessourcen?: SteuerbareRessource[] | null;
-  gueltigkeit?: Zeitraum[] | null;
-  zuordnungstyp?: string | null;
-  lokationsbuendelcode?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Messlokation1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  messlokationsId: string;
+  marktlokationsId?: string | null;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  netzebeneMessung?:
+  energierichtung?: null | "AUSSP" | "EINSP";
+  bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbar?: boolean | null;
+  netzebene?:
     | null
     | "NSP"
     | "MSP"
@@ -2983,285 +4872,50 @@ export type Messlokation1 = {
     | "HD"
     | "MD"
     | "ND";
-  messgebietNr?: string | null;
-  grundzustaendigerMSBCodeNr?: string | null;
-  grundzustaendigerMSBIMCodeNr?: string | null;
-  grundzustaendigerMDLCodeNr?: string | null;
-  messadresse?: Adresse1;
-  geoadresse?: Geokoordinaten1;
-  katasterinformation?: Katasteradresse1;
-  geraete?: Hardware[] | null;
-  messdienstleistung?: Dienstleistung[] | null;
-  messlokationszaehler?: Zaehler[] | null;
-  bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
-  abrechnungmessstellenbetriebnna?: boolean | null;
-  marktrollen?: MarktpartnerDetails1[] | null;
+  netzbetreiberCodeNr?: string | null;
+  gebietTyp?:
+    | null
+    | "REGELZONE"
+    | "MARKTGEBIET"
+    | "BILANZIERUNGSGEBIET"
+    | "VERTEILNETZ"
+    | "TRANSPORTNETZ"
+    | "REGIONALNETZ"
+    | "AREALNETZ"
+    | "GRUNDVERSORGUNGSGEBIET"
+    | "VERSORGUNGSGEBIET";
+  netzgebietNr?: string | null;
+  bilanzierungsgebiet?: string | null;
+  grundversorgerCodeNr?: string | null;
   gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
-  verlustfaktor?: number | null;
-  zaehlwerke?: Zaehlwerk1[] | null;
-  betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
+  endkunde?: Geschaeftspartner1;
+  lokationsadresse?: Adresse;
+  geoadresse?: Geokoordinaten;
+  katasterinformation?: Katasteradresse;
+  marktrollen?: MarktpartnerDetails[] | null;
+  regelzone?: string | null;
+  marktgebiet?: string | null;
+  zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
+  zaehlwerke?: Zaehlwerk[] | null;
+  zaehlwerkeBeteiligteMarktrolle?: Zaehlwerk[] | null;
+  verbrauchsmenge?: Verbrauch[] | null;
+  messlokationen?: Messlokation[] | null;
+  zugehoerigeMesslokationen?: Messlokationszuordnung[] | null;
+  messtechnischeEinordnung?: null | "IMS" | "KME_MME" | "KEINE_MESSUNG";
+  netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
+  sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
   messprodukte?: Messprodukt[] | null;
-  lokationszuordnungen?: Lokationszuordnung[] | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
   lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Netzlokation = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  netzlokationsId: string;
-  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  netzanschlussleistung?: Menge1;
-  grundzustaendigerMSBCodeNr?: string | null;
-  steuerkanal?: boolean | null;
-  obisKennzahl?: string | null;
-  verwendungszweck?: Verwendungszweck1;
-  konfigurationsprodukte?: Konfigurationsprodukt1[] | null;
-  eigenschaftMSBLokation?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} & Netzlokation1;
-export type Netzlokation1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  netzlokationsId: string;
-  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  netzanschlussleistung?: Menge1;
-  grundzustaendigerMSBCodeNr?: string | null;
-  steuerkanal?: boolean | null;
-  obisKennzahl?: string | null;
-  verwendungszweck?: Verwendungszweck1;
-  konfigurationsprodukte?: Konfigurationsprodukt1[] | null;
-  eigenschaftMSBLokation?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} | null;
-export type TechnischeRessource = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  technischeRessourceId?: string | null;
-  vorgelagerteMesslokationsId?: string | null;
-  zugeordneteMarktlokationsId?: string | null;
-  zugeordneteSteuerbareRessourceId?: string | null;
-  nennleistungAufnahme?: Menge1;
-  nennleistungAbgabe?: Menge1;
-  speicherkapazitaet?: Menge1;
-  technischeRessourceNutzung?: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
-  verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
-  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
-  erzeugungsart?:
-    | null
-    | "KWK"
-    | "WIND"
-    | "SOLAR"
-    | "KERNKRAFT"
-    | "WASSER"
-    | "GEOTHERMIE"
-    | "BIOMASSE"
-    | "KOHLE"
-    | "GAS"
-    | "SONSTIGE"
-    | "SONSTIGE_EEG";
-  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} & TechnischeRessource1;
-export type TechnischeRessource1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  technischeRessourceId?: string | null;
-  vorgelagerteMesslokationsId?: string | null;
-  zugeordneteMarktlokationsId?: string | null;
-  zugeordneteSteuerbareRessourceId?: string | null;
-  nennleistungAufnahme?: Menge1;
-  nennleistungAbgabe?: Menge1;
-  speicherkapazitaet?: Menge1;
-  technischeRessourceNutzung?: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
-  verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
-  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
-  erzeugungsart?:
-    | null
-    | "KWK"
-    | "WIND"
-    | "SOLAR"
-    | "KERNKRAFT"
-    | "WASSER"
-    | "GEOTHERMIE"
-    | "BIOMASSE"
-    | "KOHLE"
-    | "GAS"
-    | "SONSTIGE"
-    | "SONSTIGE_EEG";
-  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} | null;
-export type SteuerbareRessource = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  steuerbareRessourceId: string;
-  steuerkanalsLeistungsbeschreibung?: null | "AN_AUS" | "GESTUFT";
-  zugeordnetMSBCodeNr?: string | null;
-  konfigurationsprodukte?: Konfigurationsprodukt1[] | null;
-  eigenschaftMSBLokation?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} & SteuerbareRessource1;
-export type SteuerbareRessource1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
-  guid?: string | null;
-  steuerbareRessourceId: string;
-  steuerkanalsLeistungsbeschreibung?: null | "AN_AUS" | "GESTUFT";
-  zugeordnetMSBCodeNr?: string | null;
-  konfigurationsprodukte?: Konfigurationsprodukt1[] | null;
-  eigenschaftMSBLokation?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  lokationszuordnungen?: Lokationszuordnung1[] | null;
-  lokationsbuendelObjektcode?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Zeitraum = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & Zeitraum1;
-export type Zeitraum1 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Angebotsposition = {
   timestamp?: string | null;
   guid?: string | null;
   positionsbezeichung: string;
-  positionsmenge?: Menge1;
-  positionspreis?: Preis1;
-  positionsbetrag?: Betrag1;
+  positionsmenge?: Menge;
+  positionspreis?: Preis;
+  positionsbetrag?: Betrag;
   preisschluesselstamm?: string | null;
   bdewArtikelnummer?:
     | null
@@ -3324,9 +4978,9 @@ export type Angebotsposition1 = {
   timestamp?: string | null;
   guid?: string | null;
   positionsbezeichung: string;
-  positionsmenge?: Menge1;
-  positionspreis?: Preis1;
-  positionsbetrag?: Betrag1;
+  positionsmenge?: Menge;
+  positionspreis?: Preis;
+  positionsbetrag?: Betrag;
   preisschluesselstamm?: string | null;
   bdewArtikelnummer?:
     | null
@@ -3385,15 +5039,80 @@ export type Angebotsposition1 = {
   artikelId?: string | null;
   [k: string]: unknown;
 } | null;
+export type Zeitraum = {
+  einheit?:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1 & {
+    einheit?:
+      | null
+      | "SEKUNDE"
+      | "MINUTE"
+      | "STUNDE"
+      | "VIERTEL_STUNDE"
+      | "TAG"
+      | "WOCHE"
+      | "MONAT"
+      | "QUARTAL"
+      | "HALBJAHR"
+      | "JAHR";
+    dauer?: number | null;
+    startdatum?: string | null;
+    enddatum?: string | null;
+    startzeitpunkt: string | null;
+    endzeitpunkt: string | null;
+    timestamp?: string | null;
+    guid?: string | null;
+    [k: string]: unknown;
+  } & Zeitraum1;
+export type Zeitraum1 = {
+  einheit?:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
 export type Angebotsteil1 = {
   timestamp?: string | null;
   guid?: string | null;
   anfrageSubreferenz?: string | null;
   lieferstellenangebotsteil?: Marktlokation[] | null;
-  gesamtmengeangebotsteil?: Menge1;
-  gesamtkostenangebotsteil?: Betrag1;
+  gesamtmengeangebotsteil?: Menge;
+  gesamtkostenangebotsteil?: Betrag;
   positionen: Angebotsposition[];
-  lieferzeitraum?: Zeitraum1;
+  lieferzeitraum?: Zeitraum;
   [k: string]: unknown;
 } | null;
 export type Angebotsvariante1 = {
@@ -3412,8 +5131,8 @@ export type Angebotsvariante1 = {
   beschreibung?: string | null;
   erstelldatum?: string | null;
   bindefrist?: string | null;
-  gesamtmenge?: Menge1;
-  gesamtkosten?: Betrag1;
+  gesamtmenge?: Menge;
+  gesamtkosten?: Betrag;
   teile: Angebotsteil[];
   [k: string]: unknown;
 } | null;
@@ -3432,18 +5151,18 @@ export interface BO4EBOAngebot {
   angebotgeber: Geschaeftspartner;
   angebotnehmer: Geschaeftspartner;
   unterzeichnerAngebotsnehmer?: Ansprechpartner;
-  unterzeichnerAngebotsgeber?: Ansprechpartner1;
+  unterzeichnerAngebotsgeber?: Ansprechpartner;
   /**
    * @minItems 1
    */
-  varianten?: [Angebotsvariante, ...Angebotsvariante1[]] | null;
+  varianten?: [Angebotsvariante, ...Angebotsvariante[]] | null;
   [k: string]: unknown;
 }
 export interface Geschaeftspartner {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null

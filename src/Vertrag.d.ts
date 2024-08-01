@@ -19,6 +19,56 @@ export type ExterneReferenz1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Geschaeftspartner = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede?:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title?: string | null;
+  name1?: string | null;
+  name2?: string | null;
+  name3?: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer?: string | null;
+  amtsgericht?: string | null;
+  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId?: string | null;
+  glaeubigerId?: string | null;
+  eMailAdresse?: string | null;
+  website?: string | null;
+  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse?: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  grundDerPrivilegierungNachEnFG?:
+    | null
+    | "STROMSPEICHER_UND_VERLUSTENERGIE"
+    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+    | "SCHIENENBAHNEN"
+    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+    | "LANDSTROMANLAGEN";
+  [k: string]: unknown;
+} & Geschaeftspartner1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
@@ -583,86 +633,6 @@ export type Adresse1 = {
   ortsteil?: string | null;
   [k: string]: unknown;
 } | null;
-export type Ansprechpartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
-  [k: string]: unknown;
-} & Ansprechpartner1;
-export type Geschaeftspartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  [k: string]: unknown;
-} & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -713,154 +683,225 @@ export type Geschaeftspartner1 = {
     | "LANDSTROMANLAGEN";
   [k: string]: unknown;
 } | null;
-export type Rufnummer = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+export type Unterschrift = {
+  ort?: string | null;
+  datum?: string | null;
+  name: string;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Rufnummer1;
-export type Rufnummer1 = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+} & Unterschrift1;
+export type Unterschrift1 = {
+  ort?: string | null;
+  datum?: string | null;
+  name: string;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Zustaendigkeit = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
+export type Vertragskonditionen = {
   timestamp?: string | null;
   guid?: string | null;
+  beschreibung?: string | null;
+  anzahlAbschlaege?: number | null;
+  vertragslaufzeit?: Zeitraum;
+  kuendigungsfrist?: Zeitraum;
+  vertragsverlaengerung?: Zeitraum;
+  abschlagszyklus?: Zeitraum;
+  startAbrechnungsjahr?: string | null;
+  geplanteTurnusablesung?: Zeitraum;
+  turnusablesungIntervall?: number | null;
+  netznutzungsabrechnung?: Zeitraum;
+  netznutzungsabrechnungIntervall?: number | null;
+  haushaltskunde?: boolean | null;
+  netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
+  netznutzungszahler?: null | "KUNDE" | "LIEFERANT";
+  netznutzungsabrechnungsvariante?: null | "ARBEITSPREIS_GRUNDPREIS" | "ARBEITSPREIS_LEISTUNGSPREIS";
+  netznutzungsabrechnungsgrundlage?: null | "LIEFERSCHEIN" | "ABWEICHENDE_GRUNDLAGE";
+  beinhaltetSingulaerGenutzteBetriebsmittel?: boolean | null;
   [k: string]: unknown;
-} & Zustaendigkeit1;
-export type Zustaendigkeit1 = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Ansprechpartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
+} & Vertragskonditionen1;
+export type Zeitraum = {
+  einheit?:
     | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit?:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Vertragskonditionen1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  beschreibung?: string | null;
+  anzahlAbschlaege?: number | null;
+  vertragslaufzeit?: Zeitraum;
+  kuendigungsfrist?: Zeitraum;
+  vertragsverlaengerung?: Zeitraum;
+  abschlagszyklus?: Zeitraum;
+  startAbrechnungsjahr?: string | null;
+  geplanteTurnusablesung?: Zeitraum;
+  turnusablesungIntervall?: number | null;
+  netznutzungsabrechnung?: Zeitraum;
+  netznutzungsabrechnungIntervall?: number | null;
+  haushaltskunde?: boolean | null;
+  netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
+  netznutzungszahler?: null | "KUNDE" | "LIEFERANT";
+  netznutzungsabrechnungsvariante?: null | "ARBEITSPREIS_GRUNDPREIS" | "ARBEITSPREIS_LEISTUNGSPREIS";
+  netznutzungsabrechnungsgrundlage?: null | "LIEFERSCHEIN" | "ABWEICHENDE_GRUNDLAGE";
+  beinhaltetSingulaerGenutzteBetriebsmittel?: boolean | null;
+  [k: string]: unknown;
+} | null;
+export type Vertragsteil = {
+  vertragsteilbeginn?: string | null;
+  vertragsteilende?: string | null;
+  lokation?: string | null;
+  vertraglichFixierteMenge?: Menge;
+  minimaleAbnahmemenge?: Menge;
+  maximaleAbnahmemenge?: Menge;
+  jahresverbrauchsprognose?: Menge;
+  kundenwert?: Menge;
+  verbrauchsaufteilung?: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Vertragsteil1;
+export type Menge = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} & Menge1;
+export type Menge1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  wert: number;
+  einheit?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  [k: string]: unknown;
+} | null;
+export type Vertragsteil1 = {
+  vertragsteilbeginn?: string | null;
+  vertragsteilende?: string | null;
+  lokation?: string | null;
+  vertraglichFixierteMenge?: Menge;
+  minimaleAbnahmemenge?: Menge;
+  maximaleAbnahmemenge?: Menge;
+  jahresverbrauchsprognose?: Menge;
+  kundenwert?: Menge;
+  verbrauchsaufteilung?: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOMarktteilnehmer {
+export interface Vertrag {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  anrede?:
+  vertragsnummer?: string | null;
+  beschreibung?: string | null;
+  vertragsart?:
     | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
+    | "ENERGIELIEFERVERTRAG"
+    | "NETZNUTZUNGSVERTRAG"
+    | "BILANZIERUNGSVERTRAG"
+    | "MESSSTELLENBETRIEBSVERTRAG"
+    | "BUENDELVERTRAG";
+  vertragstatus?:
     | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  marktrolle?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  rollencodenummer: string;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
-  makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner;
+    | "IN_ARBEIT"
+    | "UEBERMITTELT"
+    | "ANGENOMMEN"
+    | "AKTIV"
+    | "ABGELEHNT"
+    | "WIDERRUFEN"
+    | "STORNIERT"
+    | "GEKUENDIGT"
+    | "BEENDET";
+  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  vertragsbeginn: string;
+  vertragsende?: string | null;
+  vertragspartner1?: Geschaeftspartner;
+  vertragspartner2?: Geschaeftspartner;
+  unterzeichnervp1?: Unterschrift[] | null;
+  unterzeichnervp2?: Unterschrift[] | null;
+  vertragskonditionen?: Vertragskonditionen;
+  vertragsteile?: Vertragsteil[] | null;
+  gemeinderabatt?: number | null;
+  korrespondenzpartner?: Geschaeftspartner;
   [k: string]: unknown;
 }

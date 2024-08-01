@@ -23,7 +23,7 @@ export type Geschaeftspartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -637,7 +637,7 @@ export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -664,7 +664,7 @@ export type Geschaeftspartner1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -705,13 +705,13 @@ export type Vertragskonditionen = {
   beschreibung?: string | null;
   anzahlAbschlaege?: number | null;
   vertragslaufzeit?: Zeitraum;
-  kuendigungsfrist?: Zeitraum1;
-  vertragsverlaengerung?: Zeitraum1;
-  abschlagszyklus?: Zeitraum1;
+  kuendigungsfrist?: Zeitraum;
+  vertragsverlaengerung?: Zeitraum;
+  abschlagszyklus?: Zeitraum;
   startAbrechnungsjahr?: string | null;
-  geplanteTurnusablesung?: Zeitraum1;
+  geplanteTurnusablesung?: Zeitraum;
   turnusablesungIntervall?: number | null;
-  netznutzungsabrechnung?: Zeitraum1;
+  netznutzungsabrechnung?: Zeitraum;
   netznutzungsabrechnungIntervall?: number | null;
   haushaltskunde?: boolean | null;
   netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
@@ -770,14 +770,14 @@ export type Vertragskonditionen1 = {
   guid?: string | null;
   beschreibung?: string | null;
   anzahlAbschlaege?: number | null;
-  vertragslaufzeit?: Zeitraum1;
-  kuendigungsfrist?: Zeitraum1;
-  vertragsverlaengerung?: Zeitraum1;
-  abschlagszyklus?: Zeitraum1;
+  vertragslaufzeit?: Zeitraum;
+  kuendigungsfrist?: Zeitraum;
+  vertragsverlaengerung?: Zeitraum;
+  abschlagszyklus?: Zeitraum;
   startAbrechnungsjahr?: string | null;
-  geplanteTurnusablesung?: Zeitraum1;
+  geplanteTurnusablesung?: Zeitraum;
   turnusablesungIntervall?: number | null;
-  netznutzungsabrechnung?: Zeitraum1;
+  netznutzungsabrechnung?: Zeitraum;
   netznutzungsabrechnungIntervall?: number | null;
   haushaltskunde?: boolean | null;
   netznutzungsvertrag?: null | "KUNDEN_NB" | "LIEFERANTEN_NB";
@@ -792,10 +792,10 @@ export type Vertragsteil = {
   vertragsteilende?: string | null;
   lokation?: string | null;
   vertraglichFixierteMenge?: Menge;
-  minimaleAbnahmemenge?: Menge1;
-  maximaleAbnahmemenge?: Menge1;
-  jahresverbrauchsprognose?: Menge1;
-  kundenwert?: Menge1;
+  minimaleAbnahmemenge?: Menge;
+  maximaleAbnahmemenge?: Menge;
+  jahresverbrauchsprognose?: Menge;
+  kundenwert?: Menge;
   verbrauchsaufteilung?: string | null;
   timestamp?: string | null;
   guid?: string | null;
@@ -855,11 +855,11 @@ export type Vertragsteil1 = {
   vertragsteilbeginn?: string | null;
   vertragsteilende?: string | null;
   lokation?: string | null;
-  vertraglichFixierteMenge?: Menge1;
-  minimaleAbnahmemenge?: Menge1;
-  maximaleAbnahmemenge?: Menge1;
-  jahresverbrauchsprognose?: Menge1;
-  kundenwert?: Menge1;
+  vertraglichFixierteMenge?: Menge;
+  minimaleAbnahmemenge?: Menge;
+  maximaleAbnahmemenge?: Menge;
+  jahresverbrauchsprognose?: Menge;
+  kundenwert?: Menge;
   verbrauchsaufteilung?: string | null;
   timestamp?: string | null;
   guid?: string | null;
@@ -896,12 +896,12 @@ export interface BO4EBOVertrag {
   vertragsbeginn: string;
   vertragsende?: string | null;
   vertragspartner1?: Geschaeftspartner;
-  vertragspartner2?: Geschaeftspartner1;
+  vertragspartner2?: Geschaeftspartner;
   unterzeichnervp1?: Unterschrift[] | null;
-  unterzeichnervp2?: Unterschrift1[] | null;
+  unterzeichnervp2?: Unterschrift[] | null;
   vertragskonditionen?: Vertragskonditionen;
   vertragsteile?: Vertragsteil[] | null;
   gemeinderabatt?: number | null;
-  korrespondenzpartner?: Geschaeftspartner1;
+  korrespondenzpartner?: Geschaeftspartner;
   [k: string]: unknown;
 }

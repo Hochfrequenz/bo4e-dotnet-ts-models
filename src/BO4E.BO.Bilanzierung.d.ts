@@ -25,7 +25,13 @@ export type Lastprofil = {
   verfahren?: null | "SYNTHETISCH" | "ANALYTISCH";
   einspeisung?: boolean | null;
   tagesparameter?: Tagesparameter;
-  profilart?: null | "ART_STANDARDLASTPROFIL" | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL" | "ART_LASTPROFIL";
+  profilart?:
+    | null
+    | "ART_STANDARDLASTPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL"
+    | "ART_LASTPROFIL"
+    | "ART_STANDARDEINSPEISEPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_EINSPEISEPROFIL";
   herausgeber?: string | null;
   timestamp?: string | null;
   guid?: string | null;
@@ -54,8 +60,14 @@ export type Lastprofil1 = {
   profilschar?: string | null;
   verfahren?: null | "SYNTHETISCH" | "ANALYTISCH";
   einspeisung?: boolean | null;
-  tagesparameter?: Tagesparameter1;
-  profilart?: null | "ART_STANDARDLASTPROFIL" | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL" | "ART_LASTPROFIL";
+  tagesparameter?: Tagesparameter;
+  profilart?:
+    | null
+    | "ART_STANDARDLASTPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL"
+    | "ART_LASTPROFIL"
+    | "ART_STANDARDEINSPEISEPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_EINSPEISEPROFIL";
   herausgeber?: string | null;
   timestamp?: string | null;
   guid?: string | null;
@@ -124,8 +136,8 @@ export interface BO4EBOBilanzierung {
   bilanzierungsende?: string | null;
   bilanzkreis?: string | null;
   jahresverbrauchsprognose?: Menge;
-  temperaturarbeit?: Menge1;
-  kundenwert?: Menge1;
+  temperaturarbeit?: Menge;
+  kundenwert?: Menge;
   verbrauchsaufteilung?: number | null;
   zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
   aggregationsverantwortung?: null | "UENB" | "VNB";

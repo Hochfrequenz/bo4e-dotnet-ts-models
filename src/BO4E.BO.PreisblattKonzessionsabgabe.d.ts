@@ -237,7 +237,7 @@ export type Preisstaffel1 = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter1;
+  sigmoidparameter?: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -432,7 +432,7 @@ export type Preisposition1 = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag1;
+  zu_abschlaege?: PositionsAufAbschlag;
   preisstaffeln: Preisstaffel[];
   preisschluesselstamm?: string | null;
   positionsnummer?: number | null;
@@ -449,7 +449,7 @@ export type Preisposition1 = {
     | "MD"
     | "ND";
   beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum11;
+  verarbeitungszeitraum?: Zeitraum1;
   artikelId?: string | null;
   [k: string]: unknown;
 } | null;

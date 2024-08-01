@@ -19,6 +19,67 @@ export type ExterneReferenz1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Marktlokation = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  marktlokationsId?: string | null;
+  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  energierichtung?: null | "AUSSP" | "EINSP";
+  bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
+  verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  unterbrechbar?: boolean | null;
+  netzebene?:
+    | null
+    | "NSP"
+    | "MSP"
+    | "HSP"
+    | "HSS"
+    | "MSP_NSP_UMSP"
+    | "HSP_MSP_UMSP"
+    | "HSS_HSP_UMSP"
+    | "HD"
+    | "MD"
+    | "ND";
+  netzbetreiberCodeNr?: string | null;
+  gebietTyp?:
+    | null
+    | "REGELZONE"
+    | "MARKTGEBIET"
+    | "BILANZIERUNGSGEBIET"
+    | "VERTEILNETZ"
+    | "TRANSPORTNETZ"
+    | "REGIONALNETZ"
+    | "AREALNETZ"
+    | "GRUNDVERSORGUNGSGEBIET"
+    | "VERSORGUNGSGEBIET";
+  netzgebietNr?: string | null;
+  bilanzierungsgebiet?: string | null;
+  grundversorgerCodeNr?: string | null;
+  gasqualitaet?: null | "ZERO" | "H_GAS" | "HGAS" | "L_GAS" | "LGAS";
+  endkunde?: Geschaeftspartner;
+  lokationsadresse?: Adresse;
+  geoadresse?: Geokoordinaten;
+  katasterinformation?: Katasteradresse;
+  marktrollen?: MarktpartnerDetails[] | null;
+  regelzone?: string | null;
+  marktgebiet?: string | null;
+  zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
+  zaehlwerke?: Zaehlwerk[] | null;
+  zaehlwerkeBeteiligteMarktrolle?: Zaehlwerk[] | null;
+  verbrauchsmenge?: Verbrauch[] | null;
+  messlokationen?: Messlokation[] | null;
+  zugehoerigeMesslokationen?: Messlokationszuordnung[] | null;
+  messtechnischeEinordnung?: null | "IMS" | "KME_MME" | "KEINE_MESSUNG";
+  netznutzungsabrechnungsdaten?: Netznutzungsabrechnungsdaten[] | null;
+  sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
+  messprodukte?: Messprodukt[] | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} & Marktlokation1;
 export type Geschaeftspartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -804,6 +865,7 @@ export type Zaehlwerk = {
   anzahlAblesungen?: number | null;
   zaehlzeiten?: Zaehlzeitregister;
   konfiguration?: string | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } & Zaehlwerk1;
 export type Verwendungszweck = {
@@ -947,6 +1009,7 @@ export type Zaehlwerk1 = {
   anzahlAblesungen?: number | null;
   zaehlzeiten?: Zaehlzeitregister;
   konfiguration?: string | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } | null;
 export type Verbrauch = {
@@ -978,7 +1041,8 @@ export type Verbrauch = {
     | "NICHT_VERWENDBAR"
     | "PROGNOSEWERT"
     | "ENERGIEMENGESUMMIERT"
-    | "FEHLT";
+    | "FEHLT"
+    | "GRUNDLAGE_POG_ERMITTLUNG";
   statuszusatzinformationen?: StatusZusatzInformation[] | null;
   obiskennzahl: string;
   wert: number;
@@ -1201,7 +1265,8 @@ export type Verbrauch1 = {
     | "NICHT_VERWENDBAR"
     | "PROGNOSEWERT"
     | "ENERGIEMENGESUMMIERT"
-    | "FEHLT";
+    | "FEHLT"
+    | "GRUNDLAGE_POG_ERMITTLUNG";
   statuszusatzinformationen?: StatusZusatzInformation[] | null;
   obiskennzahl: string;
   wert: number;
@@ -1265,10 +1330,12 @@ export type Messlokation = {
   zaehlwerke?: Zaehlwerk[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
   messprodukte?: Messprodukt[] | null;
+  lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 } & Messlokation1;
 export type Hardware = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -1553,7 +1620,8 @@ export type Geraeteeigenschaften1 = {
   [k: string]: unknown;
 } | null;
 export type Hardware1 = {
-  geraetetyp:
+  geraetetyp?:
+    | null
     | "WECHSELSTROMZAEHLER"
     | "DREHSTROMZAEHLER"
     | "ZWEIRICHTUNGSZAEHLER"
@@ -1956,6 +2024,7 @@ export type Messprodukt = {
   zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } & Messprodukt1;
 export type Messprodukt1 = {
@@ -1969,6 +2038,7 @@ export type Messprodukt1 = {
   zaehlzeiten?: Zaehlzeitregister;
   zweiteMessung?: boolean | null;
   werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
   [k: string]: unknown;
 } | null;
 export type Messlokation1 = {
@@ -2009,6 +2079,7 @@ export type Messlokation1 = {
   zaehlwerke?: Zaehlwerk[] | null;
   betriebszustand?: null | "GESPERRT_NICHT_ENTSPERREN" | "GESPERRT" | "REGELBETRIEB";
   messprodukte?: Messprodukt[] | null;
+  lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 } | null;
 export type Messlokationszuordnung = {
@@ -2431,14 +2502,13 @@ export type Konfigurationsprodukt1 = {
   marktpartner?: Marktteilnehmer;
   [k: string]: unknown;
 } | null;
-
-export interface BO4EBOMarktlokation {
+export type Marktlokation1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  marktlokationsId: string;
+  marktlokationsId?: string | null;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   energierichtung?: null | "AUSSP" | "EINSP";
   bilanzierungsmethode?: null | "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
@@ -2490,5 +2560,267 @@ export interface BO4EBOMarktlokation {
   sperrstatus?: null | "ENTSPERRT" | "GESPERRT";
   messprodukte?: Messprodukt[] | null;
   konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Netzlokation = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  netzlokationsId: string;
+  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  netzanschlussleistung?: Menge;
+  grundzustaendigerMSBCodeNr?: string | null;
+  steuerkanal?: boolean | null;
+  obisKennzahl?: string | null;
+  verwendungszweck?: Verwendungszweck;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} & Netzlokation1;
+export type Netzlokation1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  netzlokationsId: string;
+  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  netzanschlussleistung?: Menge;
+  grundzustaendigerMSBCodeNr?: string | null;
+  steuerkanal?: boolean | null;
+  obisKennzahl?: string | null;
+  verwendungszweck?: Verwendungszweck;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} | null;
+export type TechnischeRessource = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  technischeRessourceId?: string | null;
+  vorgelagerteMesslokationsId?: string | null;
+  zugeordneteMarktlokationsId?: string | null;
+  zugeordneteSteuerbareRessourceId?: string | null;
+  nennleistungAufnahme?: Menge;
+  nennleistungAbgabe?: Menge;
+  speicherkapazitaet?: Menge;
+  technischeRessourceNutzung?: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
+  verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  erzeugungsart?:
+    | null
+    | "KWK"
+    | "WIND"
+    | "SOLAR"
+    | "KERNKRAFT"
+    | "WASSER"
+    | "GEOTHERMIE"
+    | "BIOMASSE"
+    | "KOHLE"
+    | "GAS"
+    | "SONSTIGE"
+    | "SONSTIGE_EEG";
+  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} & TechnischeRessource1;
+export type TechnischeRessource1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  technischeRessourceId?: string | null;
+  vorgelagerteMesslokationsId?: string | null;
+  zugeordneteMarktlokationsId?: string | null;
+  zugeordneteSteuerbareRessourceId?: string | null;
+  nennleistungAufnahme?: Menge;
+  nennleistungAbgabe?: Menge;
+  speicherkapazitaet?: Menge;
+  technischeRessourceNutzung?: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
+  verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
+  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
+  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  erzeugungsart?:
+    | null
+    | "KWK"
+    | "WIND"
+    | "SOLAR"
+    | "KERNKRAFT"
+    | "WASSER"
+    | "GEOTHERMIE"
+    | "BIOMASSE"
+    | "KOHLE"
+    | "GAS"
+    | "SONSTIGE"
+    | "SONSTIGE_EEG";
+  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} | null;
+export type SteuerbareRessource = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  steuerbareRessourceId: string;
+  steuerkanalsLeistungsbeschreibung?: null | "AN_AUS" | "GESTUFT";
+  zugeordnetMSBCodeNr?: string | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} & SteuerbareRessource1;
+export type SteuerbareRessource1 = {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  steuerbareRessourceId: string;
+  steuerkanalsLeistungsbeschreibung?: null | "AN_AUS" | "GESTUFT";
+  zugeordnetMSBCodeNr?: string | null;
+  konfigurationsprodukte?: Konfigurationsprodukt[] | null;
+  eigenschaftMSBLokation?:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  lokationsbuendelObjektcode?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit?:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit?:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer?: number | null;
+  startdatum?: string | null;
+  enddatum?: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+
+export interface Lokationszuordnung {
+  boTyp?: string | null;
+  versionStruktur?: string | null;
+  timestamp?: string | null;
+  externeReferenzen?: ExterneReferenz[] | null;
+  guid?: string | null;
+  marktlokationen?: Marktlokation[] | null;
+  messlokationen?: Messlokation[] | null;
+  netzlokationen?: Netzlokation[] | null;
+  technischeRessourcen?: TechnischeRessource[] | null;
+  steuerbareRessourcen?: SteuerbareRessource[] | null;
+  gueltigkeit?: Zeitraum[] | null;
+  zuordnungstyp?: string | null;
+  lokationsbuendelcode?: string | null;
   [k: string]: unknown;
 }

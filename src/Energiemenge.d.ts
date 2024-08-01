@@ -19,14 +19,6 @@ export type ExterneReferenz1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Zeitreihenprodukt = {
-  timestamp?: string | null;
-  guid?: string | null;
-  identifikation?: string | null;
-  korrekturfaktor?: number | null;
-  verbrauch?: Verbrauch;
-  [k: string]: unknown;
-} & Zeitreihenprodukt1;
 export type Verbrauch = {
   startdatum?: string | null;
   enddatum?: string | null;
@@ -82,7 +74,62 @@ export type Verbrauch = {
   nutzungszeitpunkt?: string | null;
   ausfuehrungszeitpunkt?: string | null;
   [k: string]: unknown;
-} & Verbrauch1;
+} & Verbrauch1 & {
+    startdatum?: string | null;
+    enddatum?: string | null;
+    type?: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
+    tarifstufe?:
+      | null
+      | "TARIFSTUFE_0"
+      | "TARIFSTUFE_1"
+      | "TARIFSTUFE_2"
+      | "TARIFSTUFE_3"
+      | "TARIFSTUFE_4"
+      | "TARIFSTUFE_5"
+      | "TARIFSTUFE_6"
+      | "TARIFSTUFE_7"
+      | "TARIFSTUFE_8"
+      | "TARIFSTUFE_9";
+    timestamp?: string | null;
+    guid?: string | null;
+    wertermittlungsverfahren?: null | "PROGNOSE" | "MESSUNG";
+    messwertstatus?:
+      | null
+      | "ABGELESEN"
+      | "ERSATZWERT"
+      | "VOLAEUFIGERWERT"
+      | "ANGABE_FUER_LIEFERSCHEIN"
+      | "VORSCHLAGSWERT"
+      | "NICHT_VERWENDBAR"
+      | "PROGNOSEWERT"
+      | "ENERGIEMENGESUMMIERT"
+      | "FEHLT"
+      | "GRUNDLAGE_POG_ERMITTLUNG";
+    statuszusatzinformationen?: StatusZusatzInformation[] | null;
+    obiskennzahl: string;
+    wert: number;
+    einheit:
+      | "ZERO"
+      | "WH"
+      | "KW"
+      | "ANZAHL"
+      | "KUBIKMETER"
+      | "STUNDE"
+      | "TAG"
+      | "MONAT"
+      | "VAR"
+      | "VARH"
+      | "KWHK"
+      | "JAHR"
+      | "KWH"
+      | "MW"
+      | "KVAR"
+      | "KVARH"
+      | "MWH";
+    nutzungszeitpunkt?: string | null;
+    ausfuehrungszeitpunkt?: string | null;
+    [k: string]: unknown;
+  } & Verbrauch1;
 export type StatusZusatzInformation = {
   timestamp?: string | null;
   art?:
@@ -307,84 +354,18 @@ export type Verbrauch1 = {
   ausfuehrungszeitpunkt?: string | null;
   [k: string]: unknown;
 } | null;
-export type Zeitreihenprodukt1 = {
-  timestamp?: string | null;
-  guid?: string | null;
-  identifikation?: string | null;
-  korrekturfaktor?: number | null;
-  verbrauch?: Verbrauch;
-  [k: string]: unknown;
-} | null;
 
-export interface BO4EBOSummenzeitreihe {
+export interface Energiemenge {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  zaehlpunktId?: string | null;
-  bilanzierungsbeginn?: string | null;
-  bilanzierungsende?: string | null;
-  bilanzkreis?: string | null;
-  bilanzierungsgebiet?: string | null;
-  regelzone?: string | null;
-  bezeichnung?:
-    | null
-    | "BG_SZR_B"
-    | "BG_SZR_C"
-    | "BK_SZR_A"
-    | "BK_SZR_B_RZ"
-    | "BK_SZR_B_BG"
-    | "BK_SZR_C"
-    | "LF_SZR_A"
-    | "LF_SZR_B_RZ"
-    | "LF_SZR_B_BG"
-    | "DZUE"
-    | "NZR"
-    | "ASZR";
-  bezugszeitraum?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  zeitreihentyp?: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
-  marktrolle?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  spannungsebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
-  produkte?: Zeitreihenprodukt[] | null;
+  lokationsId: string;
+  lokationsTyp: null | "MALO" | "MELO";
+  /**
+   * @minItems 1
+   */
+  energieverbrauch: [Verbrauch, ...Verbrauch[]] | null;
   [k: string]: unknown;
 }

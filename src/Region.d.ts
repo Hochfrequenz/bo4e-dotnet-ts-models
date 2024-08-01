@@ -90,7 +90,7 @@ export type Regionskriterium1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBORegion {
+export interface Region {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

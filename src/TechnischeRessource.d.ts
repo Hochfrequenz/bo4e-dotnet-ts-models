@@ -70,16 +70,16 @@ export type Menge1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOTechnischeRessource {
+export interface TechnischeRessource {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
   externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
-  technischeRessourceId: string;
-  vorgelagerteMesslokationsId: string;
-  zugeordneteMarktlokationsId: string;
-  zugeordneteSteuerbareRessourceId: string;
+  technischeRessourceId?: string | null;
+  vorgelagerteMesslokationsId?: string | null;
+  zugeordneteMarktlokationsId?: string | null;
+  zugeordneteSteuerbareRessourceId?: string | null;
   nennleistungAufnahme?: Menge;
   nennleistungAbgabe?: Menge;
   speicherkapazitaet?: Menge;
@@ -87,7 +87,8 @@ export interface BO4EBOTechnischeRessource {
   verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
   waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
   emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
-  erzeugungsart:
+  erzeugungsart?:
+    | null
     | "KWK"
     | "WIND"
     | "SOLAR"
@@ -99,6 +100,7 @@ export interface BO4EBOTechnischeRessource {
     | "GAS"
     | "SONSTIGE"
     | "SONSTIGE_EEG";
-  speicherart: "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
+  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
+  lokationsbuendelObjektcode?: string | null;
   [k: string]: unknown;
 }

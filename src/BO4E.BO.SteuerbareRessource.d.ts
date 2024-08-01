@@ -32,7 +32,7 @@ export type Marktteilnehmer = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -668,7 +668,7 @@ export type Ansprechpartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -689,7 +689,7 @@ export type Ansprechpartner = {
   eMailAdresse?: string | null;
   kommentar?: string | null;
   geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse1;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -698,7 +698,7 @@ export type Geschaeftspartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -725,7 +725,7 @@ export type Geschaeftspartner = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -748,7 +748,7 @@ export type Geschaeftspartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -775,7 +775,7 @@ export type Geschaeftspartner1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -846,7 +846,7 @@ export type Ansprechpartner1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -866,8 +866,8 @@ export type Ansprechpartner1 = {
   nachname?: string | null;
   eMailAdresse?: string | null;
   kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner1;
-  adresse?: Adresse1;
+  geschaeftspartner?: Geschaeftspartner;
+  adresse?: Adresse;
   rufnummern?: Rufnummer[] | null;
   zustaendigkeit?: Zustaendigkeit[] | null;
   [k: string]: unknown;
@@ -876,7 +876,7 @@ export type Marktteilnehmer1 = {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz1[] | null;
+  externeReferenzen?: ExterneReferenz[] | null;
   guid?: string | null;
   anrede?:
     | null
@@ -903,7 +903,7 @@ export type Marktteilnehmer1 = {
   eMailAdresse?: string | null;
   website?: string | null;
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse1;
+  partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
@@ -941,7 +941,7 @@ export type Marktteilnehmer1 = {
   rollencodenummer: string;
   rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner1;
+  ansprechpartner?: Ansprechpartner;
   [k: string]: unknown;
 } | null;
 export type Konfigurationsprodukt1 = {
@@ -950,7 +950,7 @@ export type Konfigurationsprodukt1 = {
   guid?: string | null;
   leistungskurvendefinition?: string | null;
   schaltzeitdefinition?: string | null;
-  marktpartner?: Marktteilnehmer1;
+  marktpartner?: Marktteilnehmer;
   [k: string]: unknown;
 } | null;
 

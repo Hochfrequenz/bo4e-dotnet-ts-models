@@ -497,7 +497,7 @@ export type Kostenblock1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOKosten {
+export interface Kosten {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

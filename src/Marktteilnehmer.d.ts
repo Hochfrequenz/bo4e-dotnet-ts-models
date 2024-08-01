@@ -792,7 +792,7 @@ export type Ansprechpartner1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOMarktteilnehmer {
+export interface Marktteilnehmer {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

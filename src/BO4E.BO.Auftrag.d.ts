@@ -651,6 +651,6 @@ export interface BO4EBOAuftrag {
   guid?: string | null;
   bemerkungen?: (string | null)[] | null;
   mindestpreis?: Preis;
-  hoechstpreis?: Preis1;
+  hoechstpreis?: Preis;
   [k: string]: unknown;
 }

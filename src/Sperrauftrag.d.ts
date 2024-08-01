@@ -5,70 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & ExterneReferenz1;
-export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Geschaeftspartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  [k: string]: unknown;
-} & Geschaeftspartner1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
@@ -633,132 +569,114 @@ export type Adresse1 = {
   ortsteil?: string | null;
   [k: string]: unknown;
 } | null;
-export type Geschaeftspartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  [k: string]: unknown;
-} | null;
-export type Rufnummer = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+export type ExterneReferenz = {
+  exRefName?: string | null;
+  exRefWert?: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Rufnummer1;
-export type Rufnummer1 = {
-  nummerntyp:
-    | "RUF_ZENTRALE"
-    | "FAX_ZENTRALE"
-    | "SAMMELRUF"
-    | "SAMMELFAX"
-    | "ABTEILUNGRUF"
-    | "ABTEILUNGFAX"
-    | "RUF_DURCHWAHL"
-    | "FAX_DURCHWAHL"
-    | "MOBIL_NUMMER";
-  rufnummer: string;
+} & ExterneReferenz1;
+export type ExterneReferenz1 = {
+  exRefName?: string | null;
+  exRefWert?: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
-export type Zustaendigkeit = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
+export type Preis = {
+  wert: number;
+  einheit?: null | "EUR" | "CT";
+  bezugswert?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Zustaendigkeit1;
-export type Zustaendigkeit1 = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
+} & Preis1;
+export type Preis1 = {
+  wert: number;
+  einheit?: null | "EUR" | "CT";
+  bezugswert?:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOAnsprechpartner {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
+export interface Sperrauftrag {
+  sperrauftragsart: "SPERREN" | "ENTSPERREN";
+  sperrauftragsstatus?: null | "GESCHEITERT" | "ERFOLGREICH" | "GEPLANT" | "ZUGESTIMMT" | "WIDERSPROCHEN" | "ABGELEHNT";
+  sperrauftragsablehngrund?:
     | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
+    | "DUPLIKAT"
+    | "FALSCHER_MSB"
+    | "FALSCHE_SPANNUNGSEBENE"
+    | "WEITERE_MALO_BETROFFEN"
+    | "ANDERER_ABLEHNGRUND"
+    | "FRISTVERLETZUNG_TERMINGEBUNDEN"
+    | "FRISTVERLETZUNG_NICHT_TERMINGEBUNDEN"
+    | "ANDERER_FEHLER"
+    | "LIEGT_BEREITS_VOR"
+    | "ANDERER_ZUKUENFTIGER_LIEFERANT"
+    | "BESTAETIGTER_LIEFERBEGINN";
+  sperrauftragsverhinderungsgrund?:
+    | null
+    | "RECHTLICHER_GRUND_FEHLT"
+    | "AKTIVE_ZUTRITTSVERWEIGERUNG"
+    | "PASSIVE_ZUTRITTSVERWEIGERUNG"
+    | "ANDERER_VERHINDERUNGSGRUND"
+    | "TATSAECHLICHER_VERHINDERUNGSGRUND"
+    | "TECHNISCHER_VERHINDERUNGSGRUND"
+    | "ANSCHLUSSNUTZER_WURDE_NICHT_ANGETROFFEN";
+  zaehlernummer?: string | null;
+  istVomGerichtsvollzieherAngeordnet: boolean;
+  ausfuehrungsdatum?: string | null;
+  boTyp?: string | null;
+  fertigstellungsdatum?: string | null;
+  versionStruktur?: string | null;
+  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  timestamp?: string | null;
+  lieferanschrift?: Adresse;
+  externeReferenzen?: ExterneReferenz[] | null;
+  marktlokationsId: string;
+  guid?: string | null;
+  bemerkungen?: (string | null)[] | null;
+  mindestpreis?: Preis;
+  hoechstpreis?: Preis;
   [k: string]: unknown;
 }

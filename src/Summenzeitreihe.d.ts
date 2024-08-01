@@ -316,7 +316,7 @@ export type Zeitreihenprodukt1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOSummenzeitreihe {
+export interface Summenzeitreihe {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

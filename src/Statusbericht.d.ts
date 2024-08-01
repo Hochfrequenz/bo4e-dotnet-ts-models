@@ -146,7 +146,7 @@ export type Fehler1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBOStatusbericht {
+export interface Statusbericht {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;

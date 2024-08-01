@@ -1602,7 +1602,7 @@ export type Vorauszahlung1 = {
   [k: string]: unknown;
 } | null;
 
-export interface BO4EBORechnung {
+export interface Rechnung {
   boTyp?: string | null;
   versionStruktur?: string | null;
   timestamp?: string | null;
@@ -1655,7 +1655,8 @@ export interface BO4EBORechnung {
     | "OFFSHORE_UMLAGE"
     | "P19_STROM_NEV_UMLAGE"
     | "P18_ABLAV"
-    | "KONZESSIONSABGABE_WECHSEL_RLM";
+    | "KONZESSIONSABGABE_WECHSEL_RLM"
+    | "PRIVILEGIERUNG_NACH_ENFG";
   buchungsdatum?: string | null;
   [k: string]: unknown;
 }
