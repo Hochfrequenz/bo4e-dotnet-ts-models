@@ -583,6 +583,60 @@ export type Adresse1 = {
   ortsteil?: string | null;
   [k: string]: unknown;
 } | null;
+export type Bankverbindung = {
+  timestamp?: string | null;
+  guid?: string | null;
+  iban?: string | null;
+  kontoinhaber?: string | null;
+  bankkennung?: string | null;
+  bankname?: string | null;
+  [k: string]: unknown;
+} & Bankverbindung1;
+export type Bankverbindung1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  iban?: string | null;
+  kontoinhaber?: string | null;
+  bankkennung?: string | null;
+  bankname?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Erreichbarkeit = {
+  timestamp?: string | null;
+  guid?: string | null;
+  montagErreichbarkeit?: Zeitfenster;
+  dienstagErreichbarkeit?: Zeitfenster;
+  mittwochErreichbarkeit?: Zeitfenster;
+  donnerstagErreichbarkeit?: Zeitfenster;
+  freitagErreichbarkeit?: Zeitfenster;
+  mittagspause?: Zeitfenster;
+  [k: string]: unknown;
+} & Erreichbarkeit1;
+export type Zeitfenster = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit?: string | null;
+  endzeit?: string | null;
+  [k: string]: unknown;
+} & Zeitfenster1;
+export type Zeitfenster1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit?: string | null;
+  endzeit?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Erreichbarkeit1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  montagErreichbarkeit?: Zeitfenster;
+  dienstagErreichbarkeit?: Zeitfenster;
+  mittwochErreichbarkeit?: Zeitfenster;
+  donnerstagErreichbarkeit?: Zeitfenster;
+  freitagErreichbarkeit?: Zeitfenster;
+  mittagspause?: Zeitfenster;
+  [k: string]: unknown;
+} | null;
 export type Ansprechpartner = {
   boTyp?: string | null;
   versionStruktur?: string | null;
@@ -661,6 +715,9 @@ export type Geschaeftspartner = {
     | "SCHIENENBAHNEN"
     | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
     | "LANDSTROMANLAGEN";
+  bankverbindung?: Bankverbindung;
+  steuernummer?: string | null;
+  erreichbarkeit?: Erreichbarkeit;
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
@@ -711,6 +768,9 @@ export type Geschaeftspartner1 = {
     | "SCHIENENBAHNEN"
     | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
     | "LANDSTROMANLAGEN";
+  bankverbindung?: Bankverbindung;
+  steuernummer?: string | null;
+  erreichbarkeit?: Erreichbarkeit;
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
@@ -1321,6 +1381,9 @@ export interface Marktteilnehmer {
     | "SCHIENENBAHNEN"
     | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
     | "LANDSTROMANLAGEN";
+  bankverbindung?: Bankverbindung;
+  steuernummer?: string | null;
+  erreichbarkeit?: Erreichbarkeit;
   marktrolle?:
     | null
     | "NB"
