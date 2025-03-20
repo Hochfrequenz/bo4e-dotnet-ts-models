@@ -6,22 +6,22 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Regionskriterium = {
   gueltigkeitstyp: "NICHT_IN";
-  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   mengenoperator: "KLEINER_ALS" | "GROESSER_ALS" | "GLEICH";
   regionskriteriumtyp:
     | "BUNDESLANDKENNZIFFER"
@@ -49,14 +49,14 @@ export type Regionskriterium = {
     | "EINWOHNERZAHL_ORT"
     | "KM_UMKREIS"
     | "BUNDESWEIT";
-  wert: string;
+  wert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & Regionskriterium1;
 export type Regionskriterium1 = {
   gueltigkeitstyp: "NICHT_IN";
-  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   mengenoperator: "KLEINER_ALS" | "GROESSER_ALS" | "GLEICH";
   regionskriteriumtyp:
     | "BUNDESLANDKENNZIFFER"
@@ -84,20 +84,73 @@ export type Regionskriterium1 = {
     | "EINWOHNERZAHL_ORT"
     | "KM_UMKREIS"
     | "BUNDESWEIT";
-  wert: string;
+  wert: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Region {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  bezeichnung: string;
-  externeReferenzen?: ExterneReferenz[] | null;
-  positivListe: Regionskriterium[];
+  bezeichnung: string | null;
+  externeReferenzen: ExterneReferenz[] | null;
+  positivListe: Regionskriterium[] | null;
   guid?: string | null;
-  negativListe?: Regionskriterium[] | null;
+  negativListe: Regionskriterium[] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

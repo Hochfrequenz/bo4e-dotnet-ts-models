@@ -6,30 +6,138 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Geschaeftspartner = {
+  boTyp: string | null;
+  versionStruktur: string | null;
+  timestamp?: string | null;
+  externeReferenzen: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
+  [k: string]: unknown;
+} & Geschaeftspartner1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -304,14 +412,14 @@ export type Adresse = {
 export type Adresse1 = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -586,58 +694,122 @@ export type Adresse1 = {
 export type Bankverbindung = {
   timestamp?: string | null;
   guid?: string | null;
-  iban?: string | null;
-  kontoinhaber?: string | null;
-  bankkennung?: string | null;
-  bankname?: string | null;
+  iban: string | null;
+  kontoinhaber: string | null;
+  bankkennung: string | null;
+  bankname: string | null;
   [k: string]: unknown;
 } & Bankverbindung1;
 export type Bankverbindung1 = {
   timestamp?: string | null;
   guid?: string | null;
-  iban?: string | null;
-  kontoinhaber?: string | null;
-  bankkennung?: string | null;
-  bankname?: string | null;
+  iban: string | null;
+  kontoinhaber: string | null;
+  bankkennung: string | null;
+  bankname: string | null;
   [k: string]: unknown;
 } | null;
 export type Erreichbarkeit = {
   timestamp?: string | null;
   guid?: string | null;
-  montagErreichbarkeit?: Zeitfenster;
-  dienstagErreichbarkeit?: Zeitfenster;
-  mittwochErreichbarkeit?: Zeitfenster;
-  donnerstagErreichbarkeit?: Zeitfenster;
-  freitagErreichbarkeit?: Zeitfenster;
-  mittagspause?: Zeitfenster;
+  montagErreichbarkeit: Zeitfenster;
+  dienstagErreichbarkeit: Zeitfenster;
+  mittwochErreichbarkeit: Zeitfenster;
+  donnerstagErreichbarkeit: Zeitfenster;
+  freitagErreichbarkeit: Zeitfenster;
+  mittagspause: Zeitfenster;
   [k: string]: unknown;
 } & Erreichbarkeit1;
 export type Zeitfenster = {
   timestamp?: string | null;
   guid?: string | null;
-  startzeit?: string | null;
-  endzeit?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
   [k: string]: unknown;
 } & Zeitfenster1;
 export type Zeitfenster1 = {
   timestamp?: string | null;
   guid?: string | null;
-  startzeit?: string | null;
-  endzeit?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
   [k: string]: unknown;
 } | null;
 export type Erreichbarkeit1 = {
   timestamp?: string | null;
   guid?: string | null;
-  montagErreichbarkeit?: Zeitfenster;
-  dienstagErreichbarkeit?: Zeitfenster;
-  mittwochErreichbarkeit?: Zeitfenster;
-  donnerstagErreichbarkeit?: Zeitfenster;
-  freitagErreichbarkeit?: Zeitfenster;
-  mittagspause?: Zeitfenster;
+  montagErreichbarkeit: Zeitfenster;
+  dienstagErreichbarkeit: Zeitfenster;
+  mittwochErreichbarkeit: Zeitfenster;
+  donnerstagErreichbarkeit: Zeitfenster;
+  freitagErreichbarkeit: Zeitfenster;
+  mittagspause: Zeitfenster;
   [k: string]: unknown;
 } | null;
-export type Betrag1 = {
+export type Geschaeftspartner1 = {
+  boTyp: string | null;
+  versionStruktur: string | null;
+  timestamp?: string | null;
+  externeReferenzen: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
+  [k: string]: unknown;
+} | null;
+export type Betrag = {
   wert: number;
   waehrung:
     | "AFN"
@@ -824,8 +996,8 @@ export type Betrag1 = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Betrag11;
-export type Betrag11 = {
+} & Betrag1;
+export type Betrag1 = {
   wert: number;
   waehrung:
     | "AFN"
@@ -1015,7 +1187,7 @@ export type Betrag11 = {
 } | null;
 export type Steuerbetrag = {
   steuerkennzeichen: "UST_SONDER" | "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
-  sondersteuersatz?: number | null;
+  sondersteuersatz: number | null;
   basiswert: number;
   steuerwert: number;
   waehrung:
@@ -1200,15 +1372,15 @@ export type Steuerbetrag = {
     | "ZAR"
     | "ZMW"
     | "ZWL";
-  basiswertVorausgezahlt?: number | null;
-  steuerwertVorausgezahlt?: number | null;
+  basiswertVorausgezahlt: number | null;
+  steuerwertVorausgezahlt: number | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & Steuerbetrag1;
 export type Steuerbetrag1 = {
   steuerkennzeichen: "UST_SONDER" | "UST_19" | "UST_16" | "UST_7" | "VST_0" | "VST_19" | "VST_16" | "VST_7" | "RCV";
-  sondersteuersatz?: number | null;
+  sondersteuersatz: number | null;
   basiswert: number;
   steuerwert: number;
   waehrung:
@@ -1393,8 +1565,8 @@ export type Steuerbetrag1 = {
     | "ZAR"
     | "ZMW"
     | "ZWL";
-  basiswertVorausgezahlt?: number | null;
-  steuerwertVorausgezahlt?: number | null;
+  basiswertVorausgezahlt: number | null;
+  steuerwertVorausgezahlt: number | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1403,10 +1575,10 @@ export type Rechnungsposition = {
   timestamp?: string | null;
   guid?: string | null;
   positionsnummer: number;
-  lieferungVon?: string | null;
-  lieferungBis?: string | null;
-  positionstext: string;
-  zeiteinheit?:
+  lieferungVon: string | null;
+  lieferungBis: string | null;
+  positionstext: string | null;
+  zeiteinheit:
     | null
     | "ZERO"
     | "WH"
@@ -1425,7 +1597,7 @@ export type Rechnungsposition = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  artikelnummer?:
+  artikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -1479,26 +1651,34 @@ export type Rechnungsposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  lokationsId?: string | null;
-  positionsMenge?: Menge;
-  zeitbezogeneMenge?: Menge;
-  korrekturfaktor?: number | null;
+  lokationsId: string | null;
+  positionsMenge: Menge;
+  zeitbezogeneMenge: Menge;
+  korrekturfaktor: number | null;
   einzelpreis: Preis;
-  teilsummeNetto?: Betrag1;
-  teilrabattNetto?: Betrag1;
-  teilsummeSteuer?: Steuerbetrag;
-  vertragskontoId?: string | null;
-  vertragsId?: string | null;
-  status?: null | "ROH" | "ROH_AUSGENOMMEN" | "ABRECHENBAR" | "ABRECHENBAR_AUSGENOMMEN" | "ABGERECHNET";
-  artikelId?: string | null;
-  ausfuehrungsdatum?: string | null;
+  teilsummeNetto: Betrag;
+  teilrabattNetto: Betrag;
+  teilsummeSteuer: Steuerbetrag;
+  vertragskontoId: string | null;
+  vertragsId: string | null;
+  status: null | "ROH" | "ROH_AUSGENOMMEN" | "ABRECHENBAR" | "ABRECHENBAR_AUSGENOMMEN" | "ABGERECHNET";
+  artikelId: string | null;
+  ausfuehrungsdatum: string | null;
+  gesamtzuabschlagsbetrag: number | null;
+  zuschlag:
+    | null
+    | "UMSPANNUNGSZUSCHLAG"
+    | "ALLEIN_GENUTZTE_BETRIEBSMITTEL_STROM_NEV"
+    | "ANPASSUNG_STROM_NEV_19_2"
+    | "PAUSCHALE_NETZENTGELTREDUZIERUNG_ENWG_14A";
+  abschlag: null | "GEMEINDERABATT" | "ANPASSUNG_STROM_NEV_19_2";
   [k: string]: unknown;
 } & Rechnungsposition1;
 export type Menge = {
   timestamp?: string | null;
   guid?: string | null;
   wert: number;
-  einheit?:
+  einheit:
     | null
     | "ZERO"
     | "WH"
@@ -1523,7 +1703,7 @@ export type Menge1 = {
   timestamp?: string | null;
   guid?: string | null;
   wert: number;
-  einheit?:
+  einheit:
     | null
     | "ZERO"
     | "WH"
@@ -1544,14 +1724,10 @@ export type Menge1 = {
     | "MWH";
   [k: string]: unknown;
 } | null;
-export type Rechnungsposition1 = {
-  timestamp?: string | null;
-  guid?: string | null;
-  positionsnummer: number;
-  lieferungVon?: string | null;
-  lieferungBis?: string | null;
-  positionstext: string;
-  zeiteinheit?:
+export type Preis = {
+  wert: number | null;
+  einheit: null | "EUR" | "CT";
+  bezugswert:
     | null
     | "ZERO"
     | "WH"
@@ -1570,7 +1746,65 @@ export type Rechnungsposition1 = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  artikelnummer?:
+  status: null | "VORLAEUFIG" | "ENDGUELTIG";
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Preis1;
+export type Preis1 = {
+  wert: number | null;
+  einheit: null | "EUR" | "CT";
+  bezugswert:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  status: null | "VORLAEUFIG" | "ENDGUELTIG";
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Rechnungsposition1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  positionsnummer: number;
+  lieferungVon: string | null;
+  lieferungBis: string | null;
+  positionstext: string | null;
+  zeiteinheit:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
+  artikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -1624,48 +1858,56 @@ export type Rechnungsposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  lokationsId?: string | null;
-  positionsMenge?: Menge;
-  zeitbezogeneMenge?: Menge;
-  korrekturfaktor?: number | null;
+  lokationsId: string | null;
+  positionsMenge: Menge;
+  zeitbezogeneMenge: Menge;
+  korrekturfaktor: number | null;
   einzelpreis: Preis;
-  teilsummeNetto?: Betrag1;
-  teilrabattNetto?: Betrag1;
-  teilsummeSteuer?: Steuerbetrag;
-  vertragskontoId?: string | null;
-  vertragsId?: string | null;
-  status?: null | "ROH" | "ROH_AUSGENOMMEN" | "ABRECHENBAR" | "ABRECHENBAR_AUSGENOMMEN" | "ABGERECHNET";
-  artikelId?: string | null;
-  ausfuehrungsdatum?: string | null;
+  teilsummeNetto: Betrag;
+  teilrabattNetto: Betrag;
+  teilsummeSteuer: Steuerbetrag;
+  vertragskontoId: string | null;
+  vertragsId: string | null;
+  status: null | "ROH" | "ROH_AUSGENOMMEN" | "ABRECHENBAR" | "ABRECHENBAR_AUSGENOMMEN" | "ABGERECHNET";
+  artikelId: string | null;
+  ausfuehrungsdatum: string | null;
+  gesamtzuabschlagsbetrag: number | null;
+  zuschlag:
+    | null
+    | "UMSPANNUNGSZUSCHLAG"
+    | "ALLEIN_GENUTZTE_BETRIEBSMITTEL_STROM_NEV"
+    | "ANPASSUNG_STROM_NEV_19_2"
+    | "PAUSCHALE_NETZENTGELTREDUZIERUNG_ENWG_14A";
+  abschlag: null | "GEMEINDERABATT" | "ANPASSUNG_STROM_NEV_19_2";
   [k: string]: unknown;
 } | null;
 export type Vorauszahlung = {
   timestamp?: string | null;
   guid?: string | null;
   betrag: Betrag;
-  referenz?: string | null;
-  referenzDatum?: string | null;
+  referenz: string | null;
+  referenzDatum: string | null;
   [k: string]: unknown;
 } & Vorauszahlung1;
 export type Vorauszahlung1 = {
   timestamp?: string | null;
   guid?: string | null;
   betrag: Betrag;
-  referenz?: string | null;
-  referenzDatum?: string | null;
+  referenz: string | null;
+  referenzDatum: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Rechnung {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  rechnungstitel?: string | null;
-  rechnungsstatus?: null | "GEPRUEFT_OK" | "GEPRUEFT_FEHLERHAFT" | "GEBUCHT" | "BEZAHLT";
+  rechnungstitel: string | null;
+  rechnungsstatus: null | "GEPRUEFT_OK" | "GEPRUEFT_FEHLERHAFT" | "GEBUCHT" | "BEZAHLT";
   storno: boolean;
-  rechnungsnummer: string;
+  rechnungsnummer: string | null;
   rechnungsdatum: string;
   faelligkeitsdatum: string;
   rechnungstyp:
@@ -1685,22 +1927,22 @@ export interface Rechnung {
     | "BLINDARBEIT"
     | "SONDERRECHNUNG"
     | "ABRECHNUNG_VON_KONFIGURATIONEN_UNIVERSALBESTELLPROZESS";
-  originalRechnungsnummer?: string | null;
+  originalRechnungsnummer: string | null;
   rechnungsperiode: Zeitraum;
   rechnungsersteller: Geschaeftspartner;
   rechnungsempfaenger: Geschaeftspartner;
   gesamtnetto: Betrag;
   gesamtsteuer: Betrag;
   gesamtbrutto: Betrag;
-  vorausgezahlt?: Betrag1;
-  rabattBrutto?: Betrag1;
+  vorausgezahlt: Betrag;
+  rabattBrutto: Betrag;
   zuzahlen: Betrag;
-  steuerbetraege?: Steuerbetrag[] | null;
-  rechnungspositionen: Rechnungsposition[];
-  istSelbstausgestellt?: boolean | null;
-  istReverseCharge?: boolean | null;
-  vorauszahlungen?: Vorauszahlung[] | null;
-  sonderrechnungsart?:
+  steuerbetraege: Steuerbetrag[] | null;
+  rechnungspositionen: Rechnungsposition[] | null;
+  istSelbstausgestellt: boolean | null;
+  istReverseCharge: boolean | null;
+  vorauszahlungen: Vorauszahlung[] | null;
+  sonderrechnungsart:
     | null
     | "KONZESSIONSABGABE_TESTAT"
     | "INDIVIDUELL_ATYPISCH"
@@ -1711,296 +1953,15 @@ export interface Rechnung {
     | "P18_ABLAV"
     | "KONZESSIONSABGABE_WECHSEL_RLM"
     | "PRIVILEGIERUNG_NACH_ENFG";
-  buchungsdatum?: string | null;
-  [k: string]: unknown;
-}
-export interface Zeitraum {
-  einheit?:
+  buchungsdatum: string | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
     | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-}
-export interface Geschaeftspartner {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  bankverbindung?: Bankverbindung;
-  steuernummer?: string | null;
-  erreichbarkeit?: Erreichbarkeit;
-  [k: string]: unknown;
-}
-export interface Betrag {
-  wert: number;
-  waehrung:
-    | "AFN"
-    | "ALL"
-    | "AMD"
-    | "ANG"
-    | "AOA"
-    | "ARS"
-    | "AUD"
-    | "AWG"
-    | "AZN"
-    | "BAM"
-    | "BBD"
-    | "BDT"
-    | "BGN"
-    | "BHD"
-    | "BIF"
-    | "BMD"
-    | "BND"
-    | "BOB"
-    | "BOV"
-    | "BRL"
-    | "BSD"
-    | "BTN"
-    | "BWP"
-    | "BYN"
-    | "BYR"
-    | "BZD"
-    | "CAD"
-    | "CDF"
-    | "CHE"
-    | "CHF"
-    | "CHW"
-    | "CLF"
-    | "CLP"
-    | "CNY"
-    | "COP"
-    | "COU"
-    | "CRC"
-    | "CUC"
-    | "CUP"
-    | "CVE"
-    | "CZK"
-    | "DJF"
-    | "DKK"
-    | "DOP"
-    | "DZD"
-    | "EGP"
-    | "ERN"
-    | "ETB"
-    | "EUR"
-    | "FJD"
-    | "FKP"
-    | "GBP"
-    | "GEL"
-    | "GHS"
-    | "GIP"
-    | "GMD"
-    | "GNF"
-    | "GTQ"
-    | "GYD"
-    | "HKD"
-    | "HNL"
-    | "HRK"
-    | "HTG"
-    | "HUF"
-    | "IDR"
-    | "ILS"
-    | "INR"
-    | "IQD"
-    | "IRR"
-    | "ISK"
-    | "JMD"
-    | "JOD"
-    | "JPY"
-    | "KES"
-    | "KGS"
-    | "KHR"
-    | "KMF"
-    | "KPW"
-    | "KRW"
-    | "KWD"
-    | "KYD"
-    | "KZT"
-    | "LAK"
-    | "LBP"
-    | "LKR"
-    | "LRD"
-    | "LSL"
-    | "LTL"
-    | "LYD"
-    | "MAD"
-    | "MDL"
-    | "MGA"
-    | "MKD"
-    | "MMK"
-    | "MNT"
-    | "MOP"
-    | "MRO"
-    | "MUR"
-    | "MVR"
-    | "MWK"
-    | "MXN"
-    | "MXV"
-    | "MYR"
-    | "MZN"
-    | "NAD"
-    | "NGN"
-    | "NIO"
-    | "NOK"
-    | "NPR"
-    | "NZD"
-    | "OMR"
-    | "PAB"
-    | "PEN"
-    | "PGK"
-    | "PHP"
-    | "PKR"
-    | "PLN"
-    | "PYG"
-    | "QAR"
-    | "RON"
-    | "RSD"
-    | "RUB"
-    | "RUR"
-    | "RWF"
-    | "SAR"
-    | "SBD"
-    | "SCR"
-    | "SDG"
-    | "SEK"
-    | "SGD"
-    | "SHP"
-    | "SLL"
-    | "SOS"
-    | "SRD"
-    | "SSP"
-    | "STD"
-    | "SVC"
-    | "SYP"
-    | "SZL"
-    | "THB"
-    | "TJS"
-    | "TMT"
-    | "TND"
-    | "TOP"
-    | "TRY"
-    | "TTD"
-    | "TWD"
-    | "TZS"
-    | "UAH"
-    | "UGX"
-    | "USD"
-    | "USN"
-    | "USS"
-    | "UYI"
-    | "UYU"
-    | "UZS"
-    | "VEF"
-    | "VND"
-    | "VUV"
-    | "WST"
-    | "XAF"
-    | "XAG"
-    | "XAU"
-    | "XBA"
-    | "XBB"
-    | "XBC"
-    | "XBD"
-    | "XCD"
-    | "XDR"
-    | "XOF"
-    | "XPD"
-    | "XPF"
-    | "XPT"
-    | "XSU"
-    | "XTS"
-    | "XUA"
-    | "XXX"
-    | "YER"
-    | "ZAR"
-    | "ZMW"
-    | "ZWL";
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-}
-export interface Preis {
-  wert: number;
-  einheit?: null | "EUR" | "CT";
-  bezugswert?:
-    | null
-    | "ZERO"
-    | "WH"
-    | "KW"
-    | "ANZAHL"
-    | "KUBIKMETER"
-    | "STUNDE"
-    | "TAG"
-    | "MONAT"
-    | "VAR"
-    | "VARH"
-    | "KWHK"
-    | "JAHR"
-    | "KWH"
-    | "MW"
-    | "KVAR"
-    | "KVARH"
-    | "MWH";
-  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
-  timestamp?: string | null;
-  guid?: string | null;
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

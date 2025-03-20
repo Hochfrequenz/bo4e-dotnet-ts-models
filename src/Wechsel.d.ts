@@ -6,15 +6,15 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -22,9 +22,9 @@ export type ExterneReferenz1 = {
 export type Geraet = {
   timestamp?: string | null;
   guid?: string | null;
-  geraetenummer?: string | null;
-  geraeteeigenschaften?: Geraeteeigenschaften;
-  geraeteart?:
+  geraetenummer: string | null;
+  geraeteeigenschaften: Geraeteeigenschaften;
+  geraeteart:
     | null
     | "WANDLER"
     | "KOMMUNIKATIONSEINRICHTUNG"
@@ -81,8 +81,11 @@ export type Geraeteeigenschaften = {
     | "SMARTMETERGATEWAY"
     | "STEUERBOX"
     | "BLOCKSTROMWANDLER"
-    | "KOMBIMESSWANDLER";
-  geraetemerkmal?:
+    | "KOMBIMESSWANDLER"
+    | "DICHTEMENGENUMWERTER"
+    | "TEMPERATURMENGENUMWERTER"
+    | "ZUSTANDSMENGENUMWERTER";
+  geraetemerkmal:
     | null
     | "EINTARIF"
     | "ZWEITARIF"
@@ -146,7 +149,7 @@ export type Geraeteeigenschaften = {
     | "GAS_G10000"
     | "GAS_G12500"
     | "GAS_G16000";
-  Parameter?: {
+  Parameter: {
     [k: string]: string | null;
   } | null;
   [k: string]: unknown;
@@ -197,8 +200,11 @@ export type Geraeteeigenschaften1 = {
     | "SMARTMETERGATEWAY"
     | "STEUERBOX"
     | "BLOCKSTROMWANDLER"
-    | "KOMBIMESSWANDLER";
-  geraetemerkmal?:
+    | "KOMBIMESSWANDLER"
+    | "DICHTEMENGENUMWERTER"
+    | "TEMPERATURMENGENUMWERTER"
+    | "ZUSTANDSMENGENUMWERTER";
+  geraetemerkmal:
     | null
     | "EINTARIF"
     | "ZWEITARIF"
@@ -262,7 +268,7 @@ export type Geraeteeigenschaften1 = {
     | "GAS_G10000"
     | "GAS_G12500"
     | "GAS_G16000";
-  Parameter?: {
+  Parameter: {
     [k: string]: string | null;
   } | null;
   [k: string]: unknown;
@@ -270,9 +276,9 @@ export type Geraeteeigenschaften1 = {
 export type Geraet1 = {
   timestamp?: string | null;
   guid?: string | null;
-  geraetenummer?: string | null;
-  geraeteeigenschaften?: Geraeteeigenschaften;
-  geraeteart?:
+  geraetenummer: string | null;
+  geraeteeigenschaften: Geraeteeigenschaften;
+  geraeteart:
     | null
     | "WANDLER"
     | "KOMMUNIKATIONSEINRICHTUNG"
@@ -283,16 +289,69 @@ export type Geraet1 = {
     | "ZAEHLEINRICHTUNG";
   [k: string]: unknown;
 } | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
 
 export interface Wechsel {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  geraete: Geraet[];
-  wechseldatum?: string | null;
-  vollstaendig?: boolean | null;
+  geraete: Geraet[] | null;
+  wechseldatum: string | null;
+  vollstaendig: boolean | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

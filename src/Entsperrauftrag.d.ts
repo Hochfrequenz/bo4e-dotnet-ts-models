@@ -8,14 +8,14 @@
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -290,14 +290,14 @@ export type Adresse = {
 export type Adresse1 = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -570,23 +570,23 @@ export type Adresse1 = {
   [k: string]: unknown;
 } | null;
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Preis = {
-  wert: number;
-  einheit?: null | "EUR" | "CT";
-  bezugswert?:
+  wert: number | null;
+  einheit: null | "EUR" | "CT";
+  bezugswert:
     | null
     | "ZERO"
     | "WH"
@@ -605,15 +605,15 @@ export type Preis = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+  status: null | "VORLAEUFIG" | "ENDGUELTIG";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & Preis1;
 export type Preis1 = {
-  wert: number;
-  einheit?: null | "EUR" | "CT";
-  bezugswert?:
+  wert: number | null;
+  einheit: null | "EUR" | "CT";
+  bezugswert:
     | null
     | "ZERO"
     | "WH"
@@ -632,7 +632,51 @@ export type Preis1 = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  status?: null | "VORLAEUFIG" | "ENDGUELTIG";
+  status: null | "VORLAEUFIG" | "ENDGUELTIG";
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -640,21 +684,30 @@ export type Preis1 = {
 
 export interface Entsperrauftrag {
   sperrauftragsart: "SPERREN" | "ENTSPERREN";
-  sperrauftragsstatus?: null | "GESCHEITERT" | "ERFOLGREICH" | "GEPLANT" | "ZUGESTIMMT" | "WIDERSPROCHEN" | "ABGELEHNT";
-  zaehlernummer?: string | null;
+  sperrauftragsstatus: null | "GESCHEITERT" | "ERFOLGREICH" | "GEPLANT" | "ZUGESTIMMT" | "WIDERSPROCHEN" | "ABGELEHNT";
+  zaehlernummer: string | null;
   istNurInnerhalbDerArbeitszeitZuEntsperren: boolean;
-  ausfuehrungsdatum?: string | null;
-  boTyp?: string | null;
-  fertigstellungsdatum?: string | null;
-  versionStruktur?: string | null;
-  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  ausfuehrungsdatum: string | null;
+  boTyp: string | null;
+  fertigstellungsdatum: string | null;
+  versionStruktur: string | null;
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   timestamp?: string | null;
-  lieferanschrift?: Adresse;
-  externeReferenzen?: ExterneReferenz[] | null;
-  marktlokationsId: string;
+  lieferanschrift: Adresse;
+  externeReferenzen: ExterneReferenz[] | null;
+  marktlokationsId: string | null;
   guid?: string | null;
-  bemerkungen?: (string | null)[] | null;
-  mindestpreis?: Preis;
-  hoechstpreis?: Preis;
+  bemerkungen: (string | null)[] | null;
+  mindestpreis: Preis;
+  hoechstpreis: Preis;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

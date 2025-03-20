@@ -6,17 +6,61 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Handelsunstimmigkeitsbegruendung = {
+  timestamp?: string | null;
+  referenzen: (string | null)[] | null;
+  guid?: string | null;
+  grund:
+    | "ANMELDUNG_BESTAETIGT"
+    | "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
+    | "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
+    | "NN_MSCONS_UEBERSENDET"
+    | "RICHTIGE_MESSWERTE_ENERGIEMENGEN_UEBERSENDET"
+    | "SONSTIGES_SIEHE_BEGRUENDUNG"
+    | "GUELTIGES_PREISBLATT_VERSENDET"
+    | "GUELTIGER_SPERRAUFTRAG_VORHANDEN"
+    | "KORREKTE_ARTIKEL_ID_IN_RECHNUNG"
+    | "KORREKTER_PREIS_ZU_GUELTIGEM_PREISBLATT_IN_RECHNUNG"
+    | "GUELTIGES_PREISBLATT_FRISTGERECHT_VERSENDET"
+    | "GUELTIGE_RECHNUNG_VORHANDEN"
+    | "KORREKTER_PREIS_IN_RECHNUNG_ABGERECHNET"
+    | "GUELTIGES_PREISBLATT_BLINDARBEIT_VERSENDET"
+    | "KORREKTE_ARTIKEL_ID_FUER_ABRECHNUNG_STORNIERTER_SPERRAUFTRAG_ANGEGEBEN";
+  [k: string]: unknown;
+} & Handelsunstimmigkeitsbegruendung1;
+export type Handelsunstimmigkeitsbegruendung1 = {
+  timestamp?: string | null;
+  referenzen: (string | null)[] | null;
+  guid?: string | null;
+  grund:
+    | "ANMELDUNG_BESTAETIGT"
+    | "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
+    | "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
+    | "NN_MSCONS_UEBERSENDET"
+    | "RICHTIGE_MESSWERTE_ENERGIEMENGEN_UEBERSENDET"
+    | "SONSTIGES_SIEHE_BEGRUENDUNG"
+    | "GUELTIGES_PREISBLATT_VERSENDET"
+    | "GUELTIGER_SPERRAUFTRAG_VORHANDEN"
+    | "KORREKTE_ARTIKEL_ID_IN_RECHNUNG"
+    | "KORREKTER_PREIS_ZU_GUELTIGEM_PREISBLATT_IN_RECHNUNG"
+    | "GUELTIGES_PREISBLATT_FRISTGERECHT_VERSENDET"
+    | "GUELTIGE_RECHNUNG_VORHANDEN"
+    | "KORREKTER_PREIS_IN_RECHNUNG_ABGERECHNET"
+    | "GUELTIGES_PREISBLATT_BLINDARBEIT_VERSENDET"
+    | "KORREKTE_ARTIKEL_ID_FUER_ABRECHNUNG_STORNIERTER_SPERRAUFTRAG_ANGEGEBEN";
   [k: string]: unknown;
 } | null;
 export type Betrag = {
@@ -395,42 +439,73 @@ export type Betrag1 = {
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
 
 export interface Handelsunstimmigkeit {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  nummer: string;
+  nummer: string | null;
   typ:
     | "HANDELSRECHNUNG"
     | "LIEFERSCHEIN_HANDELSUNSTIMMIGKEITSTYP"
     | "LIEFERSCHEIN_GRUND_ARBEITSPREIS"
     | "LIEFERSCHEIN_ARBEITS_LEISTUNGSPREIS";
   begruendung: Handelsunstimmigkeitsbegruendung;
-  zuZahlen?: Betrag;
-  [k: string]: unknown;
-}
-export interface Handelsunstimmigkeitsbegruendung {
-  timestamp?: string | null;
-  referenzen?: (string | null)[] | null;
-  guid?: string | null;
-  grund:
-    | "ANMELDUNG_BESTAETIGT"
-    | "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
-    | "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
-    | "NN_MSCONS_UEBERSENDET"
-    | "RICHTIGE_MESSWERTE_ENERGIEMENGEN_UEBERSENDET"
-    | "SONSTIGES_SIEHE_BEGRUENDUNG"
-    | "GUELTIGES_PREISBLATT_VERSENDET"
-    | "GUELTIGER_SPERRAUFTRAG_VORHANDEN"
-    | "KORREKTE_ARTIKEL_ID_IN_RECHNUNG"
-    | "KORREKTER_PREIS_ZU_GUELTIGEM_PREISBLATT_IN_RECHNUNG"
-    | "GUELTIGES_PREISBLATT_FRISTGERECHT_VERSENDET"
-    | "GUELTIGE_RECHNUNG_VORHANDEN"
-    | "KORREKTER_PREIS_IN_RECHNUNG_ABGERECHNET"
-    | "GUELTIGES_PREISBLATT_BLINDARBEIT_VERSENDET"
-    | "KORREKTE_ARTIKEL_ID_FUER_ABRECHNUNG_STORNIERTER_SPERRAUFTRAG_ANGEGEBEN";
+  zuZahlen: Betrag;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

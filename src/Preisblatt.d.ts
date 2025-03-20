@@ -6,15 +6,59 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -63,9 +107,9 @@ export type Preisposition = {
     | "ENTSPERRUNG"
     | "MAHNKOSTEN"
     | "INKASSOKOSTEN";
-  leistungsbezeichnung: string;
+  leistungsbezeichnung: string | null;
   preiseinheit: "EUR" | "CT";
-  bezugsgroesse?:
+  bezugsgroesse:
     | null
     | "ZERO"
     | "WH"
@@ -84,7 +128,7 @@ export type Preisposition = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  zeitbasis?:
+  zeitbasis:
     | null
     | "SEKUNDE"
     | "MINUTE"
@@ -96,8 +140,8 @@ export type Preisposition = {
     | "QUARTAL"
     | "HALBJAHR"
     | "JAHR";
-  tarifzeit?: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
-  bdewArtikelnummer?:
+  tarifzeit: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
+  bdewArtikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -151,7 +195,7 @@ export type Preisposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  zonungsgroesse?:
+  zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
     | "LEISTUNG_EL"
@@ -165,11 +209,11 @@ export type Preisposition = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag;
-  preisstaffeln: Preisstaffel[];
-  preisschluesselstamm?: string | null;
-  positionsnummer?: number | null;
-  messebene?:
+  zu_abschlaege: PositionsAufAbschlag;
+  preisstaffeln: Preisstaffel[] | null;
+  preisschluesselstamm: string | null;
+  positionsnummer: number | null;
+  messebene:
     | null
     | "NSP"
     | "MSP"
@@ -181,14 +225,14 @@ export type Preisposition = {
     | "HD"
     | "MD"
     | "ND";
-  beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum1;
-  artikelId?: string | null;
+  beschreibung: string | null;
+  verarbeitungszeitraum: Zeitraum;
+  artikelId: string | null;
   [k: string]: unknown;
 } & Preisposition1;
 export type PositionsAufAbschlag = {
-  bezeichnung: string;
-  beschreibung: string;
+  bezeichnung: string | null;
+  beschreibung: string | null;
   aufAbschlagstyp: "RELATIV" | "ABSOLUT";
   aufAbschlagswert: number;
   aufAbschlagswaehrung: "EUR" | "CT";
@@ -197,8 +241,8 @@ export type PositionsAufAbschlag = {
   [k: string]: unknown;
 } & PositionsAufAbschlag1;
 export type PositionsAufAbschlag1 = {
-  bezeichnung: string;
-  beschreibung: string;
+  bezeichnung: string | null;
+  beschreibung: string | null;
   aufAbschlagstyp: "RELATIV" | "ABSOLUT";
   aufAbschlagswert: number;
   aufAbschlagswaehrung: "EUR" | "CT";
@@ -210,7 +254,7 @@ export type Preisstaffel = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter;
+  sigmoidparameter: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -237,51 +281,7 @@ export type Preisstaffel1 = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Zeitraum1 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & Zeitraum11;
-export type Zeitraum11 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
+  sigmoidparameter: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -330,9 +330,9 @@ export type Preisposition1 = {
     | "ENTSPERRUNG"
     | "MAHNKOSTEN"
     | "INKASSOKOSTEN";
-  leistungsbezeichnung: string;
+  leistungsbezeichnung: string | null;
   preiseinheit: "EUR" | "CT";
-  bezugsgroesse?:
+  bezugsgroesse:
     | null
     | "ZERO"
     | "WH"
@@ -351,7 +351,7 @@ export type Preisposition1 = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  zeitbasis?:
+  zeitbasis:
     | null
     | "SEKUNDE"
     | "MINUTE"
@@ -363,8 +363,8 @@ export type Preisposition1 = {
     | "QUARTAL"
     | "HALBJAHR"
     | "JAHR";
-  tarifzeit?: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
-  bdewArtikelnummer?:
+  tarifzeit: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
+  bdewArtikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -418,7 +418,7 @@ export type Preisposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  zonungsgroesse?:
+  zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
     | "LEISTUNG_EL"
@@ -432,11 +432,11 @@ export type Preisposition1 = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag;
-  preisstaffeln: Preisstaffel[];
-  preisschluesselstamm?: string | null;
-  positionsnummer?: number | null;
-  messebene?:
+  zu_abschlaege: PositionsAufAbschlag;
+  preisstaffeln: Preisstaffel[] | null;
+  preisschluesselstamm: string | null;
+  positionsnummer: number | null;
+  messebene:
     | null
     | "NSP"
     | "MSP"
@@ -448,44 +448,31 @@ export type Preisposition1 = {
     | "HD"
     | "MD"
     | "ND";
-  beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum1;
-  artikelId?: string | null;
+  beschreibung: string | null;
+  verarbeitungszeitraum: Zeitraum;
+  artikelId: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Preisblatt {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  bezeichnung: string;
+  bezeichnung: string | null;
   gueltigkeit: Zeitraum;
-  preispositionen: Preisposition[];
-  preisstatus?: null | "VORLAEUFIG" | "ENDGUELTIG";
-  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  [k: string]: unknown;
-}
-export interface Zeitraum {
-  einheit?:
+  preispositionen: Preisposition[] | null;
+  preisstatus: null | "VORLAEUFIG" | "ENDGUELTIG";
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
     | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

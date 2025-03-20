@@ -6,23 +6,23 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type MarktpartnerDetails = {
-  rollencodenummer?: string | null;
-  code?: string | null;
-  marktrolle?:
+  rollencodenummer: string | null;
+  code: string | null;
+  marktrolle:
     | null
     | "NB"
     | "LF"
@@ -42,13 +42,13 @@ export type MarktpartnerDetails = {
     | "AMSB";
   timestamp?: string | null;
   guid?: string | null;
-  weiterverpflichtet?: boolean | null;
+  weiterverpflichtet: boolean | null;
   [k: string]: unknown;
 } & MarktpartnerDetails1;
 export type MarktpartnerDetails1 = {
-  rollencodenummer?: string | null;
-  code?: string | null;
-  marktrolle?:
+  rollencodenummer: string | null;
+  code: string | null;
+  marktrolle:
     | null
     | "NB"
     | "LF"
@@ -68,20 +68,74 @@ export type MarktpartnerDetails1 = {
     | "AMSB";
   timestamp?: string | null;
   guid?: string | null;
-  weiterverpflichtet?: boolean | null;
+  weiterverpflichtet: boolean | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Tranche {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  trancheId: string;
+  trancheId: string | null;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  aufteilungsmenge?: number | null;
-  obisKennzahl?: string | null;
-  marktrollen?: MarktpartnerDetails[] | null;
+  aufteilungsmenge: number | null;
+  obisKennzahl: string | null;
+  marktrollen: MarktpartnerDetails[] | null;
+  spezifizierungAufteilungsmenge: string | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

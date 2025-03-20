@@ -6,22 +6,22 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Fehler = {
-  typ: "SYNTAX" | "VERARBEITUNG";
-  fehlerDetails?: FehlerDetail[] | null;
+  typ: null | "SYNTAX" | "VERARBEITUNG";
+  fehlerDetails: FehlerDetail[] | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -30,6 +30,7 @@ export type FehlerDetail = {
   timestamp?: string | null;
   guid?: string | null;
   code:
+    | null
     | "ID_UNBEKANNT"
     | "ABSENDER_NICHT_ZUGEORDNET"
     | "EMPFAENGER_NICHT_ZUGEORDNET"
@@ -67,28 +68,28 @@ export type FehlerDetail = {
     | "KONTROLLZAEHLER_UNPLAUSIBEL"
     | "WERT_ZU_LANG"
     | "WIEDERHOLUNG_UNPLAUSIBEL";
-  beschreibung?: string | null;
-  ursache?: FehlerUrsache;
+  beschreibung: string | null;
+  ursache: FehlerUrsache;
   [k: string]: unknown;
 } & FehlerDetail1;
 export type FehlerUrsache = {
-  dokument?: string | null;
-  nachricht?: string | null;
-  transaktion?: string | null;
-  gruppe?: string | null;
-  segment?: string | null;
-  beschreibung?: string | null;
+  dokument: string | null;
+  nachricht: string | null;
+  transaktion: string | null;
+  gruppe: string | null;
+  segment: string | null;
+  beschreibung: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & FehlerUrsache1;
 export type FehlerUrsache1 = {
-  dokument?: string | null;
-  nachricht?: string | null;
-  transaktion?: string | null;
-  gruppe?: string | null;
-  segment?: string | null;
-  beschreibung?: string | null;
+  dokument: string | null;
+  nachricht: string | null;
+  transaktion: string | null;
+  gruppe: string | null;
+  segment: string | null;
+  beschreibung: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -97,6 +98,7 @@ export type FehlerDetail1 = {
   timestamp?: string | null;
   guid?: string | null;
   code:
+    | null
     | "ID_UNBEKANNT"
     | "ABSENDER_NICHT_ZUGEORDNET"
     | "EMPFAENGER_NICHT_ZUGEORDNET"
@@ -134,27 +136,80 @@ export type FehlerDetail1 = {
     | "KONTROLLZAEHLER_UNPLAUSIBEL"
     | "WERT_ZU_LANG"
     | "WIEDERHOLUNG_UNPLAUSIBEL";
-  beschreibung?: string | null;
-  ursache?: FehlerUrsache;
+  beschreibung: string | null;
+  ursache: FehlerUrsache;
   [k: string]: unknown;
 } | null;
 export type Fehler1 = {
-  typ: "SYNTAX" | "VERARBEITUNG";
-  fehlerDetails?: FehlerDetail[] | null;
+  typ: null | "SYNTAX" | "VERARBEITUNG";
+  fehlerDetails: FehlerDetail[] | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Statusbericht {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  status: "ERFOLGREICH" | "FEHLER";
-  pruefgegenstand?: string | null;
+  status: null | "ERFOLGREICH" | "FEHLER";
+  pruefgegenstand: string | null;
   datumPruefung: string;
-  fehler?: Fehler;
+  fehler: Fehler;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

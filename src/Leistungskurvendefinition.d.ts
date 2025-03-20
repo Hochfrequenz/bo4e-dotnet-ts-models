@@ -64,14 +64,18 @@ export type Zeitraum1 = {
   [k: string]: unknown;
 } | null;
 
-export interface SperrauftragsStorno {
-  originalSperrauftragsart: "SPERREN" | "ENTSPERREN";
-  auftragsId: string | null;
+export interface Leistungskurvendefinition {
   boTyp: string | null;
   versionStruktur: string | null;
   timestamp?: string | null;
   externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
+  ausgerollt?: boolean | null;
+  aenderungszeitpunkt?: string;
+  leistungskurvendefinitionscode?: string | null;
+  haeufigkeit?: null | "EINMALIG" | "JAEHRLICH";
+  uebermittelbarkeit?: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
+  obererSchwellwert?: string | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
     | null

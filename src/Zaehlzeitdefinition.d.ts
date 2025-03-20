@@ -6,15 +6,15 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -22,75 +22,128 @@ export type ExterneReferenz1 = {
 export type Zaehlzeit = {
   timestamp?: string | null;
   guid?: string | null;
-  code?: string | null;
-  haeufigkeit?: null | "EINMALIG" | "JAEHRLICH";
-  uebermittelbarkeit?: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
+  code: string | null;
+  haeufigkeit: null | "EINMALIG" | "JAEHRLICH";
+  uebermittelbarkeit: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
   ermittlungLeistungsmaximum?: null | "VERWENDUNG_HOCHLASTFENSTER" | "KEINE_VERWENDUNG_HOCHLASTFENSTER";
-  istBestellbar?: boolean | null;
-  typ?: null | "WAERMEPUMPE" | "NACHTSPEICHERHEIZUNG" | "SCHWACHLASTZEITFENSTER" | "SONSTIGE" | "HOCHLASTZEITFENSTER";
-  beschreibungTyp?: string | null;
+  istBestellbar: boolean | null;
+  typ: null | "WAERMEPUMPE" | "NACHTSPEICHERHEIZUNG" | "SCHWACHLASTZEITFENSTER" | "SONSTIGE" | "HOCHLASTZEITFENSTER";
+  beschreibungTyp: string | null;
   [k: string]: unknown;
 } & Zaehlzeit1;
 export type Zaehlzeit1 = {
   timestamp?: string | null;
   guid?: string | null;
-  code?: string | null;
-  haeufigkeit?: null | "EINMALIG" | "JAEHRLICH";
-  uebermittelbarkeit?: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
+  code: string | null;
+  haeufigkeit: null | "EINMALIG" | "JAEHRLICH";
+  uebermittelbarkeit: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
   ermittlungLeistungsmaximum?: null | "VERWENDUNG_HOCHLASTFENSTER" | "KEINE_VERWENDUNG_HOCHLASTFENSTER";
-  istBestellbar?: boolean | null;
-  typ?: null | "WAERMEPUMPE" | "NACHTSPEICHERHEIZUNG" | "SCHWACHLASTZEITFENSTER" | "SONSTIGE" | "HOCHLASTZEITFENSTER";
-  beschreibungTyp?: string | null;
+  istBestellbar: boolean | null;
+  typ: null | "WAERMEPUMPE" | "NACHTSPEICHERHEIZUNG" | "SCHWACHLASTZEITFENSTER" | "SONSTIGE" | "HOCHLASTZEITFENSTER";
+  beschreibungTyp: string | null;
   [k: string]: unknown;
 } | null;
 export type Zaehlzeitregister = {
   timestamp?: string | null;
   guid?: string | null;
-  zaehlzeitDefinition?: string | null;
-  register?: string | null;
-  schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+  zaehlzeitDefinition: string | null;
+  register: string | null;
+  schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   [k: string]: unknown;
 } & Zaehlzeitregister1;
 export type Zaehlzeitregister1 = {
   timestamp?: string | null;
   guid?: string | null;
-  zaehlzeitDefinition?: string | null;
-  register?: string | null;
-  schwachlastfaehig?: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+  zaehlzeitDefinition: string | null;
+  register: string | null;
+  schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   [k: string]: unknown;
 } | null;
 export type AusgerollteZaehlzeit = {
   timestamp?: string | null;
   guid?: string | null;
   aenderungszeitpunkt: string;
-  register?: string | null;
+  register: string | null;
   [k: string]: unknown;
 } & AusgerollteZaehlzeit1;
 export type AusgerollteZaehlzeit1 = {
   timestamp?: string | null;
   guid?: string | null;
   aenderungszeitpunkt: string;
-  register?: string | null;
+  register: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Zaehlzeitdefinition {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  beginndatum?: string | null;
-  endedatum?: string | null;
+  beginndatum: string | null;
+  endedatum: string | null;
   version: string;
-  notwendigkeit?:
+  notwendigkeit:
     | null
     | "ZAEHLZEITDEFINITIONEN_WERDEN_VERWENDET"
     | "ZAEHLZEITDEFINITIONEN_WERDEN_NICHT_VERWENDET"
     | "DEFINITIONEN_WERDEN_VERWENDET"
     | "DEFINITIONEN_WERDEN_NICHT_VERWENDET";
-  zaehlzeiten?: Zaehlzeit[] | null;
-  zaehlzeitregister: Zaehlzeitregister[];
-  ausgerollteZaehlzeiten: AusgerollteZaehlzeit[];
+  zaehlzeiten: Zaehlzeit[] | null;
+  zaehlzeitregister: Zaehlzeitregister[] | null;
+  ausgerollteZaehlzeiten: AusgerollteZaehlzeit[] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

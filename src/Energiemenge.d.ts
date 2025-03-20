@@ -6,24 +6,24 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Verbrauch = {
-  startdatum?: string | null;
-  enddatum?: string | null;
-  type?: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
-  tarifstufe?:
+  startdatum: string | null;
+  enddatum: string | null;
+  type: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
+  tarifstufe:
     | null
     | "TARIFSTUFE_0"
     | "TARIFSTUFE_1"
@@ -37,8 +37,8 @@ export type Verbrauch = {
     | "TARIFSTUFE_9";
   timestamp?: string | null;
   guid?: string | null;
-  wertermittlungsverfahren?: null | "PROGNOSE" | "MESSUNG";
-  messwertstatus?:
+  wertermittlungsverfahren: null | "PROGNOSE" | "MESSUNG";
+  messwertstatus:
     | null
     | "ABGELESEN"
     | "ERSATZWERT"
@@ -50,8 +50,8 @@ export type Verbrauch = {
     | "ENERGIEMENGESUMMIERT"
     | "FEHLT"
     | "GRUNDLAGE_POG_ERMITTLUNG";
-  statuszusatzinformationen?: StatusZusatzInformation[] | null;
-  obiskennzahl: string;
+  statuszusatzinformationen: StatusZusatzInformation[] | null;
+  obiskennzahl: string | null;
   wert: number;
   einheit:
     | "ZERO"
@@ -71,14 +71,14 @@ export type Verbrauch = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  nutzungszeitpunkt?: string | null;
-  ausfuehrungszeitpunkt?: string | null;
+  nutzungszeitpunkt: string | null;
+  ausfuehrungszeitpunkt: string | null;
   [k: string]: unknown;
 } & Verbrauch1 & {
-    startdatum?: string | null;
-    enddatum?: string | null;
-    type?: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
-    tarifstufe?:
+    startdatum: string | null;
+    enddatum: string | null;
+    type: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
+    tarifstufe:
       | null
       | "TARIFSTUFE_0"
       | "TARIFSTUFE_1"
@@ -92,8 +92,8 @@ export type Verbrauch = {
       | "TARIFSTUFE_9";
     timestamp?: string | null;
     guid?: string | null;
-    wertermittlungsverfahren?: null | "PROGNOSE" | "MESSUNG";
-    messwertstatus?:
+    wertermittlungsverfahren: null | "PROGNOSE" | "MESSUNG";
+    messwertstatus:
       | null
       | "ABGELESEN"
       | "ERSATZWERT"
@@ -105,8 +105,8 @@ export type Verbrauch = {
       | "ENERGIEMENGESUMMIERT"
       | "FEHLT"
       | "GRUNDLAGE_POG_ERMITTLUNG";
-    statuszusatzinformationen?: StatusZusatzInformation[] | null;
-    obiskennzahl: string;
+    statuszusatzinformationen: StatusZusatzInformation[] | null;
+    obiskennzahl: string | null;
     wert: number;
     einheit:
       | "ZERO"
@@ -126,13 +126,13 @@ export type Verbrauch = {
       | "KVAR"
       | "KVARH"
       | "MWH";
-    nutzungszeitpunkt?: string | null;
-    ausfuehrungszeitpunkt?: string | null;
+    nutzungszeitpunkt: string | null;
+    ausfuehrungszeitpunkt: string | null;
     [k: string]: unknown;
   } & Verbrauch1;
 export type StatusZusatzInformation = {
   timestamp?: string | null;
-  art?:
+  art:
     | null
     | "VERTRAG"
     | "MESSWERTQUALITAET"
@@ -143,7 +143,7 @@ export type StatusZusatzInformation = {
     | "KORREKTURGRUND"
     | "GASQUALITAET";
   guid?: string | null;
-  status?:
+  status:
     | null
     | "TARIF_1"
     | "TARIF_2"
@@ -216,7 +216,7 @@ export type StatusZusatzInformation = {
 } & StatusZusatzInformation1;
 export type StatusZusatzInformation1 = {
   timestamp?: string | null;
-  art?:
+  art:
     | null
     | "VERTRAG"
     | "MESSWERTQUALITAET"
@@ -227,7 +227,7 @@ export type StatusZusatzInformation1 = {
     | "KORREKTURGRUND"
     | "GASQUALITAET";
   guid?: string | null;
-  status?:
+  status:
     | null
     | "TARIF_1"
     | "TARIF_2"
@@ -299,10 +299,10 @@ export type StatusZusatzInformation1 = {
   [k: string]: unknown;
 } | null;
 export type Verbrauch1 = {
-  startdatum?: string | null;
-  enddatum?: string | null;
-  type?: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
-  tarifstufe?:
+  startdatum: string | null;
+  enddatum: string | null;
+  type: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
+  tarifstufe:
     | null
     | "TARIFSTUFE_0"
     | "TARIFSTUFE_1"
@@ -316,8 +316,8 @@ export type Verbrauch1 = {
     | "TARIFSTUFE_9";
   timestamp?: string | null;
   guid?: string | null;
-  wertermittlungsverfahren?: null | "PROGNOSE" | "MESSUNG";
-  messwertstatus?:
+  wertermittlungsverfahren: null | "PROGNOSE" | "MESSUNG";
+  messwertstatus:
     | null
     | "ABGELESEN"
     | "ERSATZWERT"
@@ -329,8 +329,8 @@ export type Verbrauch1 = {
     | "ENERGIEMENGESUMMIERT"
     | "FEHLT"
     | "GRUNDLAGE_POG_ERMITTLUNG";
-  statuszusatzinformationen?: StatusZusatzInformation[] | null;
-  obiskennzahl: string;
+  statuszusatzinformationen: StatusZusatzInformation[] | null;
+  obiskennzahl: string | null;
   wert: number;
   einheit:
     | "ZERO"
@@ -350,22 +350,75 @@ export type Verbrauch1 = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  nutzungszeitpunkt?: string | null;
-  ausfuehrungszeitpunkt?: string | null;
+  nutzungszeitpunkt: string | null;
+  ausfuehrungszeitpunkt: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface Energiemenge {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  lokationsId: string;
+  lokationsId: string | null;
   lokationsTyp: null | "MALO" | "MELO";
   /**
    * @minItems 1
    */
   energieverbrauch: [Verbrauch, ...Verbrauch[]] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

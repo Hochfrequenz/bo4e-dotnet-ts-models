@@ -6,19 +6,138 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
+export type Geraeteeigenschaften = {
+  timestamp?: string | null;
+  guid?: string | null;
+  geraetetyp:
+    | "WECHSELSTROMZAEHLER"
+    | "DREHSTROMZAEHLER"
+    | "ZWEIRICHTUNGSZAEHLER"
+    | "RLM_ZAEHLER"
+    | "IMS_ZAEHLER"
+    | "BALGENGASZAEHLER"
+    | "MAXIMUMZAEHLER"
+    | "MULTIPLEXANLAGE"
+    | "PAUSCHALANLAGE"
+    | "VERSTAERKERANLAGE"
+    | "SUMMATIONSGERAET"
+    | "IMPULSGEBER"
+    | "EDL_21_ZAEHLERAUFSATZ"
+    | "VIER_QUADRANTEN_LASTGANGZAEHLER"
+    | "MENGENUMWERTER"
+    | "STROMWANDLER"
+    | "SPANNUNGSWANDLER"
+    | "DATENLOGGER"
+    | "KOMMUNIKATIONSANSCHLUSS"
+    | "MODEM"
+    | "TELEKOMMUNIKATIONSEINRICHTUNG"
+    | "DREHKOLBENGASZAEHLER"
+    | "TURBINENRADGASZAEHLER"
+    | "ULTRASCHALLZAEHLER"
+    | "WIRBELGASZAEHLER"
+    | "MODERNE_MESSEINRICHTUNG"
+    | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
+    | "STEUEREINRICHTUNG"
+    | "TECHNISCHESTEUEREINRICHTUNG"
+    | "TARIFSCHALTGERAET"
+    | "RUNDSTEUEREMPFAENGER"
+    | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
+    | "MESSWANDLERSATZ_IMS_MME"
+    | "KOMBIMESSWANDLER_IMS_MME"
+    | "TARIFSCHALTGERAET_IMS_MME"
+    | "RUNDSTEUEREMPFAENGER_IMS_MME"
+    | "TEMPERATUR_KOMPENSATION"
+    | "HOECHSTBELASTUNGS_ANZEIGER"
+    | "SONSTIGES_GERAET"
+    | "SMARTMETERGATEWAY"
+    | "STEUERBOX"
+    | "BLOCKSTROMWANDLER"
+    | "KOMBIMESSWANDLER"
+    | "DICHTEMENGENUMWERTER"
+    | "TEMPERATURMENGENUMWERTER"
+    | "ZUSTANDSMENGENUMWERTER";
+  geraetemerkmal:
+    | null
+    | "EINTARIF"
+    | "ZWEITARIF"
+    | "MEHRTARIF"
+    | "GAS_G2P5"
+    | "GAS_G4"
+    | "GAS_G6"
+    | "GAS_G10"
+    | "GAS_G16"
+    | "GAS_G25"
+    | "GAS_G40"
+    | "GAS_G65"
+    | "GAS_G100"
+    | "GAS_G160"
+    | "GAS_G250"
+    | "GAS_G400"
+    | "GAS_G650"
+    | "GAS_G1000"
+    | "GAS_G1600"
+    | "GAS_G2500"
+    | "IMPULSGEBER_G4_G100"
+    | "IMPULSGEBER_G100"
+    | "MODEM_GSM"
+    | "MODEM_GPRS"
+    | "MODEM_FUNK"
+    | "MODEM_GSM_O_LG"
+    | "MODEM_GSM_M_LG"
+    | "MODEM_FESTNETZ"
+    | "MODEM_GPRS_M_LG"
+    | "PLC_COM"
+    | "ETHERNET_KOM"
+    | "DSL_KOM"
+    | "LTE_KOM"
+    | "RUNDSTEUEREMPFAENGER"
+    | "TARIFSCHALTGERAET"
+    | "ZUSTANDS_MU"
+    | "TEMPERATUR_MU"
+    | "KOMPAKT_MU"
+    | "SYSTEM_MU"
+    | "UNBESTIMMT"
+    | "WASSER_MWZW"
+    | "WASSER_WZWW"
+    | "WASSER_WZ01"
+    | "WASSER_WZ02"
+    | "WASSER_WZ03"
+    | "WASSER_WZ04"
+    | "WASSER_WZ05"
+    | "WASSER_WZ06"
+    | "WASSER_WZ07"
+    | "WASSER_WZ08"
+    | "WASSER_WZ09"
+    | "WASSER_WZ10"
+    | "WASSER_VWZ04"
+    | "WASSER_VWZ05"
+    | "WASSER_VWZ06"
+    | "WASSER_VWZ07"
+    | "WASSER_VWZ10"
+    | "GAS_G350"
+    | "GAS_G4000"
+    | "GAS_G6500"
+    | "GAS_G10000"
+    | "GAS_G12500"
+    | "GAS_G16000";
+  Parameter: {
+    [k: string]: string | null;
+  } | null;
+  [k: string]: unknown;
+} & Geraeteeigenschaften1;
 export type Geraeteeigenschaften1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -65,8 +184,11 @@ export type Geraeteeigenschaften1 = {
     | "SMARTMETERGATEWAY"
     | "STEUERBOX"
     | "BLOCKSTROMWANDLER"
-    | "KOMBIMESSWANDLER";
-  geraetemerkmal?:
+    | "KOMBIMESSWANDLER"
+    | "DICHTEMENGENUMWERTER"
+    | "TEMPERATURMENGENUMWERTER"
+    | "ZUSTANDSMENGENUMWERTER";
+  geraetemerkmal:
     | null
     | "EINTARIF"
     | "ZWEITARIF"
@@ -130,138 +252,152 @@ export type Geraeteeigenschaften1 = {
     | "GAS_G10000"
     | "GAS_G12500"
     | "GAS_G16000";
-  Parameter?: {
-    [k: string]: string | null;
-  } | null;
-  [k: string]: unknown;
-} & Geraeteeigenschaften11;
-export type Geraeteeigenschaften11 = {
-  timestamp?: string | null;
-  guid?: string | null;
-  geraetetyp:
-    | "WECHSELSTROMZAEHLER"
-    | "DREHSTROMZAEHLER"
-    | "ZWEIRICHTUNGSZAEHLER"
-    | "RLM_ZAEHLER"
-    | "IMS_ZAEHLER"
-    | "BALGENGASZAEHLER"
-    | "MAXIMUMZAEHLER"
-    | "MULTIPLEXANLAGE"
-    | "PAUSCHALANLAGE"
-    | "VERSTAERKERANLAGE"
-    | "SUMMATIONSGERAET"
-    | "IMPULSGEBER"
-    | "EDL_21_ZAEHLERAUFSATZ"
-    | "VIER_QUADRANTEN_LASTGANGZAEHLER"
-    | "MENGENUMWERTER"
-    | "STROMWANDLER"
-    | "SPANNUNGSWANDLER"
-    | "DATENLOGGER"
-    | "KOMMUNIKATIONSANSCHLUSS"
-    | "MODEM"
-    | "TELEKOMMUNIKATIONSEINRICHTUNG"
-    | "DREHKOLBENGASZAEHLER"
-    | "TURBINENRADGASZAEHLER"
-    | "ULTRASCHALLZAEHLER"
-    | "WIRBELGASZAEHLER"
-    | "MODERNE_MESSEINRICHTUNG"
-    | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
-    | "STEUEREINRICHTUNG"
-    | "TECHNISCHESTEUEREINRICHTUNG"
-    | "TARIFSCHALTGERAET"
-    | "RUNDSTEUEREMPFAENGER"
-    | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
-    | "MESSWANDLERSATZ_IMS_MME"
-    | "KOMBIMESSWANDLER_IMS_MME"
-    | "TARIFSCHALTGERAET_IMS_MME"
-    | "RUNDSTEUEREMPFAENGER_IMS_MME"
-    | "TEMPERATUR_KOMPENSATION"
-    | "HOECHSTBELASTUNGS_ANZEIGER"
-    | "SONSTIGES_GERAET"
-    | "SMARTMETERGATEWAY"
-    | "STEUERBOX"
-    | "BLOCKSTROMWANDLER"
-    | "KOMBIMESSWANDLER";
-  geraetemerkmal?:
-    | null
-    | "EINTARIF"
-    | "ZWEITARIF"
-    | "MEHRTARIF"
-    | "GAS_G2P5"
-    | "GAS_G4"
-    | "GAS_G6"
-    | "GAS_G10"
-    | "GAS_G16"
-    | "GAS_G25"
-    | "GAS_G40"
-    | "GAS_G65"
-    | "GAS_G100"
-    | "GAS_G160"
-    | "GAS_G250"
-    | "GAS_G400"
-    | "GAS_G650"
-    | "GAS_G1000"
-    | "GAS_G1600"
-    | "GAS_G2500"
-    | "IMPULSGEBER_G4_G100"
-    | "IMPULSGEBER_G100"
-    | "MODEM_GSM"
-    | "MODEM_GPRS"
-    | "MODEM_FUNK"
-    | "MODEM_GSM_O_LG"
-    | "MODEM_GSM_M_LG"
-    | "MODEM_FESTNETZ"
-    | "MODEM_GPRS_M_LG"
-    | "PLC_COM"
-    | "ETHERNET_KOM"
-    | "DSL_KOM"
-    | "LTE_KOM"
-    | "RUNDSTEUEREMPFAENGER"
-    | "TARIFSCHALTGERAET"
-    | "ZUSTANDS_MU"
-    | "TEMPERATUR_MU"
-    | "KOMPAKT_MU"
-    | "SYSTEM_MU"
-    | "UNBESTIMMT"
-    | "WASSER_MWZW"
-    | "WASSER_WZWW"
-    | "WASSER_WZ01"
-    | "WASSER_WZ02"
-    | "WASSER_WZ03"
-    | "WASSER_WZ04"
-    | "WASSER_WZ05"
-    | "WASSER_WZ06"
-    | "WASSER_WZ07"
-    | "WASSER_WZ08"
-    | "WASSER_WZ09"
-    | "WASSER_WZ10"
-    | "WASSER_VWZ04"
-    | "WASSER_VWZ05"
-    | "WASSER_VWZ06"
-    | "WASSER_VWZ07"
-    | "WASSER_VWZ10"
-    | "GAS_G350"
-    | "GAS_G4000"
-    | "GAS_G6500"
-    | "GAS_G10000"
-    | "GAS_G12500"
-    | "GAS_G16000";
-  Parameter?: {
+  Parameter: {
     [k: string]: string | null;
   } | null;
   [k: string]: unknown;
 } | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Marktteilnehmer = {
+  boTyp: string | null;
+  versionStruktur: string | null;
+  timestamp?: string | null;
+  externeReferenzen: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  marktrolle:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  rollencodenummer: string | null;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse: string | null;
+  ansprechpartner: Ansprechpartner;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
+  [k: string]: unknown;
+} & Marktteilnehmer1;
 export type Adresse = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -536,14 +672,14 @@ export type Adresse = {
 export type Adresse1 = {
   timestamp?: string | null;
   guid?: string | null;
-  postleitzahl: string;
-  ort: string;
-  strasse?: string | null;
-  hausnummer?: string | null;
-  postfach?: string | null;
-  adresszusatz?: string | null;
-  coErgaenzung?: string | null;
-  landescode?:
+  postleitzahl: string | null;
+  ort: string | null;
+  strasse: string | null;
+  hausnummer: string | null;
+  postfach: string | null;
+  adresszusatz: string | null;
+  coErgaenzung: string | null;
+  landescode:
     | null
     | "AC"
     | "AD"
@@ -818,64 +954,64 @@ export type Adresse1 = {
 export type Bankverbindung = {
   timestamp?: string | null;
   guid?: string | null;
-  iban?: string | null;
-  kontoinhaber?: string | null;
-  bankkennung?: string | null;
-  bankname?: string | null;
+  iban: string | null;
+  kontoinhaber: string | null;
+  bankkennung: string | null;
+  bankname: string | null;
   [k: string]: unknown;
 } & Bankverbindung1;
 export type Bankverbindung1 = {
   timestamp?: string | null;
   guid?: string | null;
-  iban?: string | null;
-  kontoinhaber?: string | null;
-  bankkennung?: string | null;
-  bankname?: string | null;
+  iban: string | null;
+  kontoinhaber: string | null;
+  bankkennung: string | null;
+  bankname: string | null;
   [k: string]: unknown;
 } | null;
 export type Erreichbarkeit = {
   timestamp?: string | null;
   guid?: string | null;
-  montagErreichbarkeit?: Zeitfenster;
-  dienstagErreichbarkeit?: Zeitfenster;
-  mittwochErreichbarkeit?: Zeitfenster;
-  donnerstagErreichbarkeit?: Zeitfenster;
-  freitagErreichbarkeit?: Zeitfenster;
-  mittagspause?: Zeitfenster;
+  montagErreichbarkeit: Zeitfenster;
+  dienstagErreichbarkeit: Zeitfenster;
+  mittwochErreichbarkeit: Zeitfenster;
+  donnerstagErreichbarkeit: Zeitfenster;
+  freitagErreichbarkeit: Zeitfenster;
+  mittagspause: Zeitfenster;
   [k: string]: unknown;
 } & Erreichbarkeit1;
 export type Zeitfenster = {
   timestamp?: string | null;
   guid?: string | null;
-  startzeit?: string | null;
-  endzeit?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
   [k: string]: unknown;
 } & Zeitfenster1;
 export type Zeitfenster1 = {
   timestamp?: string | null;
   guid?: string | null;
-  startzeit?: string | null;
-  endzeit?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
   [k: string]: unknown;
 } | null;
 export type Erreichbarkeit1 = {
   timestamp?: string | null;
   guid?: string | null;
-  montagErreichbarkeit?: Zeitfenster;
-  dienstagErreichbarkeit?: Zeitfenster;
-  mittwochErreichbarkeit?: Zeitfenster;
-  donnerstagErreichbarkeit?: Zeitfenster;
-  freitagErreichbarkeit?: Zeitfenster;
-  mittagspause?: Zeitfenster;
+  montagErreichbarkeit: Zeitfenster;
+  dienstagErreichbarkeit: Zeitfenster;
+  mittwochErreichbarkeit: Zeitfenster;
+  donnerstagErreichbarkeit: Zeitfenster;
+  freitagErreichbarkeit: Zeitfenster;
+  mittagspause: Zeitfenster;
   [k: string]: unknown;
 } | null;
 export type Ansprechpartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  anrede?:
+  anrede:
     | null
     | "HERR"
     | "FRAU"
@@ -887,25 +1023,34 @@ export type Ansprechpartner = {
     | "WOHNGEMEINSCHAFT"
     | "GRUNDSTUECKGEMEINSCHAFT"
     | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
+  inviduelleAnrede: string | null;
+  titel: null | "DR" | "PROF" | "PROF_DR" | "DIPLOM_INF";
+  vorname: string | null;
+  nachname: string | null;
+  eMailAdresse: string | null;
+  kommentar: string | null;
+  geschaeftspartner: Geschaeftspartner;
+  adresse: Adresse;
+  rufnummern: Rufnummer[] | null;
+  zustaendigkeit: Zustaendigkeit[] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Ansprechpartner1;
 export type Geschaeftspartner = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  anrede?:
+  anrede:
     | null
     | "HERR"
     | "FRAU"
@@ -917,48 +1062,59 @@ export type Geschaeftspartner = {
     | "WOHNGEMEINSCHAFT"
     | "GRUNDSTUECKGEMEINSCHAFT"
     | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
   gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
     | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  bankverbindung?: Bankverbindung;
-  steuernummer?: string | null;
-  erreichbarkeit?: Erreichbarkeit;
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Geschaeftspartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  anrede?:
+  anrede:
     | null
     | "HERR"
     | "FRAU"
@@ -970,39 +1126,50 @@ export type Geschaeftspartner1 = {
     | "WOHNGEMEINSCHAFT"
     | "GRUNDSTUECKGEMEINSCHAFT"
     | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
   gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
     | null
     | "KUNDE_ERFUELLT_VORAUSSETZUNG"
     | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
     | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
     | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  bankverbindung?: Bankverbindung;
-  steuernummer?: string | null;
-  erreichbarkeit?: Erreichbarkeit;
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
@@ -1016,7 +1183,7 @@ export type Rufnummer = {
     | "RUF_DURCHWAHL"
     | "FAX_DURCHWAHL"
     | "MOBIL_NUMMER";
-  rufnummer: string;
+  rufnummer: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1032,34 +1199,34 @@ export type Rufnummer1 = {
     | "RUF_DURCHWAHL"
     | "FAX_DURCHWAHL"
     | "MOBIL_NUMMER";
-  rufnummer: string;
+  rufnummer: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Zustaendigkeit = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
+  jobtitel: string | null;
+  abteilung: string | null;
+  themengebiet: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & Zustaendigkeit1;
 export type Zustaendigkeit1 = {
-  jobtitel?: string | null;
-  abteilung?: string | null;
-  themengebiet?: string | null;
+  jobtitel: string | null;
+  abteilung: string | null;
+  themengebiet: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Ansprechpartner1 = {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  anrede?:
+  anrede:
     | null
     | "HERR"
     | "FRAU"
@@ -1071,16 +1238,111 @@ export type Ansprechpartner1 = {
     | "WOHNGEMEINSCHAFT"
     | "GRUNDSTUECKGEMEINSCHAFT"
     | "DR";
-  inviduelleAnrede?: string | null;
-  titel?: null | "DR" | "PROF" | "PROF_DR";
-  vorname?: string | null;
-  nachname?: string | null;
-  eMailAdresse?: string | null;
-  kommentar?: string | null;
-  geschaeftspartner?: Geschaeftspartner;
-  adresse?: Adresse;
-  rufnummern?: Rufnummer[] | null;
-  zustaendigkeit?: Zustaendigkeit[] | null;
+  inviduelleAnrede: string | null;
+  titel: null | "DR" | "PROF" | "PROF_DR" | "DIPLOM_INF";
+  vorname: string | null;
+  nachname: string | null;
+  eMailAdresse: string | null;
+  kommentar: string | null;
+  geschaeftspartner: Geschaeftspartner;
+  adresse: Adresse;
+  rufnummern: Rufnummer[] | null;
+  zustaendigkeit: Zustaendigkeit[] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
+  [k: string]: unknown;
+} | null;
+export type Marktteilnehmer1 = {
+  boTyp: string | null;
+  versionStruktur: string | null;
+  timestamp?: string | null;
+  externeReferenzen: ExterneReferenz[] | null;
+  guid?: string | null;
+  anrede:
+    | null
+    | "HERR"
+    | "FRAU"
+    | "EHELEUTE"
+    | "FIRMA"
+    | "INDIVIDUELL"
+    | "FAMILIE"
+    | "ERBENGEMEINSCHAFT"
+    | "WOHNGEMEINSCHAFT"
+    | "GRUNDSTUECKGEMEINSCHAFT"
+    | "DR";
+  title: string | null;
+  name1: string | null;
+  name2: string | null;
+  name3: string | null;
+  gewerbekennzeichnung: boolean;
+  hrnummer: string | null;
+  amtsgericht: string | null;
+  kontaktweg: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
+  umsatzsteuerId: string | null;
+  glaeubigerId: string | null;
+  eMailAdresse: string | null;
+  website: string | null;
+  geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
+  partneradresse: Adresse;
+  grundlageZurVerringerungDerUmlagenNachEnfg:
+    | null
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
+    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
+    | "KEINE_ANGABE";
+  gruendeDerPrivilegierungNachEnFG:
+    | (
+        | "STROMSPEICHER_UND_VERLUSTENERGIE"
+        | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+        | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+        | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+        | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
+        | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+        | "SCHIENENBAHNEN"
+        | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+        | "LANDSTROMANLAGEN"
+      )[]
+    | null;
+  bankverbindung: Bankverbindung;
+  steuernummer: string | null;
+  erreichbarkeit: Erreichbarkeit;
+  marktrolle:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  rollencodenummer: string | null;
+  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  makoadresse: string | null;
+  ansprechpartner: Ansprechpartner;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Preisposition = {
@@ -1127,9 +1389,9 @@ export type Preisposition = {
     | "ENTSPERRUNG"
     | "MAHNKOSTEN"
     | "INKASSOKOSTEN";
-  leistungsbezeichnung: string;
+  leistungsbezeichnung: string | null;
   preiseinheit: "EUR" | "CT";
-  bezugsgroesse?:
+  bezugsgroesse:
     | null
     | "ZERO"
     | "WH"
@@ -1148,7 +1410,7 @@ export type Preisposition = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  zeitbasis?:
+  zeitbasis:
     | null
     | "SEKUNDE"
     | "MINUTE"
@@ -1160,8 +1422,8 @@ export type Preisposition = {
     | "QUARTAL"
     | "HALBJAHR"
     | "JAHR";
-  tarifzeit?: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
-  bdewArtikelnummer?:
+  tarifzeit: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
+  bdewArtikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -1215,7 +1477,7 @@ export type Preisposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  zonungsgroesse?:
+  zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
     | "LEISTUNG_EL"
@@ -1229,11 +1491,11 @@ export type Preisposition = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag;
-  preisstaffeln: Preisstaffel[];
-  preisschluesselstamm?: string | null;
-  positionsnummer?: number | null;
-  messebene?:
+  zu_abschlaege: PositionsAufAbschlag;
+  preisstaffeln: Preisstaffel[] | null;
+  preisschluesselstamm: string | null;
+  positionsnummer: number | null;
+  messebene:
     | null
     | "NSP"
     | "MSP"
@@ -1245,14 +1507,14 @@ export type Preisposition = {
     | "HD"
     | "MD"
     | "ND";
-  beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum1;
-  artikelId?: string | null;
+  beschreibung: string | null;
+  verarbeitungszeitraum: Zeitraum;
+  artikelId: string | null;
   [k: string]: unknown;
 } & Preisposition1;
 export type PositionsAufAbschlag = {
-  bezeichnung: string;
-  beschreibung: string;
+  bezeichnung: string | null;
+  beschreibung: string | null;
   aufAbschlagstyp: "RELATIV" | "ABSOLUT";
   aufAbschlagswert: number;
   aufAbschlagswaehrung: "EUR" | "CT";
@@ -1261,8 +1523,8 @@ export type PositionsAufAbschlag = {
   [k: string]: unknown;
 } & PositionsAufAbschlag1;
 export type PositionsAufAbschlag1 = {
-  bezeichnung: string;
-  beschreibung: string;
+  bezeichnung: string | null;
+  beschreibung: string | null;
   aufAbschlagstyp: "RELATIV" | "ABSOLUT";
   aufAbschlagswert: number;
   aufAbschlagswaehrung: "EUR" | "CT";
@@ -1274,7 +1536,7 @@ export type Preisstaffel = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter;
+  sigmoidparameter: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1301,51 +1563,7 @@ export type Preisstaffel1 = {
   einheitspreis: number;
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
-  sigmoidparameter?: Sigmoidparameter;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} | null;
-export type Zeitraum1 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-} & Zeitraum11;
-export type Zeitraum11 = {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
+  sigmoidparameter: Sigmoidparameter;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1394,9 +1612,9 @@ export type Preisposition1 = {
     | "ENTSPERRUNG"
     | "MAHNKOSTEN"
     | "INKASSOKOSTEN";
-  leistungsbezeichnung: string;
+  leistungsbezeichnung: string | null;
   preiseinheit: "EUR" | "CT";
-  bezugsgroesse?:
+  bezugsgroesse:
     | null
     | "ZERO"
     | "WH"
@@ -1415,7 +1633,7 @@ export type Preisposition1 = {
     | "KVAR"
     | "KVARH"
     | "MWH";
-  zeitbasis?:
+  zeitbasis:
     | null
     | "SEKUNDE"
     | "MINUTE"
@@ -1427,8 +1645,8 @@ export type Preisposition1 = {
     | "QUARTAL"
     | "HALBJAHR"
     | "JAHR";
-  tarifzeit?: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
-  bdewArtikelnummer?:
+  tarifzeit: null | "TZ_STANDARD" | "TZ_HT" | "TZ_NT";
+  bdewArtikelnummer:
     | null
     | "LEISTUNG"
     | "LEISTUNG_PAUSCHAL"
@@ -1482,7 +1700,7 @@ export type Preisposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
-  zonungsgroesse?:
+  zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
     | "LEISTUNG_EL"
@@ -1496,11 +1714,11 @@ export type Preisposition1 = {
     | "VOLUMENSTROM"
     | "BENUTZUNGSDAUER"
     | "ANZAHL";
-  zu_abschlaege?: PositionsAufAbschlag;
-  preisstaffeln: Preisstaffel[];
-  preisschluesselstamm?: string | null;
-  positionsnummer?: number | null;
-  messebene?:
+  zu_abschlaege: PositionsAufAbschlag;
+  preisstaffeln: Preisstaffel[] | null;
+  preisschluesselstamm: string | null;
+  positionsnummer: number | null;
+  messebene:
     | null
     | "NSP"
     | "MSP"
@@ -1512,21 +1730,21 @@ export type Preisposition1 = {
     | "HD"
     | "MD"
     | "ND";
-  beschreibung?: string | null;
-  verarbeitungszeitraum?: Zeitraum1;
-  artikelId?: string | null;
+  beschreibung: string | null;
+  verarbeitungszeitraum: Zeitraum;
+  artikelId: string | null;
   [k: string]: unknown;
 } | null;
 
 export interface PreisblattMessung {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
   bilanzierungsmethode: "RLM" | "SLP" | "TLP_GEMEINSAM" | "TLP_GETRENNT" | "PAUSCHAL" | "IMS";
   messebene: "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
-  inklusiveDienstleistung?:
+  inklusiveDienstleistung:
     | (
         | "DATENBEREITSTELLUNG_TAEGLICH"
         | "DATENBEREITSTELLUNG_WOECHENTLICH"
@@ -1569,226 +1787,22 @@ export interface PreisblattMessung {
         | "INKASSOKOSTEN"
       )[]
     | null;
-  bezeichnung: string;
+  bezeichnung: string | null;
   basisgeraet: Geraeteeigenschaften;
   gueltigkeit: Zeitraum;
-  inklusiveGeraete?: Geraeteeigenschaften1[] | null;
+  inklusiveGeraete: Geraeteeigenschaften[] | null;
   herausgeber: Marktteilnehmer;
-  preispositionen: Preisposition[];
-  preisstatus?: null | "VORLAEUFIG" | "ENDGUELTIG";
-  sparte?: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
-  [k: string]: unknown;
-}
-export interface Geraeteeigenschaften {
-  timestamp?: string | null;
-  guid?: string | null;
-  geraetetyp:
-    | "WECHSELSTROMZAEHLER"
-    | "DREHSTROMZAEHLER"
-    | "ZWEIRICHTUNGSZAEHLER"
-    | "RLM_ZAEHLER"
-    | "IMS_ZAEHLER"
-    | "BALGENGASZAEHLER"
-    | "MAXIMUMZAEHLER"
-    | "MULTIPLEXANLAGE"
-    | "PAUSCHALANLAGE"
-    | "VERSTAERKERANLAGE"
-    | "SUMMATIONSGERAET"
-    | "IMPULSGEBER"
-    | "EDL_21_ZAEHLERAUFSATZ"
-    | "VIER_QUADRANTEN_LASTGANGZAEHLER"
-    | "MENGENUMWERTER"
-    | "STROMWANDLER"
-    | "SPANNUNGSWANDLER"
-    | "DATENLOGGER"
-    | "KOMMUNIKATIONSANSCHLUSS"
-    | "MODEM"
-    | "TELEKOMMUNIKATIONSEINRICHTUNG"
-    | "DREHKOLBENGASZAEHLER"
-    | "TURBINENRADGASZAEHLER"
-    | "ULTRASCHALLZAEHLER"
-    | "WIRBELGASZAEHLER"
-    | "MODERNE_MESSEINRICHTUNG"
-    | "ELEKTRONISCHER_HAUSHALTSZAEHLER"
-    | "STEUEREINRICHTUNG"
-    | "TECHNISCHESTEUEREINRICHTUNG"
-    | "TARIFSCHALTGERAET"
-    | "RUNDSTEUEREMPFAENGER"
-    | "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
-    | "MESSWANDLERSATZ_IMS_MME"
-    | "KOMBIMESSWANDLER_IMS_MME"
-    | "TARIFSCHALTGERAET_IMS_MME"
-    | "RUNDSTEUEREMPFAENGER_IMS_MME"
-    | "TEMPERATUR_KOMPENSATION"
-    | "HOECHSTBELASTUNGS_ANZEIGER"
-    | "SONSTIGES_GERAET"
-    | "SMARTMETERGATEWAY"
-    | "STEUERBOX"
-    | "BLOCKSTROMWANDLER"
-    | "KOMBIMESSWANDLER";
-  geraetemerkmal?:
+  preispositionen: Preisposition[] | null;
+  preisstatus: null | "VORLAEUFIG" | "ENDGUELTIG";
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
     | null
-    | "EINTARIF"
-    | "ZWEITARIF"
-    | "MEHRTARIF"
-    | "GAS_G2P5"
-    | "GAS_G4"
-    | "GAS_G6"
-    | "GAS_G10"
-    | "GAS_G16"
-    | "GAS_G25"
-    | "GAS_G40"
-    | "GAS_G65"
-    | "GAS_G100"
-    | "GAS_G160"
-    | "GAS_G250"
-    | "GAS_G400"
-    | "GAS_G650"
-    | "GAS_G1000"
-    | "GAS_G1600"
-    | "GAS_G2500"
-    | "IMPULSGEBER_G4_G100"
-    | "IMPULSGEBER_G100"
-    | "MODEM_GSM"
-    | "MODEM_GPRS"
-    | "MODEM_FUNK"
-    | "MODEM_GSM_O_LG"
-    | "MODEM_GSM_M_LG"
-    | "MODEM_FESTNETZ"
-    | "MODEM_GPRS_M_LG"
-    | "PLC_COM"
-    | "ETHERNET_KOM"
-    | "DSL_KOM"
-    | "LTE_KOM"
-    | "RUNDSTEUEREMPFAENGER"
-    | "TARIFSCHALTGERAET"
-    | "ZUSTANDS_MU"
-    | "TEMPERATUR_MU"
-    | "KOMPAKT_MU"
-    | "SYSTEM_MU"
-    | "UNBESTIMMT"
-    | "WASSER_MWZW"
-    | "WASSER_WZWW"
-    | "WASSER_WZ01"
-    | "WASSER_WZ02"
-    | "WASSER_WZ03"
-    | "WASSER_WZ04"
-    | "WASSER_WZ05"
-    | "WASSER_WZ06"
-    | "WASSER_WZ07"
-    | "WASSER_WZ08"
-    | "WASSER_WZ09"
-    | "WASSER_WZ10"
-    | "WASSER_VWZ04"
-    | "WASSER_VWZ05"
-    | "WASSER_VWZ06"
-    | "WASSER_VWZ07"
-    | "WASSER_VWZ10"
-    | "GAS_G350"
-    | "GAS_G4000"
-    | "GAS_G6500"
-    | "GAS_G10000"
-    | "GAS_G12500"
-    | "GAS_G16000";
-  Parameter?: {
-    [k: string]: string | null;
-  } | null;
-  [k: string]: unknown;
-}
-export interface Zeitraum {
-  einheit?:
-    | null
-    | "SEKUNDE"
-    | "MINUTE"
-    | "STUNDE"
-    | "VIERTEL_STUNDE"
-    | "TAG"
-    | "WOCHE"
-    | "MONAT"
-    | "QUARTAL"
-    | "HALBJAHR"
-    | "JAHR";
-  dauer?: number | null;
-  startdatum?: string | null;
-  enddatum?: string | null;
-  startzeitpunkt: string | null;
-  endzeitpunkt: string | null;
-  timestamp?: string | null;
-  guid?: string | null;
-  [k: string]: unknown;
-}
-export interface Marktteilnehmer {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
-  timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
-  guid?: string | null;
-  anrede?:
-    | null
-    | "HERR"
-    | "FRAU"
-    | "EHELEUTE"
-    | "FIRMA"
-    | "INDIVIDUELL"
-    | "FAMILIE"
-    | "ERBENGEMEINSCHAFT"
-    | "WOHNGEMEINSCHAFT"
-    | "GRUNDSTUECKGEMEINSCHAFT"
-    | "DR";
-  title?: string | null;
-  name1?: string | null;
-  name2?: string | null;
-  name3?: string | null;
-  gewerbekennzeichnung: boolean;
-  hrnummer?: string | null;
-  amtsgericht?: string | null;
-  kontaktweg?: ("ANSCHREIBEN" | "TELEFONAT" | "FAX" | "E_MAIL" | "SMS")[] | null;
-  umsatzsteuerId?: string | null;
-  glaeubigerId?: string | null;
-  eMailAdresse?: string | null;
-  website?: string | null;
-  geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
-  partneradresse?: Adresse;
-  grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
-  grundDerPrivilegierungNachEnFG?:
-    | null
-    | "STROMSPEICHER_UND_VERLUSTENERGIE"
-    | "ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
-    | "UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
-    | "HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
-    | "STROMKOSTENINTENSIVE_UNTERNEHMEN"
-    | "HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
-    | "SCHIENENBAHNEN"
-    | "ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
-    | "LANDSTROMANLAGEN";
-  bankverbindung?: Bankverbindung;
-  steuernummer?: string | null;
-  erreichbarkeit?: Erreichbarkeit;
-  marktrolle?:
-    | null
-    | "NB"
-    | "LF"
-    | "MSB"
-    | "MDL"
-    | "DL"
-    | "BKV"
-    | "BIKO"
-    | "UENB"
-    | "KUNDE_SELBST_NN"
-    | "MGV"
-    | "EIV"
-    | "RB"
-    | "KUNDE"
-    | "INTERESSENT"
-    | "GMSB"
-    | "AMSB";
-  rollencodenummer: string;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
-  makoadresse?: string | null;
-  ansprechpartner?: Ansprechpartner;
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

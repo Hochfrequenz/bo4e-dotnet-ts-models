@@ -6,15 +6,15 @@
  */
 
 export type ExterneReferenz = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
 } & ExterneReferenz1;
 export type ExterneReferenz1 = {
-  exRefName?: string | null;
-  exRefWert?: string | null;
+  exRefName: string | null;
+  exRefWert: string | null;
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -23,7 +23,7 @@ export type Menge = {
   timestamp?: string | null;
   guid?: string | null;
   wert: number;
-  einheit?:
+  einheit:
     | null
     | "ZERO"
     | "WH"
@@ -48,7 +48,7 @@ export type Menge1 = {
   timestamp?: string | null;
   guid?: string | null;
   wert: number;
-  einheit?:
+  einheit:
     | null
     | "ZERO"
     | "WH"
@@ -69,25 +69,128 @@ export type Menge1 = {
     | "MWH";
   [k: string]: unknown;
 } | null;
+export type MarktpartnerDetails = {
+  rollencodenummer: string | null;
+  code: string | null;
+  marktrolle:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  timestamp?: string | null;
+  guid?: string | null;
+  weiterverpflichtet: boolean | null;
+  [k: string]: unknown;
+} & MarktpartnerDetails1;
+export type MarktpartnerDetails1 = {
+  rollencodenummer: string | null;
+  code: string | null;
+  marktrolle:
+    | null
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  timestamp?: string | null;
+  guid?: string | null;
+  weiterverpflichtet: boolean | null;
+  [k: string]: unknown;
+} | null;
+export type Zeitraum = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Zeitraum1;
+export type Zeitraum1 = {
+  einheit:
+    | null
+    | "SEKUNDE"
+    | "MINUTE"
+    | "STUNDE"
+    | "VIERTEL_STUNDE"
+    | "TAG"
+    | "WOCHE"
+    | "MONAT"
+    | "QUARTAL"
+    | "HALBJAHR"
+    | "JAHR";
+  dauer: number | null;
+  startdatum: string | null;
+  enddatum: string | null;
+  startzeitpunkt: string | null;
+  endzeitpunkt: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
 
 export interface TechnischeRessource {
-  boTyp?: string | null;
-  versionStruktur?: string | null;
+  boTyp: string | null;
+  versionStruktur: string | null;
   timestamp?: string | null;
-  externeReferenzen?: ExterneReferenz[] | null;
+  externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
-  technischeRessourceId?: string | null;
-  vorgelagerteMesslokationsId?: string | null;
-  zugeordneteMarktlokationsId?: string | null;
-  zugeordneteSteuerbareRessourceId?: string | null;
-  nennleistungAufnahme?: Menge;
-  nennleistungAbgabe?: Menge;
-  speicherkapazitaet?: Menge;
-  technischeRessourceNutzung?: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
-  verbrauchsart?: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
-  waermenutzung?: null | "SPEICHERHEIZUNG" | "WAERMEPUMPE" | "DIREKTHEIZUNG";
-  emobilitaetsart?: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
-  erzeugungsart?:
+  technischeRessourceId: string | null;
+  vorgelagerteMesslokationsId: string | null;
+  zugeordneteMarktlokationsId: string | null;
+  zugeordneteSteuerbareRessourceId: string | null;
+  nennleistungAufnahme: Menge;
+  nennleistungAbgabe: Menge;
+  speicherkapazitaet: Menge;
+  technischeRessourceNutzung: null | "STROMVERBRAUCHSART" | "STROMERZEUGUNGSART" | "SPEICHER";
+  verbrauchsart: null | "KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG";
+  waermenutzung:
+    | null
+    | "SPEICHERHEIZUNG"
+    | "WAERMEPUMPE"
+    | "DIREKTHEIZUNG"
+    | "WAERMEPUMPE_WAERME_KAELTE"
+    | "WAERMEPUMPE_KAELTE"
+    | "WAERMEPUMPE_WAERME";
+  emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  erzeugungsart:
     | null
     | "KWK"
     | "WIND"
@@ -100,7 +203,27 @@ export interface TechnischeRessource {
     | "GAS"
     | "SONSTIGE"
     | "SONSTIGE_EEG";
-  speicherart?: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
-  lokationsbuendelObjektcode?: string | null;
+  speicherart: null | "WASSERSTOFFSPEICHER" | "PUMPSPEICHER" | "BATTERIESPEICHER" | "SONSTIGE_SPEICHERART";
+  lokationsbuendelObjektcode: string | null;
+  vorgelagerteLokationsId: string | null;
+  kategorie: null | "FAELLT_UNTER_14A" | "FAELLT_NICHT_UNTER_14A";
+  inbetriebsetzung: null | "NACH_2023" | "VOR_2024";
+  einordnung:
+    | null
+    | "WECHSEL_IN_14A_EINMALIG_MOEGLICH"
+    | "WECHSEL_IN_14A_NICHT_MOEGLICH"
+    | "BEFRISTET_ALTES_14A"
+    | "WECHSEL_DURCHGEFUEHRT";
+  weitereEinrichtung: null | "WEITERE_EINRICHTUNG_VORHANDEN" | "KEINE_WEITERE_EINRICHTUNG_VORHANDEN";
+  marktrollen: MarktpartnerDetails[] | null;
+  gueltigkeitszeitraum?: Zeitraum;
+  qualitaet?:
+    | null
+    | "VOLLSTAENDIG"
+    | "INFORMATIV"
+    | "IM_SYSTEM_VORHANDEN"
+    | "ERWARTET"
+    | "VORLAEUFIG"
+    | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }
