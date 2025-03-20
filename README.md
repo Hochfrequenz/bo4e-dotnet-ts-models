@@ -17,5 +17,5 @@ npm install bo4e-dotnet-ts-models
 
 - Update the source code (automatically for [`/src`](/src), manually for at least the version bump in [`package.json`](package.json))
 - click on "[Draft a new Release](https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/releases/new)" in the right sidebar on Github
-- Choose a tag that will be pushed to the selected branch (should be main in most cases)
+- Choose a tag that will be pushed to the selected branch (should be main in most cases); It's best to choose the same version as the respective BO4E.net version that was used to generate the .ts models unless there's good reason to not do so.
 - Autogenerate Release Notes
