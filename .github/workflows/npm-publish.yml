@@ -14,6 +14,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # must match the Environment recorded in the npm trusted publisher for this
+    # package, or the OIDC token exchange fails with the (misleading)
+    # "package not found". Give this environment required reviewers to make a
+    # publish need human approval - see issue #13.
+    environment: release
     # Required for npm OIDC trusted publishing
     permissions:
       contents: read
