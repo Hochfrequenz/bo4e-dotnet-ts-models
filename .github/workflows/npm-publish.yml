@@ -1,23 +1,34 @@
 on:
   release:
     types:
-      - created
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
-      - "**/v[0-9]+.[0-9]+.[0-9]+"
+      - published
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Required for npm OIDC trusted publishing
     permissions:
       contents: read
       id-token: write
+    if: startsWith(github.event.release.tag_name, 'v')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: "https://registry.npmjs.org"
+      # npm OIDC trusted publishing requires npm >= 11.5.1; the version bundled
+      # with node 24 depends on the runner's tool cache, so pin it explicitly.
+      - name: Update npm to latest
+        run: |
+          npm install -g npm@latest
+          echo "npm version: $(npm --version)"
+          echo "node version: $(node --version)"
+      # Publishes via OIDC trusted publishing - no token, no fallback.
+      # The trusted publisher must be configured at
+      # https://www.npmjs.com/package/bo4e-dotnet-ts-models/access
+      # with Organization=Hochfrequenz, Repository=bo4e-dotnet-ts-models,
+      # Workflow=npm-publish.yml (renaming this file breaks publishing).
+      # See: https://docs.npmjs.com/trusted-publishers/
       - uses: JS-DevTools/npm-publish@v4
         with:
           provenance: true
