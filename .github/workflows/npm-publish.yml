@@ -26,9 +26,8 @@ jobs:
       # A release can be cut from ANY commit on ANY branch (target_commitish),
       # and this job can mint an npm publish token for this package. Without
       # this check, write access to the repo is enough to publish arbitrary
-      # tarball contents as bo4e-dotnet-ts-models - main is not protected, and
-      # nothing here builds the package, so the tarball is whatever tree the
-      # release points at.
+      # tarball contents as bo4e-dotnet-ts-models, since nothing here builds
+      # the package - the tarball is whatever tree the release points at.
       - name: Verify the release commit is on main
         run: |
           git fetch --no-tags origin main
@@ -46,39 +45,43 @@ jobs:
           npm install -g "npm@^11.6"
           echo "npm version: $(npm --version)"
           echo "node version: $(node --version)"
-      # Fail loudly rather than publishing nothing: the action skips the publish
-      # (and still exits 0) when package.json's version is already on the
-      # registry, so a forgotten version bump used to look like a green release.
-      # This is not hypothetical: tag v0.28.1 shipped package.json 0.28.0, and
-      # 0.28.1 never reached npm.
-      - name: Verify tag matches package.json version
+      # The release tag is the single source of truth for the version, so
+      # package.json no longer has to be bumped by hand before releasing. That
+      # bump used to be silently load-bearing: the publish is skipped (exit 0)
+      # when package.json's version is already on the registry, which is how
+      # tag v0.28.1 shipped package.json 0.28.0 and 0.28.1 never reached npm.
+      - name: Derive version from the release tag
         # passed as env, not interpolated into the script: a tag name may
         # legally contain quotes, $ and ; - as ${{ }} is substituted before
         # bash parses, interpolating it would make the tag executable code
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
-          if [[ ! "$TAG_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
-            echo "::error::Tag '$TAG_NAME' is not of the form vX.Y.Z or vX.Y.Z-prerelease; refusing to publish."
+          # +build metadata is rejected on purpose: npm strips it, so the tag
+          # and the published version could never agree
+          if [[ ! "$TAG_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag '$TAG_NAME' is not of the form vX.Y.Z or vX.Y.Z-prerelease (build metadata is not supported); refusing to publish."
             exit 1
           fi
+          VERSION="${TAG_NAME#v}"
+          npm version "$VERSION" --no-git-tag-version --allow-same-version --ignore-scripts
           PACKAGE_VERSION="$(node -p "require('./package.json').version")"
-          if [[ "$TAG_NAME" != "v$PACKAGE_VERSION" ]]; then
-            echo "::error::Tag '$TAG_NAME' does not match package.json version '$PACKAGE_VERSION'. Bump package.json before releasing."
+          if [[ "$PACKAGE_VERSION" != "$VERSION" ]]; then
+            echo "::error::package.json is at '$PACKAGE_VERSION', expected '$VERSION' from tag '$TAG_NAME'."
             exit 1
           fi
           # the dist-tag follows the version itself, not the "this is a
           # pre-release" checkbox: ticking that box on a final version would
           # strand the release on the "next" tag and leave "latest" behind,
           # green and unnoticed
-          if [[ "$PACKAGE_VERSION" == *-* ]]; then
+          if [[ "$VERSION" == *-* ]]; then
             echo "DIST_TAG=next" >> "$GITHUB_ENV"
           else
             # deliberately empty: passing "latest" explicitly would disable
             # npm's own guard against moving "latest" to an older version
             echo "DIST_TAG=" >> "$GITHUB_ENV"
           fi
-          echo "publishing $PACKAGE_VERSION from $TAG_NAME"
+          echo "publishing $VERSION from $TAG_NAME"
       # Publishes via OIDC trusted publishing - no token, no fallback.
       # The trusted publisher must be configured at
       # https://www.npmjs.com/package/bo4e-dotnet-ts-models/access
@@ -102,5 +105,5 @@ jobs:
       - name: Verify the package was actually published
         if: steps.publish.outputs.id == ''
         run: |
-          echo "::error::Nothing was published - the version is already on the registry. Bump package.json."
+          echo "::error::Nothing was published - version ${{ steps.publish.outputs.version }} is already on the registry."
           exit 1
