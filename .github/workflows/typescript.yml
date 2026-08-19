@@ -18,5 +18,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - name: Compile index.d.ts
-        run: npx --yes -p typescript@5 tsc --noEmit --strict index.d.ts
+      - name: Compile the published types
+        # Not only index.d.ts: everything in src/ is shipped in the tarball and can be deep
+        # imported, so a model the generator broke must fail here even when nothing exports it.
+        # The TypeScript version is pinned exactly: a floating minor can turn this red on an
+        # unchanged tree.
+        run: npx --yes -p typescript@5.9.2 tsc --noEmit --strict index.d.ts src/*.d.ts
