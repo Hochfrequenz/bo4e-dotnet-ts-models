@@ -10,19 +10,36 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    if: startsWith(github.event.release.tag_name, 'v')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
       # npm OIDC trusted publishing requires npm >= 11.5.1; the version bundled
-      # with node 24 depends on the runner's tool cache, so pin it explicitly.
-      - name: Update npm to latest
+      # with node 24 depends on the runner's tool cache, so install it explicitly.
+      - name: Update npm
         run: |
-          npm install -g npm@latest
+          npm install -g "npm@^11.6"
           echo "npm version: $(npm --version)"
           echo "node version: $(node --version)"
+      # Fail loudly rather than publishing nothing: the action skips the publish
+      # (and still exits 0) when package.json's version is already on the
+      # registry, so a forgotten version bump used to look like a green release.
+      # This is not hypothetical: tag v0.28.1 shipped package.json 0.28.0, and
+      # 0.28.1 never reached npm.
+      - name: Verify tag matches package.json version
+        run: |
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          if [[ ! "$TAG_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?$ ]]; then
+            echo "::error::Tag '$TAG_NAME' is not of the form vX.Y.Z or vX.Y.Z-prerelease; refusing to publish."
+            exit 1
+          fi
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          if [[ "$TAG_NAME" != "v$PACKAGE_VERSION" ]]; then
+            echo "::error::Tag '$TAG_NAME' does not match package.json version '$PACKAGE_VERSION'. Bump package.json before releasing."
+            exit 1
+          fi
+          echo "publishing $PACKAGE_VERSION from $TAG_NAME"
       # Publishes via OIDC trusted publishing - no token, no fallback.
       # The trusted publisher must be configured at
       # https://www.npmjs.com/package/bo4e-dotnet-ts-models/access
@@ -32,3 +49,11 @@ jobs:
       - uses: JS-DevTools/npm-publish@v4
         with:
           provenance: true
+          # prereleases must not take over the "latest" dist-tag, and npm
+          # refuses to publish them without an explicit tag
+          tag: ${{ github.event.release.prerelease && 'next' || 'latest' }}
+        env:
+          # the OIDC exchange never throws - it logs the real reason (workflow
+          # name / repo mismatch, publisher not configured) at verbose level and
+          # then npm fails with a misleading ENEEDAUTH
+          NPM_CONFIG_LOGLEVEL: verbose
