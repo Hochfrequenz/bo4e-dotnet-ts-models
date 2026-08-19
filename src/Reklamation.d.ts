@@ -71,20 +71,15 @@ export interface Reklamation {
   externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
   lokationsId: string | null;
-  lokationsTyp: "MALO" | "MELO";
+  lokationsTyp: "MALO" | "MELO" | "NELO" | "SR" | "TR";
   obiskennzahl: string | null;
   ZeitraumMesswertanfrage: Zeitraum;
   reklamationsgrund: "WERTE_ZU_HOCH" | "WERTE_ZU_NIEDRIG" | "WERTE_FEHLEN";
   reklamationsgrundBemerkung: string | null;
   zeitpunktFuerWertanfrage: string | null;
+  positionsnummer: string | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

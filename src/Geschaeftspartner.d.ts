@@ -715,10 +715,7 @@ export interface Geschaeftspartner {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -737,12 +734,6 @@ export interface Geschaeftspartner {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

@@ -36,6 +36,9 @@ export type Menge = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -61,6 +64,9 @@ export type Menge1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -119,6 +125,20 @@ export type MarktpartnerDetails1 = {
   timestamp?: string | null;
   guid?: string | null;
   weiterverpflichtet: boolean | null;
+  [k: string]: unknown;
+} | null;
+export type LokationsTypZuordnung = {
+  timestamp?: string | null;
+  guid?: string | null;
+  lokationstyp: null | "MALO" | "MELO" | "NELO" | "SR" | "TR";
+  lokationsId: string | null;
+  [k: string]: unknown;
+} & LokationsTypZuordnung1;
+export type LokationsTypZuordnung1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  lokationstyp: null | "MALO" | "MELO" | "NELO" | "SR" | "TR";
+  lokationsId: string | null;
   [k: string]: unknown;
 } | null;
 export type Zeitraum = {
@@ -216,14 +236,11 @@ export interface TechnischeRessource {
     | "WECHSEL_DURCHGEFUEHRT";
   weitereEinrichtung: null | "WEITERE_EINRICHTUNG_VORHANDEN" | "KEINE_WEITERE_EINRICHTUNG_VORHANDEN";
   marktrollen: MarktpartnerDetails[] | null;
+  vorgelagerteLokationsIds: LokationsTypZuordnung[] | null;
+  zugeordneteLokationsIds: LokationsTypZuordnung[] | null;
+  verbrauchsarten: ("KRAFT_LICHT" | "WAERME" | "E_MOBILITAET" | "STRASSENBELEUCHTUNG")[] | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

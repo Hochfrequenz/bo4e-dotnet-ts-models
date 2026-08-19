@@ -65,6 +65,9 @@ export type Verbrauch = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -73,63 +76,10 @@ export type Verbrauch = {
     | "MWH";
   nutzungszeitpunkt: string | null;
   ausfuehrungszeitpunkt: string | null;
+  temperaturmasszahl: string | null;
+  zeitfenster: Zeitfenster;
   [k: string]: unknown;
-} & Verbrauch1 & {
-    startdatum: string | null;
-    enddatum: string | null;
-    type: null | "ARBEITLEISTUNGTAGESPARAMETERABHMALO" | "VERANSCHLAGTEJAHRESMENGE" | "TUMKUNDENWERT";
-    tarifstufe:
-      | null
-      | "TARIFSTUFE_0"
-      | "TARIFSTUFE_1"
-      | "TARIFSTUFE_2"
-      | "TARIFSTUFE_3"
-      | "TARIFSTUFE_4"
-      | "TARIFSTUFE_5"
-      | "TARIFSTUFE_6"
-      | "TARIFSTUFE_7"
-      | "TARIFSTUFE_8"
-      | "TARIFSTUFE_9";
-    timestamp?: string | null;
-    guid?: string | null;
-    wertermittlungsverfahren: null | "PROGNOSE" | "MESSUNG";
-    messwertstatus:
-      | null
-      | "ABGELESEN"
-      | "ERSATZWERT"
-      | "VOLAEUFIGERWERT"
-      | "ANGABE_FUER_LIEFERSCHEIN"
-      | "VORSCHLAGSWERT"
-      | "NICHT_VERWENDBAR"
-      | "PROGNOSEWERT"
-      | "ENERGIEMENGESUMMIERT"
-      | "FEHLT"
-      | "GRUNDLAGE_POG_ERMITTLUNG";
-    statuszusatzinformationen: StatusZusatzInformation[] | null;
-    obiskennzahl: string | null;
-    wert: number;
-    einheit:
-      | "ZERO"
-      | "WH"
-      | "KW"
-      | "ANZAHL"
-      | "KUBIKMETER"
-      | "STUNDE"
-      | "TAG"
-      | "MONAT"
-      | "VAR"
-      | "VARH"
-      | "KWHK"
-      | "JAHR"
-      | "KWH"
-      | "MW"
-      | "KVAR"
-      | "KVARH"
-      | "MWH";
-    nutzungszeitpunkt: string | null;
-    ausfuehrungszeitpunkt: string | null;
-    [k: string]: unknown;
-  } & Verbrauch1;
+} & Verbrauch1;
 export type StatusZusatzInformation = {
   timestamp?: string | null;
   art:
@@ -298,6 +248,20 @@ export type StatusZusatzInformation1 = {
     | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } | null;
+export type Zeitfenster = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
+  [k: string]: unknown;
+} & Zeitfenster1;
+export type Zeitfenster1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
+  [k: string]: unknown;
+} | null;
 export type Verbrauch1 = {
   startdatum: string | null;
   enddatum: string | null;
@@ -344,6 +308,9 @@ export type Verbrauch1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -352,6 +319,114 @@ export type Verbrauch1 = {
     | "MWH";
   nutzungszeitpunkt: string | null;
   ausfuehrungszeitpunkt: string | null;
+  temperaturmasszahl: string | null;
+  zeitfenster: Zeitfenster;
+  [k: string]: unknown;
+} | null;
+export type Lastprofil = {
+  bezeichnung: string | null;
+  profilschar: string | null;
+  verfahren: null | "SYNTHETISCH" | "ANALYTISCH";
+  einspeisung: boolean | null;
+  tagesparameter: Tagesparameter;
+  profilart:
+    | null
+    | "ART_STANDARDLASTPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL"
+    | "ART_LASTPROFIL"
+    | "ART_STANDARDEINSPEISEPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_EINSPEISEPROFIL";
+  herausgeber: string | null;
+  profiltyp:
+    | null
+    | "GEWERBE"
+    | "GEWERBE_WERKTAG_9_BIS_18"
+    | "GEWERBE_ABEND"
+    | "GEWERBE_DURCHLAUFEND"
+    | "GEWERBE_LADEN_FRISEUR"
+    | "GEWERBE_BAECKEREI"
+    | "GEWERBE_WOCHENENDE"
+    | "LANDWIRTSCHAFT"
+    | "LANDWIRTSCHAFT_MIT_MILCH"
+    | "LANDWIRTSCHAFT_OHNE_MILCH"
+    | "HAUSHALT"
+    | "BANDLAST"
+    | "UNTERBRECHBARE_VERBRAUCHSEINRICHTUNG"
+    | "HEIZWAERMESPEICHER"
+    | "STRASSENBELEUCHTUNG"
+    | "PHOTOVOLTAIK"
+    | "BLOCKHEIZKRAFTWERK"
+    | "SONSTIGE_VERBRAUCHENDE_MARKTLOKATION"
+    | "SONSTIGE_ERZEUGENDE_MARKTLOKATION"
+    | "EMOB_OEFFENTLICH"
+    | "EMOB_HAUSHALT"
+    | "EMOB_GEWERBE";
+  normierungsfaktor:
+    null | "NORMIERUNGSFAKTOR_1_000_000_KWH_A" | "NORMIERUNGSFAKTOR_300_KWH_K" | "NORMIERUNGSFAKTOR_1_000_000_KW";
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Lastprofil1;
+export type Tagesparameter = {
+  klimazone: string | null;
+  temperaturmessstelle: string | null;
+  dienstanbieter: string | null;
+  herausgeber: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Tagesparameter1;
+export type Tagesparameter1 = {
+  klimazone: string | null;
+  temperaturmessstelle: string | null;
+  dienstanbieter: string | null;
+  herausgeber: string | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Lastprofil1 = {
+  bezeichnung: string | null;
+  profilschar: string | null;
+  verfahren: null | "SYNTHETISCH" | "ANALYTISCH";
+  einspeisung: boolean | null;
+  tagesparameter: Tagesparameter;
+  profilart:
+    | null
+    | "ART_STANDARDLASTPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL"
+    | "ART_LASTPROFIL"
+    | "ART_STANDARDEINSPEISEPROFIL"
+    | "ART_TAGESPARAMETERABHAENGIGES_EINSPEISEPROFIL";
+  herausgeber: string | null;
+  profiltyp:
+    | null
+    | "GEWERBE"
+    | "GEWERBE_WERKTAG_9_BIS_18"
+    | "GEWERBE_ABEND"
+    | "GEWERBE_DURCHLAUFEND"
+    | "GEWERBE_LADEN_FRISEUR"
+    | "GEWERBE_BAECKEREI"
+    | "GEWERBE_WOCHENENDE"
+    | "LANDWIRTSCHAFT"
+    | "LANDWIRTSCHAFT_MIT_MILCH"
+    | "LANDWIRTSCHAFT_OHNE_MILCH"
+    | "HAUSHALT"
+    | "BANDLAST"
+    | "UNTERBRECHBARE_VERBRAUCHSEINRICHTUNG"
+    | "HEIZWAERMESPEICHER"
+    | "STRASSENBELEUCHTUNG"
+    | "PHOTOVOLTAIK"
+    | "BLOCKHEIZKRAFTWERK"
+    | "SONSTIGE_VERBRAUCHENDE_MARKTLOKATION"
+    | "SONSTIGE_ERZEUGENDE_MARKTLOKATION"
+    | "EMOB_OEFFENTLICH"
+    | "EMOB_HAUSHALT"
+    | "EMOB_GEWERBE";
+  normierungsfaktor:
+    null | "NORMIERUNGSFAKTOR_1_000_000_KWH_A" | "NORMIERUNGSFAKTOR_300_KWH_K" | "NORMIERUNGSFAKTOR_1_000_000_KW";
+  timestamp?: string | null;
+  guid?: string | null;
   [k: string]: unknown;
 } | null;
 export type Zeitraum = {
@@ -406,19 +481,11 @@ export interface Energiemenge {
   externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
   lokationsId: string | null;
-  lokationsTyp: null | "MALO" | "MELO";
-  /**
-   * @minItems 1
-   */
-  energieverbrauch: [Verbrauch, ...Verbrauch[]] | null;
+  lokationsTyp: null | "MALO" | "MELO" | "NELO" | "SR" | "TR";
+  energieverbrauch: Verbrauch[] | null;
+  lastprofil: Lastprofil;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

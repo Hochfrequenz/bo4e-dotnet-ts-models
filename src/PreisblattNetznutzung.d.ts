@@ -52,10 +52,7 @@ export type Marktteilnehmer = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -91,18 +88,13 @@ export type Marktteilnehmer = {
     | "GMSB"
     | "AMSB";
   rollencodenummer: string | null;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  rollencodetyp: null | "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse: string | null;
   ansprechpartner: Ansprechpartner;
+  rolle: null | "ANDERE_PARTEI" | "EMPFAENGER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Marktteilnehmer1;
 export type Adresse = {
@@ -751,15 +743,19 @@ export type Ansprechpartner = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Ansprechpartner1;
 export type Geschaeftspartner = {
@@ -795,10 +791,7 @@ export type Geschaeftspartner = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -817,13 +810,7 @@ export type Geschaeftspartner = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Zeitraum = {
@@ -903,10 +890,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -925,17 +909,12 @@ export type Geschaeftspartner1 = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -952,6 +931,7 @@ export type Rufnummer = {
 } & Rufnummer1;
 export type Rufnummer1 = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -1010,15 +990,19 @@ export type Ansprechpartner1 = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Marktteilnehmer1 = {
@@ -1054,10 +1038,7 @@ export type Marktteilnehmer1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -1093,18 +1074,13 @@ export type Marktteilnehmer1 = {
     | "GMSB"
     | "AMSB";
   rollencodenummer: string | null;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  rollencodetyp: null | "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse: string | null;
   ansprechpartner: Ansprechpartner;
+  rolle: null | "ANDERE_PARTEI" | "EMPFAENGER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Preisposition = {
@@ -1166,6 +1142,9 @@ export type Preisposition = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1238,7 +1217,15 @@ export type Preisposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
@@ -1258,17 +1245,7 @@ export type Preisposition = {
   preisschluesselstamm: string | null;
   positionsnummer: number | null;
   messebene:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung: string | null;
   verarbeitungszeitraum: Zeitraum;
   artikelId: string | null;
@@ -1299,6 +1276,28 @@ export type Preisstaffel = {
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
   sigmoidparameter: Sigmoidparameter;
+  mengeneinheit:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1326,6 +1325,28 @@ export type Preisstaffel1 = {
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
   sigmoidparameter: Sigmoidparameter;
+  mengeneinheit:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -1389,6 +1410,9 @@ export type Preisposition1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1461,7 +1485,15 @@ export type Preisposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
@@ -1481,17 +1513,7 @@ export type Preisposition1 = {
   preisschluesselstamm: string | null;
   positionsnummer: number | null;
   messebene:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung: string | null;
   verarbeitungszeitraum: Zeitraum;
   artikelId: string | null;
@@ -1545,12 +1567,6 @@ export interface PreisblattNetznutzung {
   sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

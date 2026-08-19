@@ -122,6 +122,9 @@ export type Preisposition = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -194,7 +197,15 @@ export type Preisposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
@@ -214,17 +225,7 @@ export type Preisposition = {
   preisschluesselstamm: string | null;
   positionsnummer: number | null;
   messebene:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung: string | null;
   verarbeitungszeitraum: Zeitraum;
   artikelId: string | null;
@@ -255,6 +256,28 @@ export type Preisstaffel = {
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
   sigmoidparameter: Sigmoidparameter;
+  mengeneinheit:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -282,6 +305,28 @@ export type Preisstaffel1 = {
   staffelgrenzeVon: number;
   staffelgrenzeBis: number;
   sigmoidparameter: Sigmoidparameter;
+  mengeneinheit:
+    | null
+    | "ZERO"
+    | "WH"
+    | "KW"
+    | "ANZAHL"
+    | "KUBIKMETER"
+    | "STUNDE"
+    | "TAG"
+    | "MONAT"
+    | "VAR"
+    | "VARH"
+    | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
+    | "JAHR"
+    | "KWH"
+    | "MW"
+    | "KVAR"
+    | "KVARH"
+    | "MWH";
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
@@ -345,6 +390,9 @@ export type Preisposition1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -417,7 +465,15 @@ export type Preisposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   zonungsgroesse:
     | null
     | "WIRKARBEIT_EL"
@@ -437,17 +493,7 @@ export type Preisposition1 = {
   preisschluesselstamm: string | null;
   positionsnummer: number | null;
   messebene:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung: string | null;
   verarbeitungszeitraum: Zeitraum;
   artikelId: string | null;
@@ -467,12 +513,6 @@ export interface PreisblattUmlagen {
   sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

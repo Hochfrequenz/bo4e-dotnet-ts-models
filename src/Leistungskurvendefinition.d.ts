@@ -76,14 +76,9 @@ export interface Leistungskurvendefinition {
   haeufigkeit?: null | "EINMALIG" | "JAEHRLICH";
   uebermittelbarkeit?: null | "ELEKTRONISCH" | "NICHT_ELEKTRONISCH";
   obererSchwellwert?: string | null;
+  aenderungszeitpunktDateFormat?: string | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

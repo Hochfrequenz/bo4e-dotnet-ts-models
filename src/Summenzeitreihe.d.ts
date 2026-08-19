@@ -73,6 +73,9 @@ export type Verbrauch = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -81,6 +84,8 @@ export type Verbrauch = {
     | "MWH";
   nutzungszeitpunkt: string | null;
   ausfuehrungszeitpunkt: string | null;
+  temperaturmasszahl: string | null;
+  zeitfenster: Zeitfenster;
   [k: string]: unknown;
 } & Verbrauch1;
 export type StatusZusatzInformation = {
@@ -251,6 +256,20 @@ export type StatusZusatzInformation1 = {
     | "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR";
   [k: string]: unknown;
 } | null;
+export type Zeitfenster = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
+  [k: string]: unknown;
+} & Zeitfenster1;
+export type Zeitfenster1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  startzeit: string | null;
+  endzeit: string | null;
+  [k: string]: unknown;
+} | null;
 export type Verbrauch1 = {
   startdatum: string | null;
   enddatum: string | null;
@@ -297,6 +316,9 @@ export type Verbrauch1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -305,6 +327,8 @@ export type Verbrauch1 = {
     | "MWH";
   nutzungszeitpunkt: string | null;
   ausfuehrungszeitpunkt: string | null;
+  temperaturmasszahl: string | null;
+  zeitfenster: Zeitfenster;
   [k: string]: unknown;
 } | null;
 export type Zeitreihenprodukt1 = {
@@ -385,7 +409,8 @@ export interface Summenzeitreihe {
     | "LF_SZR_B_BG"
     | "DZUE"
     | "NZR"
-    | "ASZR";
+    | "ASZR"
+    | "NGZ";
   bezugszeitraum:
     | null
     | "SEKUNDE"
@@ -398,7 +423,27 @@ export interface Summenzeitreihe {
     | "QUARTAL"
     | "HALBJAHR"
     | "JAHR";
-  zeitreihentyp: null | "EGS" | "LGS" | "NZR" | "SES" | "SLS" | "TES" | "TLS" | "SLS_TLS" | "SES_TES";
+  zeitreihentyp:
+    | null
+    | "EGS"
+    | "LGS"
+    | "NZR"
+    | "SES"
+    | "SLS"
+    | "TES"
+    | "TLS"
+    | "SLS_TLS"
+    | "SES_TES"
+    | "AUS"
+    | "BAS"
+    | "DBA"
+    | "DZR"
+    | "DZÜ"
+    | "FPE"
+    | "FPI"
+    | "SRE"
+    | "SRI"
+    | "VZR";
   marktrolle:
     | null
     | "NB"
@@ -418,26 +463,10 @@ export interface Summenzeitreihe {
     | "GMSB"
     | "AMSB";
   spannungsebene:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   produkte: Zeitreihenprodukt[] | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

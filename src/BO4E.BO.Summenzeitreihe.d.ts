@@ -374,17 +374,7 @@ export interface BO4EBOSummenzeitreihe {
     | "GMSB"
     | "AMSB";
   spannungsebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   produkte?: Zeitreihenprodukt[] | null;
   [k: string]: unknown;
 }

@@ -646,10 +646,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   grundDerPrivilegierungNachEnFG?:
     | null
     | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -696,10 +693,7 @@ export type Geschaeftspartner11 = {
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   grundDerPrivilegierungNachEnFG?:
     | null
     | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -2385,17 +2379,7 @@ export type Marktlokation = {
   verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
   unterbrechbar?: boolean | null;
   netzebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   netzbetreiberCodeNr?: string | null;
   gebietTyp?:
     | null
@@ -3298,17 +3282,7 @@ export type Messlokation = {
   messlokationsId: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   netzebeneMessung?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   messgebietNr?: string | null;
   grundzustaendigerMSBCodeNr?: string | null;
   grundzustaendigerMSBIMCodeNr?: string | null;
@@ -4405,17 +4379,7 @@ export type Messlokation1 = {
   messlokationsId: string;
   sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   netzebeneMessung?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   messgebietNr?: string | null;
   grundzustaendigerMSBCodeNr?: string | null;
   grundzustaendigerMSBIMCodeNr?: string | null;
@@ -4657,10 +4621,7 @@ export type Marktteilnehmer = {
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   grundDerPrivilegierungNachEnFG?:
     | null
     | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -4728,10 +4689,7 @@ export type Marktteilnehmer = {
     geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
     partneradresse?: Adresse;
     grundlageZurVerringerungDerUmlagenNachEnfg?:
-      | null
-      | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-      | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-      | "KEINE_ANGABE";
+      null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
     grundDerPrivilegierungNachEnFG?:
       | null
       | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -4800,10 +4758,7 @@ export type Marktteilnehmer1 = {
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   grundDerPrivilegierungNachEnFG?:
     | null
     | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -4861,17 +4816,7 @@ export type Marktlokation1 = {
   verbrauchsart?: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
   unterbrechbar?: boolean | null;
   netzebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   netzbetreiberCodeNr?: string | null;
   gebietTyp?:
     | null
@@ -5191,10 +5136,7 @@ export interface Geschaeftspartner {
   geschaeftspartnerrolle?: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse?: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg?:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   grundDerPrivilegierungNachEnFG?:
     | null
     | "STROMSPEICHER_UND_VERLUSTENERGIE"

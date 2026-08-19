@@ -96,10 +96,7 @@ export type Geschaeftspartner = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -118,13 +115,7 @@ export type Geschaeftspartner = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Adresse = {
@@ -778,10 +769,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -800,13 +788,7 @@ export type Geschaeftspartner1 = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Betrag = {
@@ -1591,6 +1573,9 @@ export type Rechnungsposition = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1650,7 +1635,15 @@ export type Rechnungsposition = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   lokationsId: string | null;
   positionsMenge: Menge;
   zeitbezogeneMenge: Menge;
@@ -1691,6 +1684,9 @@ export type Menge = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1716,6 +1712,9 @@ export type Menge1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1740,6 +1739,9 @@ export type Preis = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1767,6 +1769,9 @@ export type Preis1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1798,6 +1803,9 @@ export type Rechnungsposition1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -1857,7 +1865,15 @@ export type Rechnungsposition1 = {
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
     | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
-    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG";
+    | "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+    | "EINBAU_IMS"
+    | "EINBAU_KME_RLM"
+    | "EINBAU_WANDLER"
+    | "WEITERE_ENERGIEFLUSSRICHTUNG"
+    | "VERGLEICHSMESSUNG"
+    | "ÄNDERUNG_MESSEBENE"
+    | "EINBAU_STEUERBOX"
+    | "ANSCHLUSS_TR_STEUERBOX_SR";
   lokationsId: string | null;
   positionsMenge: Menge;
   zeitbezogeneMenge: Menge;
@@ -1926,7 +1942,8 @@ export interface Rechnung {
     | "VERZUGSKOSTEN"
     | "BLINDARBEIT"
     | "SONDERRECHNUNG"
-    | "ABRECHNUNG_VON_KONFIGURATIONEN_UNIVERSALBESTELLPROZESS";
+    | "ABRECHNUNG_VON_KONFIGURATIONEN_UNIVERSALBESTELLPROZESS"
+    | "ABRECHNUNG_TECHNIK";
   originalRechnungsnummer: string | null;
   rechnungsperiode: Zeitraum;
   rechnungsersteller: Geschaeftspartner;
@@ -1952,16 +1969,11 @@ export interface Rechnung {
     | "P19_STROM_NEV_UMLAGE"
     | "P18_ABLAV"
     | "KONZESSIONSABGABE_WECHSEL_RLM"
-    | "PRIVILEGIERUNG_NACH_ENFG";
+    | "PRIVILEGIERUNG_NACH_ENFG"
+    | "KONZESSIONSABGABE_WEIGEL_MENGEN";
   buchungsdatum: string | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

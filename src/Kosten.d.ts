@@ -446,14 +446,7 @@ export type Kostenblock = {
   timestamp?: string | null;
   guid?: string | null;
   [k: string]: unknown;
-} & Kostenblock1 & {
-    kostenblockbezeichnung: string | null;
-    summeKostenblock: Betrag;
-    kostenpositionen: Kostenposition[] | null;
-    timestamp?: string | null;
-    guid?: string | null;
-    [k: string]: unknown;
-  } & Kostenblock1;
+} & Kostenblock1;
 export type Kostenposition = {
   positionstitel: string | null;
   von: string | null;
@@ -485,6 +478,9 @@ export type Menge = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -510,6 +506,9 @@ export type Menge1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -534,6 +533,9 @@ export type Preis = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -561,6 +563,9 @@ export type Preis1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -604,19 +609,10 @@ export interface Kosten {
   gueltigkeit: Zeitraum;
   guid?: string | null;
   summeKosten: Betrag[] | null;
-  /**
-   * @minItems 1
-   */
-  kostenbloecke: [Kostenblock, ...Kostenblock[]] | null;
+  kostenbloecke: Kostenblock[] | null;
   kostenpositionen: Kostenposition[] | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

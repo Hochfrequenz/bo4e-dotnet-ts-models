@@ -170,17 +170,7 @@ export type Preisposition = {
   preisschluesselstamm?: string | null;
   positionsnummer?: number | null;
   messebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung?: string | null;
   verarbeitungszeitraum?: Zeitraum1;
   artikelId?: string | null;
@@ -437,17 +427,7 @@ export type Preisposition1 = {
   preisschluesselstamm?: string | null;
   positionsnummer?: number | null;
   messebene?:
-    | null
-    | "NSP"
-    | "MSP"
-    | "HSP"
-    | "HSS"
-    | "MSP_NSP_UMSP"
-    | "HSP_MSP_UMSP"
-    | "HSS_HSP_UMSP"
-    | "HD"
-    | "MD"
-    | "ND";
+    null | "NSP" | "MSP" | "HSP" | "HSS" | "MSP_NSP_UMSP" | "HSP_MSP_UMSP" | "HSS_HSP_UMSP" | "HD" | "MD" | "ND";
   beschreibung?: string | null;
   verarbeitungszeitraum?: Zeitraum1;
   artikelId?: string | null;

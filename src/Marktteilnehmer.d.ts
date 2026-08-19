@@ -665,15 +665,19 @@ export type Ansprechpartner = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Ansprechpartner1;
 export type Geschaeftspartner = {
@@ -709,10 +713,7 @@ export type Geschaeftspartner = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -731,13 +732,7 @@ export type Geschaeftspartner = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Zeitraum = {
@@ -817,10 +812,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -839,17 +831,12 @@ export type Geschaeftspartner1 = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -866,6 +853,7 @@ export type Rufnummer = {
 } & Rufnummer1;
 export type Rufnummer1 = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -924,15 +912,19 @@ export type Ansprechpartner1 = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 
@@ -969,10 +961,7 @@ export interface Marktteilnehmer {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -1008,17 +997,12 @@ export interface Marktteilnehmer {
     | "GMSB"
     | "AMSB";
   rollencodenummer: string | null;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  rollencodetyp: null | "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse: string | null;
   ansprechpartner: Ansprechpartner;
+  rolle: null | "ANDERE_PARTEI" | "EMPFAENGER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

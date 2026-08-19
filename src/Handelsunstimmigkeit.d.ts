@@ -24,6 +24,7 @@ export type Handelsunstimmigkeitsbegruendung = {
   referenzen: (string | null)[] | null;
   guid?: string | null;
   grund:
+    | null
     | "ANMELDUNG_BESTAETIGT"
     | "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
     | "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
@@ -46,6 +47,7 @@ export type Handelsunstimmigkeitsbegruendung1 = {
   referenzen: (string | null)[] | null;
   guid?: string | null;
   grund:
+    | null
     | "ANMELDUNG_BESTAETIGT"
     | "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
     | "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
@@ -500,12 +502,6 @@ export interface Handelsunstimmigkeit {
   zuZahlen: Betrag;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

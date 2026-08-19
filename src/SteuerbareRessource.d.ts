@@ -79,10 +79,7 @@ export type Marktteilnehmer = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -118,18 +115,13 @@ export type Marktteilnehmer = {
     | "GMSB"
     | "AMSB";
   rollencodenummer: string | null;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  rollencodetyp: null | "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse: string | null;
   ansprechpartner: Ansprechpartner;
+  rolle: null | "ANDERE_PARTEI" | "EMPFAENGER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Marktteilnehmer1;
 export type Adresse = {
@@ -778,15 +770,19 @@ export type Ansprechpartner = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Ansprechpartner1;
 export type Geschaeftspartner = {
@@ -822,10 +818,7 @@ export type Geschaeftspartner = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -844,13 +837,7 @@ export type Geschaeftspartner = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Zeitraum = {
@@ -930,10 +917,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -952,17 +936,12 @@ export type Geschaeftspartner1 = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Rufnummer = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -979,6 +958,7 @@ export type Rufnummer = {
 } & Rufnummer1;
 export type Rufnummer1 = {
   nummerntyp:
+    | null
     | "RUF_ZENTRALE"
     | "FAX_ZENTRALE"
     | "SAMMELRUF"
@@ -1037,15 +1017,19 @@ export type Ansprechpartner1 = {
   adresse: Adresse;
   rufnummern: Rufnummer[] | null;
   zustaendigkeit: Zustaendigkeit[] | null;
+  gewerbekennzeichnung: boolean | null;
+  unternehmensart:
+    | null
+    | "LIEFERANT"
+    | "NETZBETREIBER"
+    | "MESSSTELLENBETREIBER"
+    | "ÜBERTRAGUNGSNETZBETREIBER"
+    | "BILANZKOORDINATOR"
+    | "BILANZKREISVERANTWORTLICHER"
+    | "ENERGIESERVICEANBIETER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Marktteilnehmer1 = {
@@ -1081,10 +1065,7 @@ export type Marktteilnehmer1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -1120,18 +1101,13 @@ export type Marktteilnehmer1 = {
     | "GMSB"
     | "AMSB";
   rollencodenummer: string | null;
-  rollencodetyp: "ZERO" | "GLN" | "BDEW" | "DVGW";
+  rollencodetyp: null | "ZERO" | "GLN" | "BDEW" | "DVGW";
   makoadresse: string | null;
   ansprechpartner: Ansprechpartner;
+  rolle: null | "ANDERE_PARTEI" | "EMPFAENGER";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Konfigurationsprodukt1 = {
@@ -1213,6 +1189,136 @@ export type MarktpartnerDetails1 = {
   weiterverpflichtet: boolean | null;
   [k: string]: unknown;
 } | null;
+export type Messprodukt = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId: string | null;
+  verwendungszwecke: Verwendungszweck[] | null;
+  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW";
+  unterbrechbarkeit: null | "UV" | "NUV";
+  waermenutzung:
+    | null
+    | "SPEICHERHEIZUNG"
+    | "WAERMEPUMPE"
+    | "DIREKTHEIZUNG"
+    | "WAERMEPUMPE_WAERME_KAELTE"
+    | "WAERMEPUMPE_KAELTE"
+    | "WAERMEPUMPE_WAERME";
+  zaehlzeiten: Zaehlzeitregister;
+  zweiteMessung: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  [k: string]: unknown;
+} & Messprodukt1;
+export type Verwendungszweck = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  zweck:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+        | "SELBSTVERBRAUCH"
+        | "ES_LIEGT_KEIN_VERWENDUNGSZWECK_VOR"
+        | "KEINE_DATENLIEFERUNG_AN_MARKTROLLE"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} & Verwendungszweck1;
+export type Verwendungszweck1 = {
+  marktrolle:
+    | "NB"
+    | "LF"
+    | "MSB"
+    | "MDL"
+    | "DL"
+    | "BKV"
+    | "BIKO"
+    | "UENB"
+    | "KUNDE_SELBST_NN"
+    | "MGV"
+    | "EIV"
+    | "RB"
+    | "KUNDE"
+    | "INTERESSENT"
+    | "GMSB"
+    | "AMSB";
+  zweck:
+    | (
+        | "NETZNUTZUNGSABRECHNUNG"
+        | "BILANZKREISABRECHNUNG"
+        | "MEHRMINDERMENGENABRECHNUNG"
+        | "ENDKUNDENABRECHNUNG"
+        | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+        | "UEBERMITTLUNG_AN_DAS_HKNR"
+        | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+        | "SELBSTVERBRAUCH"
+        | "ES_LIEGT_KEIN_VERWENDUNGSZWECK_VOR"
+        | "KEINE_DATENLIEFERUNG_AN_MARKTROLLE"
+      )[]
+    | null;
+  timestamp?: string | null;
+  guid?: string | null;
+  [k: string]: unknown;
+} | null;
+export type Zaehlzeitregister = {
+  timestamp?: string | null;
+  guid?: string | null;
+  zaehlzeitDefinition: string | null;
+  register: string | null;
+  schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+  [k: string]: unknown;
+} & Zaehlzeitregister1;
+export type Zaehlzeitregister1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  zaehlzeitDefinition: string | null;
+  register: string | null;
+  schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
+  [k: string]: unknown;
+} | null;
+export type Messprodukt1 = {
+  timestamp?: string | null;
+  guid?: string | null;
+  messproduktId: string | null;
+  verwendungszwecke: Verwendungszweck[] | null;
+  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW";
+  unterbrechbarkeit: null | "UV" | "NUV";
+  waermenutzung:
+    | null
+    | "SPEICHERHEIZUNG"
+    | "WAERMEPUMPE"
+    | "DIREKTHEIZUNG"
+    | "WAERMEPUMPE_WAERME_KAELTE"
+    | "WAERMEPUMPE_KAELTE"
+    | "WAERMEPUMPE_WAERME";
+  zaehlzeiten: Zaehlzeitregister;
+  zweiteMessung: boolean | null;
+  werteuebermittlungAnNB?: boolean | null;
+  emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  [k: string]: unknown;
+} | null;
 
 export interface SteuerbareRessource {
   boTyp: string | null;
@@ -1244,14 +1350,9 @@ export interface SteuerbareRessource {
     | "AMSB";
   lokationsbuendelObjektcode: string | null;
   marktrollen: MarktpartnerDetails[] | null;
+  messprodukte: Messprodukt[] | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

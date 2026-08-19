@@ -33,6 +33,7 @@ export type Geraet = {
     | "SMARTMETER_GATEWAY"
     | "STEUERBOX"
     | "ZAEHLEINRICHTUNG";
+  positionsnummer: string | null;
   [k: string]: unknown;
 } & Geraet1;
 export type Geraeteeigenschaften = {
@@ -152,6 +153,8 @@ export type Geraeteeigenschaften = {
   Parameter: {
     [k: string]: string | null;
   } | null;
+  wandlerfaktor: number | null;
+  weitereGeraetenummern: (string | null)[] | null;
   [k: string]: unknown;
 } & Geraeteeigenschaften1;
 export type Geraeteeigenschaften1 = {
@@ -271,6 +274,8 @@ export type Geraeteeigenschaften1 = {
   Parameter: {
     [k: string]: string | null;
   } | null;
+  wandlerfaktor: number | null;
+  weitereGeraetenummern: (string | null)[] | null;
   [k: string]: unknown;
 } | null;
 export type Geraet1 = {
@@ -287,6 +292,7 @@ export type Geraet1 = {
     | "SMARTMETER_GATEWAY"
     | "STEUERBOX"
     | "ZAEHLEINRICHTUNG";
+  positionsnummer: string | null;
   [k: string]: unknown;
 } | null;
 export type Zeitraum = {
@@ -346,12 +352,6 @@ export interface Wechsel {
   vollstaendig: boolean | null;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

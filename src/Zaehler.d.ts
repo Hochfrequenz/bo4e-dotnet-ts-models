@@ -40,6 +40,9 @@ export type Zaehlwerk = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -49,7 +52,7 @@ export type Zaehlwerk = {
   kennzahl: string | null;
   schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   verwendungszwecke: Verwendungszweck[] | null;
-  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW";
   unterbrechbarkeit: null | "UV" | "NUV";
   waermenutzung:
     | null
@@ -68,58 +71,9 @@ export type Zaehlwerk = {
   zaehlzeiten: Zaehlzeitregister;
   konfiguration: string | null;
   emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  Verbrauchsarten: ("KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW")[] | null;
   [k: string]: unknown;
-} & Zaehlwerk1 & {
-    timestamp?: string | null;
-    guid?: string | null;
-    zaehlwerkId: string | null;
-    bezeichnung: string | null;
-    richtung: null | "AUSSP" | "EINSP" | "RUHEND" | "KUNDENANLAGE";
-    obisKennzahl: string | null;
-    wandlerfaktor: number | null;
-    einheit:
-      | null
-      | "ZERO"
-      | "WH"
-      | "KW"
-      | "ANZAHL"
-      | "KUBIKMETER"
-      | "STUNDE"
-      | "TAG"
-      | "MONAT"
-      | "VAR"
-      | "VARH"
-      | "KWHK"
-      | "JAHR"
-      | "KWH"
-      | "MW"
-      | "KVAR"
-      | "KVARH"
-      | "MWH";
-    kennzahl: string | null;
-    schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
-    verwendungszwecke: Verwendungszweck[] | null;
-    verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
-    unterbrechbarkeit: null | "UV" | "NUV";
-    waermenutzung:
-      | null
-      | "SPEICHERHEIZUNG"
-      | "WAERMEPUMPE"
-      | "DIREKTHEIZUNG"
-      | "WAERMEPUMPE_WAERME_KAELTE"
-      | "WAERMEPUMPE_KAELTE"
-      | "WAERMEPUMPE_WAERME";
-    konzessionsabgabe: Konzessionsabgabe;
-    steuerbefreit: boolean | null;
-    vorkommastelle: number | null;
-    nachkommastelle: number | null;
-    abrechnungsrelevant: boolean | null;
-    anzahlAblesungen: number | null;
-    zaehlzeiten: Zaehlzeitregister;
-    konfiguration: string | null;
-    emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
-    [k: string]: unknown;
-  } & Zaehlwerk1;
+} & Zaehlwerk1;
 export type Verwendungszweck = {
   marktrolle:
     | "NB"
@@ -147,6 +101,9 @@ export type Verwendungszweck = {
         | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+        | "SELBSTVERBRAUCH"
+        | "ES_LIEGT_KEIN_VERWENDUNGSZWECK_VOR"
+        | "KEINE_DATENLIEFERUNG_AN_MARKTROLLE"
       )[]
     | null;
   timestamp?: string | null;
@@ -180,6 +137,9 @@ export type Verwendungszweck1 = {
         | "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
         | "UEBERMITTLUNG_AN_DAS_HKNR"
         | "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+        | "SELBSTVERBRAUCH"
+        | "ES_LIEGT_KEIN_VERWENDUNGSZWECK_VOR"
+        | "KEINE_DATENLIEFERUNG_AN_MARKTROLLE"
       )[]
     | null;
   timestamp?: string | null;
@@ -193,14 +153,7 @@ export type Konzessionsabgabe = {
   kategorie: string | null;
   satz: "KAS" | "SA" | "SAS" | "TA" | "TAS" | "TK" | "TKS" | "TS" | "TSS";
   [k: string]: unknown;
-} & Konzessionsabgabe1 & {
-    timestamp?: string | null;
-    guid?: string | null;
-    kosten: number | null;
-    kategorie: string | null;
-    satz: "KAS" | "SA" | "SAS" | "TA" | "TAS" | "TK" | "TKS" | "TS" | "TSS";
-    [k: string]: unknown;
-  } & Konzessionsabgabe1;
+} & Konzessionsabgabe1;
 export type Konzessionsabgabe1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -216,14 +169,7 @@ export type Zaehlzeitregister = {
   register: string | null;
   schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   [k: string]: unknown;
-} & Zaehlzeitregister1 & {
-    timestamp?: string | null;
-    guid?: string | null;
-    zaehlzeitDefinition: string | null;
-    register: string | null;
-    schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
-    [k: string]: unknown;
-  } & Zaehlzeitregister1;
+} & Zaehlzeitregister1;
 export type Zaehlzeitregister1 = {
   timestamp?: string | null;
   guid?: string | null;
@@ -253,6 +199,9 @@ export type Zaehlwerk1 = {
     | "VAR"
     | "VARH"
     | "KWHK"
+    | "W_M2"
+    | "M_S"
+    | "STUECK"
     | "JAHR"
     | "KWH"
     | "MW"
@@ -262,7 +211,7 @@ export type Zaehlwerk1 = {
   kennzahl: string | null;
   schwachlastfaehig: null | "NICHT_SCHWACHLASTFAEHIG" | "SCHWACHLASTFAEHIG";
   verwendungszwecke: Verwendungszweck[] | null;
-  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS";
+  verbrauchsart: null | "KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW";
   unterbrechbarkeit: null | "UV" | "NUV";
   waermenutzung:
     | null
@@ -281,6 +230,7 @@ export type Zaehlwerk1 = {
   zaehlzeiten: Zaehlzeitregister;
   konfiguration: string | null;
   emobilitaetsart: null | "WALLBOX" | "E_MOBILITAETSLADESAEULE" | "LADEPARK";
+  Verbrauchsarten: ("KL" | "KLW" | "KLWS" | "W" | "WS" | "WK" | "EM" | "STRB" | "STW")[] | null;
   [k: string]: unknown;
 } | null;
 export type Geschaeftspartner = {
@@ -316,10 +266,7 @@ export type Geschaeftspartner = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -338,13 +285,7 @@ export type Geschaeftspartner = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } & Geschaeftspartner1;
 export type Adresse = {
@@ -1042,10 +983,7 @@ export type Geschaeftspartner1 = {
   geschaeftspartnerrolle: ("LIEFERANT" | "DIENSTLEISTER" | "KUNDE" | "INTERESSENT" | "MARKTPARTNER")[] | null;
   partneradresse: Adresse;
   grundlageZurVerringerungDerUmlagenNachEnfg:
-    | null
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG"
-    | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT"
-    | "KEINE_ANGABE";
+    null | "KUNDE_ERFUELLT_VORAUSSETZUNG" | "KUNDE_ERFUELLT_VORAUSSETZUNG_NICHT" | "KEINE_ANGABE";
   gruendeDerPrivilegierungNachEnFG:
     | (
         | "STROMSPEICHER_UND_VERLUSTENERGIE"
@@ -1064,13 +1002,7 @@ export type Geschaeftspartner1 = {
   erreichbarkeit: Erreichbarkeit;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 } | null;
 export type Geraet = {
@@ -1087,6 +1019,7 @@ export type Geraet = {
     | "SMARTMETER_GATEWAY"
     | "STEUERBOX"
     | "ZAEHLEINRICHTUNG";
+  positionsnummer: string | null;
   [k: string]: unknown;
 } & Geraet1;
 export type Geraeteeigenschaften = {
@@ -1206,6 +1139,8 @@ export type Geraeteeigenschaften = {
   Parameter: {
     [k: string]: string | null;
   } | null;
+  wandlerfaktor: number | null;
+  weitereGeraetenummern: (string | null)[] | null;
   [k: string]: unknown;
 } & Geraeteeigenschaften1;
 export type Geraeteeigenschaften1 = {
@@ -1325,6 +1260,8 @@ export type Geraeteeigenschaften1 = {
   Parameter: {
     [k: string]: string | null;
   } | null;
+  wandlerfaktor: number | null;
+  weitereGeraetenummern: (string | null)[] | null;
   [k: string]: unknown;
 } | null;
 export type Geraet1 = {
@@ -1341,6 +1278,7 @@ export type Geraet1 = {
     | "SMARTMETER_GATEWAY"
     | "STEUERBOX"
     | "ZAEHLEINRICHTUNG";
+  positionsnummer: string | null;
   [k: string]: unknown;
 } | null;
 
@@ -1351,7 +1289,7 @@ export interface Zaehler {
   externeReferenzen: ExterneReferenz[] | null;
   guid?: string | null;
   zaehlernummer: string | null;
-  sparte: "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
+  sparte: null | "STROM" | "GAS" | "FERNWAERME" | "NAHWAERME" | "WASSER" | "ABWASSER";
   zaehlerauspraegung: null | "EINRICHTUNGSZAEHLER" | "ZWEIRICHTUNGSZAEHLER";
   zaehlertyp:
     | null
@@ -1376,10 +1314,7 @@ export interface Zaehler {
   zaehlerkonstante: number | null;
   eichungBis: string | null;
   letzteEichung: string | null;
-  /**
-   * @minItems 1
-   */
-  zaehlwerke: [Zaehlwerk, ...Zaehlwerk[]] | null;
+  zaehlwerke: Zaehlwerk[] | null;
   zaehlerhersteller?: Geschaeftspartner;
   gateway: string | null;
   fernschaltung: null | "VORHANDEN" | "NICHT_VORHANDEN";
@@ -1451,14 +1386,9 @@ export interface Zaehler {
     | "GAS_G12500"
     | "GAS_G16000";
   geraete: Geraet[] | null;
+  artVolumenerfassung: null | "KENNLINIENKORREKTUR" | "SCHLEICHMENGENUNTERDRÜCKUNG";
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }

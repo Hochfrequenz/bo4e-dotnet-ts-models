@@ -67,7 +67,14 @@ export type FehlerDetail = {
     | "DUPLIKAT"
     | "KONTROLLZAEHLER_UNPLAUSIBEL"
     | "WERT_ZU_LANG"
-    | "WIEDERHOLUNG_UNPLAUSIBEL";
+    | "WERT_ZU_KURZ"
+    | "UNGUELTIGE_DEZIMALBESCHREIBUNG"
+    | "UNGUELTIGE_ZEICHENART"
+    | "FEHLENDE_ZIFFER_VOR_DEZIMALZEICHEN"
+    | "WIEDERHOLUNG_UNPLAUSIBEL"
+    | "CODE_NICHT_AUS_ERLAUBTEM_WERTEBEREICH"
+    | "GESCHAEFTSVORFALL_OBJEKT_EIGENSCHAFT_NICHT_ERLAUBT"
+    | "GESCHAEFTSVORFALL_OBJEKT_EIGENSCHAFT_WEICHT_AB";
   beschreibung: string | null;
   ursache: FehlerUrsache;
   [k: string]: unknown;
@@ -135,7 +142,14 @@ export type FehlerDetail1 = {
     | "DUPLIKAT"
     | "KONTROLLZAEHLER_UNPLAUSIBEL"
     | "WERT_ZU_LANG"
-    | "WIEDERHOLUNG_UNPLAUSIBEL";
+    | "WERT_ZU_KURZ"
+    | "UNGUELTIGE_DEZIMALBESCHREIBUNG"
+    | "UNGUELTIGE_ZEICHENART"
+    | "FEHLENDE_ZIFFER_VOR_DEZIMALZEICHEN"
+    | "WIEDERHOLUNG_UNPLAUSIBEL"
+    | "CODE_NICHT_AUS_ERLAUBTEM_WERTEBEREICH"
+    | "GESCHAEFTSVORFALL_OBJEKT_EIGENSCHAFT_NICHT_ERLAUBT"
+    | "GESCHAEFTSVORFALL_OBJEKT_EIGENSCHAFT_WEICHT_AB";
   beschreibung: string | null;
   ursache: FehlerUrsache;
   [k: string]: unknown;
@@ -204,12 +218,6 @@ export interface Statusbericht {
   fehler: Fehler;
   gueltigkeitszeitraum?: Zeitraum;
   qualitaet?:
-    | null
-    | "VOLLSTAENDIG"
-    | "INFORMATIV"
-    | "IM_SYSTEM_VORHANDEN"
-    | "ERWARTET"
-    | "VORLAEUFIG"
-    | "UNVOLLSTAENDIG";
+    null | "VOLLSTAENDIG" | "INFORMATIV" | "IM_SYSTEM_VORHANDEN" | "ERWARTET" | "VORLAEUFIG" | "UNVOLLSTAENDIG";
   [k: string]: unknown;
 }
