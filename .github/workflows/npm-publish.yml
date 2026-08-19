@@ -9,14 +9,15 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
       - uses: JS-DevTools/npm-publish@v4
         with:
-          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          # expires never!
-          # https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/settings/secrets/actions/NPM_PUBLISH_TOKEN
-          # https://www.npmjs.com/settings/hf-kklein/tokens/
+          provenance: true
