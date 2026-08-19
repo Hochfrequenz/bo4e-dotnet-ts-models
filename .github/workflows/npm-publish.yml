@@ -105,9 +105,13 @@ jobs:
           # then npm fails with a misleading ENEEDAUTH
           NPM_CONFIG_LOGLEVEL: verbose
       # the action exits 0 without publishing when the version is already on the
-      # registry (and swallows EPUBLISHCONFLICT), so assert something shipped
+      # registry (and swallows EPUBLISHCONFLICT), so assert something shipped.
+      # Deliberately `type` and not `id`: npm >= 11.15 nests `npm publish --json`
+      # output under the package name, and the action still reads `.id` off the
+      # top level, so `id` is empty even on a successful publish. `type` is
+      # derived from the presence of the whole object, so it survives both shapes.
       - name: Verify the package was actually published
-        if: steps.publish.outputs.id == ''
+        if: steps.publish.outputs.type == ''
         run: |
           echo "::error::Nothing was published - version ${{ steps.publish.outputs.version }} is already on the registry."
           exit 1
