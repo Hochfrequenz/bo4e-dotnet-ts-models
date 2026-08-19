@@ -1,7 +1,7 @@
 on:
   release:
     types:
-      - created
+      - published
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
       - "**/v[0-9]+.[0-9]+.[0-9]+"
@@ -9,14 +9,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
-      - uses: JS-DevTools/npm-publish@v4
-        with:
-          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          # expires never!
-          # https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/settings/secrets/actions/NPM_PUBLISH_TOKEN
-          # https://www.npmjs.com/settings/hf-kklein/tokens/
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
