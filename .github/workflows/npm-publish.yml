@@ -115,3 +115,9 @@ jobs:
         run: |
           echo "::error::Nothing was published - version ${{ steps.publish.outputs.version }} is already on the registry."
           exit 1
+      # for the same reason the action logs "already published" with no contents
+      # list even on success, so say what actually happened
+      - name: Summarise what was published
+        if: steps.publish.outputs.type != ''
+        run: |
+          echo "published ${{ steps.publish.outputs.version }} (${{ steps.publish.outputs.type }}) to dist-tag ${DIST_TAG:-latest}"
