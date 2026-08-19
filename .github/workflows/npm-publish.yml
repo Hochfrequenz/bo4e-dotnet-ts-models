@@ -1,22 +1,123 @@
+name: npm publish
+
 on:
   release:
     types:
-      - created
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
-      - "**/v[0-9]+.[0-9]+.[0-9]+"
+      - published
+
+# deliberately NOT serialised with `concurrency`: the queue is one slot deep, so
+# a third release in quick succession would cancel the queued one - silently,
+# with no failure annotation. Each run now publishes its own tag's version, so
+# concurrent runs cannot interfere: a genuine collision either trips npm's
+# implicit-latest guard or is caught by the publish assertion below.
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Required for npm OIDC trusted publishing
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@v4
         with:
-          node-version: 14
-      - uses: JS-DevTools/npm-publish@v4
+          # needed by the ancestor check below
+          fetch-depth: 0
+          # no third-party code should run with the job token on disk
+          persist-credentials: false
+      # A release can be cut from ANY commit on ANY branch (target_commitish),
+      # and this job can mint an npm publish token for this package. Without
+      # this check, write access to the repo is enough to publish arbitrary
+      # tarball contents as bo4e-dotnet-ts-models, since nothing here builds
+      # the package - the tarball is whatever tree the release points at.
+      - name: Verify the release commit is on main
+        # origin/main is already present: fetch-depth: 0 above fetches every
+        # branch. Re-fetching here would run without credentials
+        # (persist-credentials: false) and break if this repo ever went private.
+        run: |
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error::Release commit $GITHUB_SHA is not an ancestor of origin/main; refusing to publish."
+            exit 1
+          fi
+      - uses: actions/setup-node@v4
         with:
-          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          # expires never!
-          # https://github.com/Hochfrequenz/bo4e-dotnet-ts-models/settings/secrets/actions/NPM_PUBLISH_TOKEN
-          # https://www.npmjs.com/settings/hf-kklein/tokens/
+          node-version: 24
+      # npm OIDC trusted publishing requires npm >= 11.5.1; the version bundled
+      # with node 24 depends on the runner's tool cache, so install it explicitly.
+      - name: Update npm
+        run: |
+          npm install -g "npm@^11.6"
+          echo "npm version: $(npm --version)"
+          echo "node version: $(node --version)"
+      # The release tag is the single source of truth for the version, so
+      # package.json no longer has to be bumped by hand before releasing. That
+      # bump used to be silently load-bearing: the publish is skipped (exit 0)
+      # when package.json's version is already on the registry, which is how
+      # tag v0.28.1 shipped package.json 0.28.0 and 0.28.1 never reached npm.
+      - name: Derive version from the release tag
+        # passed as env, not interpolated into the script: a tag name may
+        # legally contain quotes, $ and ; - as ${{ }} is substituted before
+        # bash parses, interpolating it would make the tag executable code
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: |
+          # +build metadata is rejected on purpose: npm strips it, so the tag
+          # and the published version could never agree
+          if [[ ! "$TAG_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag '$TAG_NAME' is not of the form vX.Y.Z or vX.Y.Z-prerelease (build metadata is not supported); refusing to publish."
+            exit 1
+          fi
+          VERSION="${TAG_NAME#v}"
+          npm version "$VERSION" --no-git-tag-version --allow-same-version --ignore-scripts
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          if [[ "$PACKAGE_VERSION" != "$VERSION" ]]; then
+            echo "::error::package.json is at '$PACKAGE_VERSION', expected '$VERSION' from tag '$TAG_NAME'."
+            exit 1
+          fi
+          # the dist-tag follows the version itself, not the "this is a
+          # pre-release" checkbox: ticking that box on a final version would
+          # strand the release on the "next" tag and leave "latest" behind,
+          # green and unnoticed
+          if [[ "$VERSION" == *-* ]]; then
+            echo "DIST_TAG=next" >> "$GITHUB_ENV"
+          else
+            # deliberately empty: passing "latest" explicitly would disable
+            # npm's own guard against moving "latest" to an older version
+            echo "DIST_TAG=" >> "$GITHUB_ENV"
+          fi
+          echo "publishing $VERSION from $TAG_NAME"
+      # Publishes via OIDC trusted publishing - no token, no fallback.
+      # The trusted publisher must be configured at
+      # https://www.npmjs.com/package/bo4e-dotnet-ts-models/access
+      # with Organization=Hochfrequenz, Repository=bo4e-dotnet-ts-models,
+      # Workflow=npm-publish.yml (renaming this file breaks publishing).
+      # See: https://docs.npmjs.com/trusted-publishers/
+      # Pinned to a commit: this action receives the minted npm token, so a
+      # compromise of a mutable @v4 tag would be enough to publish anything.
+      - uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
+        id: publish
+        with:
+          provenance: true
+          tag: ${{ env.DIST_TAG }}
+        env:
+          # the OIDC exchange never throws - it logs the real reason (workflow
+          # name / repo mismatch, publisher not configured) at verbose level and
+          # then npm fails with a misleading ENEEDAUTH
+          NPM_CONFIG_LOGLEVEL: verbose
+      # the action exits 0 without publishing when the version is already on the
+      # registry (and swallows EPUBLISHCONFLICT), so assert something shipped.
+      # Deliberately `type` and not `id`: npm >= 11.15 nests `npm publish --json`
+      # output under the package name, and the action still reads `.id` off the
+      # top level, so `id` is empty even on a successful publish. `type` is
+      # derived from the presence of the whole object, so it survives both shapes.
+      - name: Verify the package was actually published
+        if: steps.publish.outputs.type == ''
+        run: |
+          echo "::error::Nothing was published - version ${{ steps.publish.outputs.version }} is already on the registry."
+          exit 1
+      # for the same reason the action logs "already published" with no contents
+      # list even on success, so say what actually happened
+      - name: Summarise what was published
+        if: steps.publish.outputs.type != ''
+        run: |
+          echo "published ${{ steps.publish.outputs.version }} (${{ steps.publish.outputs.type }}) to dist-tag ${DIST_TAG:-latest}"
